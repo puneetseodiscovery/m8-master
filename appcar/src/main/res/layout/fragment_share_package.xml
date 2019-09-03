@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mandy.m8car.Fragments.MyShareSubFragment.SharePackageFragment">
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_above="@id/linearFree"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="-70dp"
+                android:background="@drawable/dimondshape"
+                android:elevation="1dp"
+                android:gravity="center"
+                android:rotation="45">
+
+                <TextView
+                    android:id="@+id/txtFreePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:rotation="-45"
+                    android:text="@string/chf"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearFree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="45dp"
+                android:layout_marginRight="@dimen/margin"
+                android:background="@drawable/shareshape"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtFreeHeading"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/topradius"
+                    android:gravity="bottom|center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:paddingBottom="@dimen/drawablepadding"
+                    android:text="Free startup plan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/txtFreeShares"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:paddingBottom="@dimen/drawablepadding"
+                    android:text="10 M8's shares"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/subheading" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:text="Test M8's World money making applicaion"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/drawablepadding"
+                    android:background="@color/subheading" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:text="No money"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/drawablepadding"
+                    android:background="@color/subheading" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:text="No risk"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/drawablepadding"
+                    android:background="@color/subheading" />
+
+                <TextView
+                    android:id="@+id/txtProperty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/padding"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/topmargin"
+                    android:text="Upload one property to sell"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subtext" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linerNovice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearFree"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tooolbar"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
+                    android:background="@drawable/shareshape"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_above="@id/linerNovice"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:layout_marginBottom="-40dp"
+                        android:background="@drawable/dimondshape"
+                        android:elevation="1dp"
+                        android:gravity="center"
+                        android:rotation="45">
+
+                        <TextView
+                            android:id="@+id/txtNovicePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:rotation="-45"
+                            android:text="CHF 10.00"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/subtext" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtNoviceHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:background="@drawable/topradius"
+                        android:gravity="center|bottom"
+                        android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Novice"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtNoviceShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="100 M8's shares"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Best for members building their online network"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtNoviceProperty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Upload 5 properties to sell"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <Button
+                        android:id="@+id/btnNovice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/buttonback"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin"
+                        android:background="@drawable/buttonback"
+                        android:text="Buy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/padding"
+                        android:text="1xCHF = approx $1"
+                        android:textSize="@dimen/subtext" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tooolbar"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
+                    android:background="@drawable/shareshape"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_above="@id/linerNovice"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:layout_marginBottom="-40dp"
+                        android:background="@drawable/dimondshape"
+                        android:elevation="1dp"
+                        android:gravity="center"
+                        android:rotation="45">
+
+                        <TextView
+                            android:id="@+id/txtPlayerPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:rotation="-45"
+                            android:text="CHF 45.00"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/subtext" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtPlayerHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:background="@drawable/topradius"
+                        android:gravity="center|bottom"
+                        android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Player"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtPlayerShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="500 M8's shares"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Best for members building their online network"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtPlayerProperty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Upload 10 properties to sell"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <Button
+                        android:id="@+id/btnPlayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/buttonback"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin"
+                        android:background="@drawable/buttonback"
+                        android:text="Buy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/padding"
+                        android:text="1xCHF = approx $1"
+                        android:textSize="@dimen/subtext" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/linerPro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linerNovice"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tooolbar"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
+                    android:background="@drawable/shareshape"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_above="@id/linerNovice"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:layout_marginBottom="-40dp"
+                        android:background="@drawable/dimondshape"
+                        android:elevation="1dp"
+                        android:gravity="center"
+                        android:rotation="45">
+
+                        <TextView
+                            android:id="@+id/txtProfessionalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:rotation="-45"
+                            android:text="CHF 80.00"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/subtext" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtProfessionalHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:background="@drawable/topradius"
+                        android:gravity="center|bottom"
+                        android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Professional"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtProfessionalShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="1000 M8's shares"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Best for networkers and multi-level marketing gurus"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtProfessionalProperty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Upload 100 properties to sell"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <Button
+                        android:id="@+id/btnProfessional"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/buttonback"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin"
+                        android:background="@drawable/buttonback"
+                        android:text="Buy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/padding"
+                        android:text="1xCHF = approx $1"
+                        android:textSize="@dimen/subtext" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tooolbar"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginRight="@dimen/margin"
+                    android:background="@drawable/shareshape"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_above="@id/linerNovice"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:layout_marginBottom="-40dp"
+                        android:background="@drawable/dimondshape"
+                        android:elevation="1dp"
+                        android:gravity="center"
+                        android:rotation="45">
+
+                        <TextView
+                            android:id="@+id/txtBusinessPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:rotation="-45"
+                            android:text="CHF 150.00"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/subtext" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtBusinessHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="@dimen/topmargin"
+                        android:background="@drawable/topradius"
+                        android:gravity="center|bottom"
+                        android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Bussiness"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtBusinessShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Unlimited M8's shares"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Best for real estate agents"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtBusinessProperty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Upload unlimited properties to sell"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <Button
+                        android:id="@+id/btnBusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/buttonback"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin"
+                        android:background="@drawable/buttonback"
+                        android:text="Buy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/padding"
+                        android:text="1xCHF = approx $1"
+                        android:textSize="@dimen/subtext" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

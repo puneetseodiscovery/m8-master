@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.HomeFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tooolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbarColor"
+        android:elevation="2dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mlogo" />
+
+
+            <TextView
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_toLeftOf="@+id/drawer"
+                android:layout_toRightOf="@+id/image_logo"
+                android:background="@drawable/search"
+                android:drawableRight="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:drawableTint="#FFFFFF"
+                android:gravity="center_vertical"
+                android:hint="Search"
+                android:paddingLeft="@dimen/padding"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/white"
+                android:textSize="@dimen/text" />
+
+
+            <ImageView
+                android:id="@+id/drawer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/padding"
+                android:src="@drawable/navigation" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <!--android:id="@+id/swip"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/tooolbar">-->
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrool"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.mandy.m8.AppMapView
+                android:id="@+id/map"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+
+            </com.mandy.m8.AppMapView>
+
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/map"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@drawable/potentialbuttoninactive"
+                android:gravity="center"
+                android:padding="@dimen/drawablepadding">
+
+                <Spinner
+                    android:id="@+id/spineer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative"
+                android:layout_marginTop="@dimen/topmargin"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="If there are no pins in your area "
+                    android:textSize="@dimen/subtext" />
+
+                <TextView
+                    android:id="@+id/Home_click_here"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spineer"
+                    android:text="@string/click"
+                    android:textSize="@dimen/text"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/linear1"
+                android:layout_margin="@dimen/topmargin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_mypotential"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/mypotential" />
+
+                        <TextView
+                            android:id="@+id/txtEaring"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/text" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="My Potential Earnings"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/drawablepadding"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_commission"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/commissiontree" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="$ 0"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/text"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/drawablepadding"
+                            android:gravity="center"
+                            android:text="@string/commission"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/drawablepadding"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_Upload"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/uploaditem" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="$ 0"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/text"
+                            android:visibility="invisible" />
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/drawablepadding"
+                            android:gravity="center"
+                            android:text="@string/Upload"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_myshare"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/myshare" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="@dimen/drawablepadding"
+                            android:text="Shared Items"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/drawablepadding"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_viewall"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/viewallitem" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/drawablepadding"
+                            android:gravity="center"
+                            android:text="@string/View"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/drawablepadding"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/Home_myaccount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/myaccount" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/drawablepadding"
+                            android:gravity="center"
+                            android:text="@string/myAccount"
+                            android:textColor="@color/headingcolor"
+                            android:textSize="@dimen/text" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+
+</RelativeLayout>

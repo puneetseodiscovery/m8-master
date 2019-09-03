@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/potential"
+        android:title="Potential Earnings" />
+
+    <item
+        android:id="@+id/erning"
+        android:title="CHF 0000" />
+
+    <item
+        android:id="@+id/Watch"
+        android:title="Watch How To Do Videos" />
+
+    <item
+        android:id="@+id/Home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/startTrade"
+        android:title="Category" />
+
+    <item
+        android:id="@+id/Refer"
+        android:title="Refer A Business" />
+
+
+    <item
+        android:id="@+id/myBank"
+        android:title="My Bank Details" />
+
+
+    <item
+        android:id="@+id/Buy"
+        android:title="Buy More Shares" />
+
+
+    <item
+        android:id="@+id/Mycontact"
+        android:title="My Contracts" />
+
+    <item
+        android:id="@+id/Myproperty"
+        android:title="My Items" />
+
+
+    <item
+        android:id="@+id/Terms"
+        android:title="Term &amp; conditions" />
+
+    <item
+        android:id="@+id/Privacy"
+        android:title="Privacy policy" />
+
+    <item
+        android:id="@+id/Art"
+        android:title="Art statement" />
+
+    <item
+        android:id="@+id/Goto"
+        android:title="Go to www.m8s.world" />
+
+    <item
+        android:id="@+id/Logout"
+        android:title="Logout" />
+
+</menu>

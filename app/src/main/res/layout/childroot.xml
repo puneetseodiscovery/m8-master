@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:background="@color/white"
+    android:paddingLeft="50dp">
+
+    <View
+        android:id="@+id/viewOne"
+        android:layout_width="5dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="7.5dp"
+        android:background="@color/subheading" />
+
+    <ImageView
+        android:id="@+id/imageadd"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/viewOne"
+        android:background="@drawable/ic_add2"
+        android:backgroundTint="@color/subheading" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageadd"
+        android:layout_marginLeft="7.5dp"
+        android:background="@color/subheading" />
+
+    <View
+        android:id="@+id/viewTwo"
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_below="@id/viewOne"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/imageadd"
+        android:background="@color/subheading" />
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/child_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/viewOne"
+        android:layout_marginTop="-22dp"
+        android:layout_toRightOf="@id/viewTwo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_image"
+        app:riv_oval="true" />
+
+
+    <TextView
+        android:id="@+id/child_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewOne"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_toRightOf="@id/child_image"
+        android:text="Hello"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text" />
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="5dp"
+        android:layout_height="18dp"
+        android:layout_below="@id/child_image"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/viewTwo"
+        android:background="@color/subheading" />
+
+
+    <ImageView
+        android:id="@+id/imageadd2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/view2"
+        android:layout_marginLeft="23dp"
+        android:layout_toRightOf="@id/viewTwo"
+        android:background="@drawable/ic_add2"
+        android:backgroundTint="@color/subheading" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="60dp"
+        android:layout_height="5dp"
+        android:layout_below="@id/view2"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@id/imageadd2"
+        android:background="@color/subheading" />
+
+    <ImageView
+        android:id="@+id/imageadd3"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/view2"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@id/view3"
+        android:background="@drawable/ic_right_tri"
+        android:backgroundTint="@color/subheading" />
+
+
+</RelativeLayout>

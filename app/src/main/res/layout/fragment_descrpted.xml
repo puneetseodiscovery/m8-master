@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CommissionSubFragment.DescrptedFragment">
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tooolbar"
+            android:layout_marginTop="@dimen/topmargin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:text="LA ROCHE 4 BEDROOM"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:text="CHF 120000"
+                android:textColor="@color/green"
+                android:textSize="@dimen/subheading" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/padding">
+
+                <ImageView
+                    android:id="@+id/imagePer"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/back"
+                    android:backgroundTint="@color/black"
+                    android:elevation="1dp"
+                    android:visibility="gone" />
+
+
+                <ImageView
+                    android:id="@+id/imageNext"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_right"
+                    android:backgroundTint="@color/black"
+                    android:elevation="1dp" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/imageItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_image2" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/topmargin"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sharers Commission"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subheading"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtComission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="CHF 12000"
+                        android:textColor="#68DF2E"
+                        android:textSize="@dimen/subheading"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:text="@string/descrip"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subheading"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDescripation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding"
+                    android:text="@string/description"
+                    android:textColor="@color/subheading"
+                    android:textSize="@dimen/subtext" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:text="@string/feature"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/subheading"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtFeature"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/litle"
+                        android:layout_weight="1"
+                        android:textColor="@color/subheading"
+                        android:textSize="@dimen/subtext" />
+
+                    <TextView
+                        android:id="@+id/txtFeature2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/litle"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/subtext"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recylerCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:text="@string/sharing"
+                    android:textColor="@color/subheading"
+                    android:textSize="@dimen/subtext" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@null"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/linearShare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding"
+                        android:background="@drawable/sharebtn"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:id="@+id/btnsharegif"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:src="@drawable/share" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/padding"
+                                android:layout_marginRight="@dimen/padding"
+                                android:layout_toRightOf="@id/btnsharegif"
+                                android:text="@string/ShreBtn"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding"
+                        android:background="@drawable/contactbtn"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:id="@+id/btnContactGif"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/appointment" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/padding"
+                                android:layout_marginRight="@dimen/padding"
+                                android:layout_toRightOf="@id/btnContactGif"
+                                android:text="@string/btnContact"
+                                android:textColor="@color/black" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearBuy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding"
+                        android:background="@drawable/buybtn"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/padding"
+                                android:layout_marginRight="@dimen/padding"
+                                android:layout_toLeftOf="@id/btnBuygif"
+                                android:text="@string/btnBuy"
+                                android:textColor="@color/black" />
+
+                            <pl.droidsonroids.gif.GifImageView
+                                android:id="@+id/btnBuygif"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/buy" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/buy_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:layout_marginBottom="@dimen/topmargin" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

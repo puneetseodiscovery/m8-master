@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mandy.m8car.Fragments.ReferFragment">
+
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="Refer &amp; Earn"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:text="@string/refer"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/subheading" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/text2"
+                android:layout_marginTop="@dimen/margin"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/padding">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray">
+
+                    <Spinner
+                        android:id="@+id/spineer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
+
+                </RelativeLayout>
+
+
+                <EditText
+                    android:id="@+id/B_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business name*"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/B_owwername"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business owner's name(if Known)"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/B_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business email address*"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/B_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business telephone no*"
+                    android:inputType="number"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="Enter your name*"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="Enter your email address*"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="Enter your telephone no*"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+
+                <Button
+                    android:id="@+id/btn_refer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginRight="@dimen/edtSize"
+                    android:background="@drawable/buttonback"
+                    android:text="Refer"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

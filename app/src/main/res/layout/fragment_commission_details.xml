@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.CommissionSubFragment.CommissionDetailsFragment">
+
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/tooolbar"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageview"
+        android:layout_marginLeft="@dimen/topmargin"
+        android:layout_marginTop="@dimen/drawablepadding"
+        android:layout_marginRight="@dimen/topmargin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/propert_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/property_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="CHF 0"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
+        android:layout_marginLeft="@dimen/topmargin"
+        android:layout_marginTop="@dimen/drawablepadding"
+        android:layout_marginRight="@dimen/topmargin"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="@dimen/drawablepadding"
+            android:layout_weight="1"
+            android:text="Sharers Commission"
+            android:textColor="@color/subheading"
+            android:textSize="@dimen/text" />
+
+        <TextView
+            android:id="@+id/property_comission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="@dimen/drawablepadding"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="CHF 0"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_marginLeft="@dimen/topmargin"
+        android:layout_marginRight="@dimen/topmargin">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/parent_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/parent_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_toRightOf="@id/parent_image"
+            android:paddingTop="@dimen/padding"
+            android:text="@string/totalcommission"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+        <TextView
+            android:id="@+id/parent_chf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/parent_text"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_toRightOf="@id/parent_image"
+            android:paddingLeft="@dimen/padding"
+            android:text=""
+            android:textColor="@color/green"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/expandableList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative"
+        android:divider="@null"
+        android:groupIndicator="@null">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mandy.m8car.UploadActivity.UploadImagesActivity">
+
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/upload_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/edtSize"
+                android:background="@drawable/potentialbuttoninactive"
+                android:padding="10dp"
+                android:text="@string/uploadPro"
+                android:textSize="@dimen/text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upload_logo"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_marginRight="@dimen/margin">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <EditText
+                android:id="@+id/txt_descripation"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@id/recyclerView"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:gravity="start"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <Button
+                android:id="@+id/View_share"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_descripation"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@drawable/buttonback"
+                android:text="View and Share"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

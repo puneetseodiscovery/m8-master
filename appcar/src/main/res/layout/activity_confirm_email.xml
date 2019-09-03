@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mandy.m8car.Activities.ConfirmEmailActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linaer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/toolbarColor">
+
+            <ImageView
+                android:id="@+id/imglogo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin"
+                android:src="@drawable/mlogo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding"
+                android:layout_toRightOf="@id/imglogo"
+                android:text="@string/splash"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/topmargin"
+            android:text="Recover Password"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/heading"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_margin="@dimen/topmargin"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Enter Email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_margin="@dimen/topmargin"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Enter password recovery code"
+            android:inputType="number"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_margin="@dimen/topmargin"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+        <EditText
+            android:id="@+id/c_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_margin="@dimen/topmargin"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/topmargin"
+            android:background="@color/red"
+            android:text="Send than check your email"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

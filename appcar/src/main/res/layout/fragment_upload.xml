@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mandy.m8car.UploadActivity.UploadSubFragment.UploadFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/upload_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_hintExampleNumber="true"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false" />
+
+            <EditText
+                android:id="@+id/upload_county"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="County*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/upload_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Town*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+
+            <EditText
+                android:id="@+id/upload_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Postcode*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/upload_address1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Address1*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/upload_address2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Address2*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/upload_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Currency*"
+                    android:padding="@dimen/padding"
+                    android:textSize="@dimen/text" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#b1b1b1" />
+
+                <EditText
+                    android:id="@+id/upload_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Price*"
+                    android:inputType="number"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/Spinner_Property"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/upload_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/Upload_Next"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:background="@drawable/buttonback"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

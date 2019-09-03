@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mandy.m8car.UploadActivity.Mandate.MandateActivity">
+
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:text="Your mandate"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_marginRight="@dimen/margin"
+                android:text="@string/mandata"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/text" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+                <Spinner
+                    android:id="@+id/mandata_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="@string/power" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/topmargin"
+                android:text="or"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:text="@string/mandata2"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/mandata_curreny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Currency"
+                    android:padding="@dimen/padding"
+                    android:textSize="@dimen/text" />
+
+                <View
+
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#b1b1b1" />
+
+                <EditText
+                    android:id="@+id/mandata_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Price*"
+                    android:inputType="number"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtPriceHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Price Should be between"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/subtext" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_marginRight="@dimen/margin"
+                android:text="@string/mandata3"
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/text" />
+
+            <RadioGroup
+                android:id="@+id/mandata_radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Yes"
+                    android:textColor="@color/subheading"
+                    android:textSize="@dimen/text" />
+
+                <RadioButton
+                    android:id="@+id/no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/topmargin"
+                    android:text="No"
+                    android:textColor="@color/subheading"
+                    android:textSize="@dimen/text" />
+            </RadioGroup>
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/buttonback"
+                android:text="Create Mandate"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

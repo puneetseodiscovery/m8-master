@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.MyAccountFragment">
+
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar2" />
+
+    <!--<RadioGroup-->
+    <!--android:id="@+id/radio_group"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/tooolbar"-->
+    <!--android:visibility="gone"-->
+    <!--android:layout_marginTop="@dimen/topmargin"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal">-->
+
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/business_profile"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginRight="@dimen/topmargin"-->
+    <!--android:text="Business Profile" />-->
+
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/sharer_profile"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/topmargin"-->
+    <!--android:text="Sharer Profile" />-->
+
+    <!--</RadioGroup>-->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar"
+        android:layout_marginTop="@dimen/topmargin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/topmargin">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/business_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_weight="1"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="@string/BusinessName"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/business_contactName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_weight="1"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="@string/BusinessContact"
+                    android:inputType="text"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/business_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/businessEmail"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/business_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="@string/businessPhone"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/business_address1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="@string/Address1"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/business_address2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="@string/Address2"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+
+            <EditText
+                android:id="@+id/business_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="@string/TownCity"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/business_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="@string/Postcode"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/business_country"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false">
+
+            </com.hbb20.CountryCodePicker>
+
+
+            <Button
+                android:id="@+id/button_next"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@drawable/buttonback"
+                android:text="@string/next"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
