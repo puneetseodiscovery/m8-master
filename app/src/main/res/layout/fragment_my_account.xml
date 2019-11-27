@@ -52,10 +52,80 @@
             android:orientation="vertical"
             android:paddingBottom="@dimen/topmargin">
 
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/topmargin"
+                android:text="@string/checkbusiness"
+                android:textColor="@color/test"
+                android:textSize="@dimen/text" />
+
+            <LinearLayout
+                android:id="@+id/linearBusniess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business name"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/editPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business phone no"
+                    android:inputType="number"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <EditText
+                    android:id="@+id/editAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Enter business address"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/topmargin"
                 android:orientation="horizontal">
 
                 <EditText
@@ -67,7 +137,7 @@
                     android:drawableLeft="@drawable/setdrawabletoleft"
                     android:drawablePadding="@dimen/drawablepadding"
                     android:hint="@string/BusinessName"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -80,7 +150,7 @@
                     android:drawableLeft="@drawable/setdrawabletoleft"
                     android:drawablePadding="@dimen/drawablepadding"
                     android:hint="@string/BusinessContact"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
             </LinearLayout>
@@ -122,7 +192,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="@string/Address1"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -135,7 +205,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="@string/Address2"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -149,7 +219,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="@string/TownCity"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 

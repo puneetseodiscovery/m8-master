@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tooolbar">
-
+        
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -170,6 +170,86 @@
                     android:orientation="vertical"
                     android:padding="8dp">
 
+                    <LinearLayout
+                        android:id="@+id/linearBusiness"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_dot"
+                                android:drawablePadding="@dimen/drawablepadding"
+                                android:gravity="start"
+                                android:text="Business Name:"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text" />
+
+                            <TextView
+                                android:id="@+id/txtBusinessName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text=""
+                                android:textColor="@color/green"
+                                android:textSize="@dimen/text"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@color/subheading" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_dot"
+                                android:drawablePadding="@dimen/drawablepadding"
+                                android:gravity="start"
+                                android:text="Business Phone:"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text" />
+
+                            <TextView
+                                android:id="@+id/txtBusinessPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text=""
+                                android:textColor="@color/green"
+                                android:textSize="@dimen/text"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@color/subheading" />
+
+
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -206,6 +286,76 @@
                         android:layout_marginTop="@dimen/padding"
                         android:background="@color/subheading" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_dot"
+                            android:drawablePadding="@dimen/drawablepadding"
+                            android:gravity="start"
+                            android:text="Legal Representative:"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text" />
+
+                        <TextView
+                            android:id="@+id/txtBusinessAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="Edit"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/padding"
+                        android:background="@color/subheading" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_dot"
+                            android:drawablePadding="@dimen/drawablepadding"
+                            android:gravity="start"
+                            android:text="Add Business Address:"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text" />
+
+                        <TextView
+                            android:id="@+id/txtBusinessEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="Edit"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/padding"
+                        android:background="@color/subheading" />
+
 
                     <LinearLayout
                         android:id="@+id/linearBank"
@@ -220,7 +370,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="Bank Details:"
+                            android:text="Add Bank:"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -230,8 +380,8 @@
                             android:layout_gravity="end"
                             android:layout_marginLeft="@dimen/padding"
                             android:gravity="end"
-                            android:text="Add"
-                            android:textColor="@color/green"
+                            android:text="Edit"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -248,6 +398,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:duplicateParentState="true"
                         android:orientation="horizontal">
 
                         <TextView
@@ -256,7 +409,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="Items listed:"
+                            android:text="My Item(s):"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -267,6 +420,7 @@
                             android:layout_gravity="end"
                             android:layout_marginLeft="@dimen/padding"
                             android:gravity="end"
+                            android:clickable="false"
                             android:text=""
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
@@ -285,6 +439,9 @@
                         android:id="@+id/linearCommission"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:duplicateParentState="true"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginTop="@dimen/padding"
                         android:orientation="horizontal">
 
@@ -294,7 +451,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="M8's commission trees in play:"
+                            android:text="M8's Commission Trees In Play:"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -305,6 +462,7 @@
                             android:layout_gravity="right"
                             android:gravity="right"
                             android:text=""
+                            android:clickable="false"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
@@ -321,7 +479,10 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:id="@+id/linearViewing"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginTop="@dimen/padding"
                         android:orientation="horizontal">
 
@@ -332,7 +493,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="Viewings"
+                            android:text="Viewings Through M8's:"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -343,6 +504,7 @@
                             android:layout_marginLeft="@dimen/padding"
                             android:gravity="right"
                             android:text=""
+                            android:clickable="false"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
@@ -361,6 +523,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:duplicateParentState="true"
                         android:orientation="horizontal">
 
                         <TextView
@@ -369,7 +534,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="Sales"
+                            android:text="Sales Through M8's"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -379,6 +544,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text=""
+                            android:clickable="false"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
@@ -397,6 +563,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:duplicateParentState="true"
                         android:orientation="horizontal">
 
                         <TextView
@@ -405,7 +574,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="My Mandate:"
+                            android:text="My Mandates:"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -415,6 +584,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text=""
+                            android:clickable="false"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
@@ -426,6 +596,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="@dimen/padding"
+                        android:visibility="gone"
                         android:background="@color/subheading" />
 
 
@@ -434,6 +605,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
+                        android:visibility="gone"
                         android:orientation="horizontal">
 
                         <TextView
@@ -487,6 +659,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text=""
+                            android:clickable="false"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text"
                             android:textStyle="bold" />
@@ -512,7 +685,7 @@
                             android:drawableLeft="@drawable/ic_dot"
                             android:drawablePadding="@dimen/drawablepadding"
                             android:gravity="start"
-                            android:text="Account status:"
+                            android:text="Paid out:"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text" />
 
@@ -533,6 +706,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin"
+                        android:id="@+id/payOutstanding"
                         android:background="@drawable/buttonback"
                         android:text="Pay outstanding balance"
                         android:textAllCaps="false"

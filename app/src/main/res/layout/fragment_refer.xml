@@ -74,7 +74,7 @@
                     android:drawableLeft="@drawable/setdrawabletoleft"
                     android:drawablePadding="@dimen/drawablepadding"
                     android:hint="Enter business name*"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -86,8 +86,8 @@
                     android:background="@color/gray"
                     android:drawableLeft="@drawable/setdrawabletoleft"
                     android:drawablePadding="@dimen/drawablepadding"
-                    android:hint="Enter business owner's name(if Known)"
-                    android:inputType="text"
+                    android:hint="Enter business owner's name (If known)"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -100,7 +100,7 @@
                     android:drawableLeft="@drawable/setdrawabletoleft"
                     android:drawablePadding="@dimen/drawablepadding"
                     android:hint="Enter business email address*"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -129,7 +129,7 @@
                     android:editable="false"
                     android:focusable="false"
                     android:hint="Enter your name*"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -145,7 +145,7 @@
                     android:editable="false"
                     android:focusable="false"
                     android:hint="Enter your email address*"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -161,7 +161,7 @@
                     android:editable="false"
                     android:focusable="false"
                     android:hint="Enter your telephone no*"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 

@@ -27,6 +27,52 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginTop="@dimen/margin"
+                android:text="All M8 commission is paid out in Swiss Francs (1 x Swiss Franc = approx $1) to your PayPal address, if you do not have a PayPal address open one free here www.paypal.com to receive your commissions."
+                android:textColor="@color/subheading"
+                android:autoLink="web"
+                android:textColorLink="@color/toolbarColor"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="PayPal address"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/paypal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Enter paypal email address*"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="All money earned from Sales on M8 will be sent to your bank account, please complete all fields to insure Swift automated payments. "
+                android:textColor="@color/subheading"
+                android:textSize="@dimen/heading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
                 android:text="Bank Details"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/heading"
@@ -42,7 +88,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Bank name*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:maxLength="20"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
@@ -57,7 +103,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Address 1*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -71,7 +117,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Address 2*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -85,7 +131,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Town/City*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -125,7 +171,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Account name*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -167,32 +213,6 @@
                 android:inputType="text"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginTop="@dimen/margin"
-                android:text="PayPal address"
-                android:textColor="@color/headingcolor"
-                android:textSize="@dimen/heading"
-                android:textStyle="bold" />
-
-
-            <EditText
-                android:id="@+id/paypal"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edtSize"
-                android:layout_marginTop="@dimen/topmargin"
-                android:background="@color/gray"
-                android:drawableLeft="@drawable/setdrawabletoleft"
-                android:drawablePadding="@dimen/drawablepadding"
-                android:hint="Enter paypal email address*"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/headingcolor"
-                android:textSize="@dimen/text" />
-
 
             <Button
                 android:id="@+id/button_ok"

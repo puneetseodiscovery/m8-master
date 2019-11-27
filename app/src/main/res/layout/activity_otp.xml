@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
-            android:text="Enter Verifaction code"
+            android:text="Enter Verification code"
             android:textColor="@color/headingcolor"
             android:textSize="@dimen/heading"
             android:textStyle="bold" />
@@ -61,7 +61,7 @@
             android:drawableLeft="@drawable/setdrawabletoleft"
             android:drawablePadding="@dimen/drawablepadding"
             android:gravity="center_vertical"
-            android:hint="Enter OTP"
+            android:hint="Enter Code Here"
             android:inputType="textEmailAddress"
             android:textColor="@color/headingcolor"
             android:textSize="@dimen/text" />
@@ -69,11 +69,11 @@
 
         <Button
             android:id="@+id/btn_send"
-            android:layout_width="wrap_content"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin"
-            android:background="@color/red"
+            android:background="@drawable/buttonback"
             android:padding="@dimen/padding"
             android:text="Send"
             android:textAllCaps="false"

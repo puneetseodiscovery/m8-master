@@ -28,7 +28,7 @@
                 android:src="@drawable/mlogo" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/edtSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,12 +42,15 @@
                 android:drawablePadding="10dp"
                 android:drawableTint="#FFFFFF"
                 android:gravity="center_vertical"
-                android:hint="Search"
+                android:hint="Search Location"
                 android:paddingLeft="@dimen/padding"
                 android:paddingTop="5dp"
+                android:cursorVisible="false"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:paddingBottom="5dp"
-                android:textColor="#FFFFFF"
-                android:textColorHint="@color/white"
+                android:textColor="#4F5372"
+                android:textColorHint="#4F5372"
                 android:textSize="@dimen/text" />
 
 
@@ -81,12 +84,12 @@
             android:layout_height="wrap_content">
 
 
-            <com.mandy.m8.AppMapView
+            <com.m8sworld.m8.AppMapView
                 android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
 
-            </com.mandy.m8.AppMapView>
+            </com.m8sworld.m8.AppMapView>
 
 
             <RelativeLayout
@@ -166,6 +169,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text=""
+                            android:textStyle="bold"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text" />
 

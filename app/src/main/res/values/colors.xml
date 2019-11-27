@@ -12,5 +12,7 @@
     <color name="toolbarColor">#4F5372</color>
     <color name="green">#68DF2E</color>
     <color name="black">#000000</color>
+    <color name="toolbarColorblue">#5B75DB</color>
+
 
 </resources>

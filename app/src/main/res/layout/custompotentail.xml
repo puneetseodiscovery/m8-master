@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
         <ImageView
             android:id="@+id/imageview"
             android:layout_width="match_parent"
@@ -152,6 +154,17 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/itemStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginTop="@dimen/padding"
+            android:background="@color/green"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/subheading"></TextView>
 
     </RelativeLayout>
 

@@ -58,8 +58,8 @@
         android:layout_below="@id/viewOne"
         android:layout_marginLeft="@dimen/padding"
         android:layout_toRightOf="@id/child_image"
+        android:textColor="@color/green"
         android:text="Hello"
-        android:textColor="@color/black"
         android:textSize="@dimen/text" />
 
 

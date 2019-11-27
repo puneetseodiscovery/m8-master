@@ -38,7 +38,7 @@
                     android:padding="5dp"
                     android:rotation="-45"
                     android:text="@string/chf"
-                    android:textColor="@color/headingcolor"
+                    android:textColor="@color/green"
                     android:textSize="@dimen/subtext" />
             </RelativeLayout>
 
@@ -89,7 +89,8 @@
                     android:background="@color/gray"
                     android:gravity="center"
                     android:paddingTop="@dimen/topmargin"
-                    android:text="Test M8's World money making applicaion"
+                    android:paddingBottom="@dimen/drawablepadding"
+                    android:text="Test M8's money making application"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subtext" />
 
@@ -105,6 +106,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingTop="@dimen/topmargin"
+                    android:paddingBottom="@dimen/drawablepadding"
                     android:text="No money"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subtext" />
@@ -121,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingTop="@dimen/topmargin"
+                    android:paddingBottom="@dimen/drawablepadding"
                     android:text="No risk"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subtext" />
@@ -135,10 +138,11 @@
                     android:id="@+id/txtProperty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/padding"
+                    android:layout_marginBottom="@dimen/margin"
                     android:gravity="center"
                     android:paddingTop="@dimen/topmargin"
-                    android:text="Upload one property to sell"
+                    android:paddingBottom="@dimen/drawablepadding"
+                    android:text="Upload one item to sell, set non-negotiable fee"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subtext" />
             </LinearLayout>
@@ -181,8 +185,8 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:rotation="-45"
-                            android:text="CHF 10.00"
-                            android:textColor="@color/headingcolor"
+                            android:text="USD 10.00"
+                            android:textColor="@color/green"
                             android:textSize="@dimen/subtext" />
 
                     </RelativeLayout>
@@ -208,6 +212,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="100 M8's shares"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -223,6 +228,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="Best for members building their online network"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -240,7 +246,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Upload 5 properties to sell"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Upload 5 items to sell,negotiable fee structure"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -261,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/padding"
-                        android:text="1xCHF = approx $1"
+                        android:text="Yearly subscription"
                         android:textSize="@dimen/subtext" />
 
                 </LinearLayout>
@@ -297,8 +304,8 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:rotation="-45"
-                            android:text="CHF 45.00"
-                            android:textColor="@color/headingcolor"
+                            android:text="USD 45.00"
+                            android:textColor="@color/green"
                             android:textSize="@dimen/subtext" />
 
                     </RelativeLayout>
@@ -324,6 +331,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="500 M8's shares"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -339,7 +347,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Best for members building their online network"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Best for members with an active online network"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -356,7 +365,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Upload 10 properties to sell"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Upload 10 items to sell, negotiable fee structure"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -377,7 +387,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/padding"
-                        android:text="1xCHF = approx $1"
+                        android:text="Yearly subscription"
                         android:textSize="@dimen/subtext" />
                 </LinearLayout>
 
@@ -422,8 +432,8 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:rotation="-45"
-                            android:text="CHF 80.00"
-                            android:textColor="@color/headingcolor"
+                            android:text="USD 80.00"
+                            android:textColor="@color/green"
                             android:textSize="@dimen/subtext" />
 
                     </RelativeLayout>
@@ -449,6 +459,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="1000 M8's shares"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -464,6 +475,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="Best for networkers and multi-level marketing gurus"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -481,7 +493,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Upload 100 properties to sell"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:text="Upload 100 items to sell, negotiable fee structure"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -502,7 +515,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/padding"
-                        android:text="1xCHF = approx $1"
+                        android:text="Yearly subscription"
                         android:textSize="@dimen/subtext" />
 
                 </LinearLayout>
@@ -538,8 +551,8 @@
                             android:gravity="center"
                             android:padding="5dp"
                             android:rotation="-45"
-                            android:text="CHF 150.00"
-                            android:textColor="@color/headingcolor"
+                            android:text="USD 150.00"
+                            android:textColor="@color/green"
                             android:textSize="@dimen/subtext" />
 
                     </RelativeLayout>
@@ -565,6 +578,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:text="Unlimited M8's shares"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
@@ -578,10 +592,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Best for real estate agents"
+                        android:text="Best for businesses with an active online client base"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -596,10 +610,47 @@
                         android:id="@+id/txtBusinessProperty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin"
+                        android:paddingBottom="@dimen/drawablepadding"
                         android:gravity="center"
                         android:paddingTop="@dimen/topmargin"
-                        android:text="Upload unlimited properties to sell"
+                        android:text="Upload unlimited items to sell, negotiable fee structure"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtBusinessProperty1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/topmargin"
+                        android:visibility="gone"
+                        android:text="Selling fees vary from category to category Subject to mandate"
+                        android:textColor="@color/headingcolor"
+                        android:textSize="@dimen/subtext" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/drawablepadding"
+                        android:visibility="gone"
+                        android:background="@color/subheading" />
+
+                    <TextView
+                        android:id="@+id/txtBusinessProperty2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/drawablepadding"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        android:paddingTop="@dimen/topmargin"
+                        android:text="Subject to mandate"
                         android:textColor="@color/headingcolor"
                         android:textSize="@dimen/subtext" />
 
@@ -620,7 +671,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/padding"
-                        android:text="1xCHF = approx $1"
+                        android:text="Yearly subscription"
                         android:textSize="@dimen/subtext" />
                 </LinearLayout>
 

@@ -82,7 +82,7 @@
                     android:drawablePadding="@dimen/drawablepadding"
                     android:gravity="center_vertical"
                     android:hint="First Name"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -96,7 +96,7 @@
                     android:drawablePadding="@dimen/drawablepadding"
                     android:gravity="center_vertical"
                     android:hint="Last Name"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/text" />
 
@@ -178,10 +178,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="10dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/topmargin"
                 android:text="or"
+                android:visibility="gone"
                 android:textSize="@dimen/text" />
 
 
@@ -190,6 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/topmargin"
                 android:gravity="center"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
 
@@ -219,8 +221,11 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/linkedin"
                     app:riv_oval="true" />
-
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
 
             <RadioButton
                 android:id="@+id/radio"
@@ -229,14 +234,25 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/topmargin"
                 android:layout_marginBottom="@dimen/topmargin"
-                android:text="@string/iagree"
-                android:textColor="@color/headingcolor"
-                android:textSize="@dimen/text"
-                android:textStyle="bold" />
+                 />
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/iagree"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/radio"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:layout_marginBottom="@dimen/topmargin">
+                </TextView>
+
+            </RelativeLayout>
 
         </LinearLayout>
-
     </ScrollView>
 
     <LinearLayout

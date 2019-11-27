@@ -17,6 +17,7 @@
             android:id="@+id/relative"
             android:layout_width="match_parent"
             android:layout_height="120dp"
+            android:visibility="gone"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin"
             android:layout_marginTop="@dimen/topmargin"

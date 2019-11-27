@@ -94,6 +94,19 @@
                     android:layout_height="match_parent"
                     android:scaleType="fitXY" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/itemStatus"
+                    android:textColor="@color/white"
+                    android:background="@color/green"
+                    android:textSize="@dimen/subheading"
+                    android:text=""
+                    android:layout_marginLeft="@dimen/padding"
+                    android:layout_marginTop="@dimen/padding"
+                    >
+                </TextView>
+
 
             </RelativeLayout>
 
@@ -136,6 +149,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topmargin"
+                    android:text="Watch video:"
+                    android:visibility="gone"
+                    android:id="@+id/watchVideo"
+                    android:textColor="@color/toolbarColorblue"
+                    android:textSize="@dimen/subheading"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/topmargin"
                     android:text="@string/descrip"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subheading"
@@ -155,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topmargin"
                     android:text="@string/feature"
+                    android:id="@+id/featureText"
                     android:textColor="@color/headingcolor"
                     android:textSize="@dimen/subheading"
                     android:textStyle="bold" />
@@ -203,7 +228,9 @@
                     android:layout_marginTop="@dimen/topmargin"
                     android:text="@string/sharing"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/subtext" />
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="@dimen/heading" />
 
 
                 <LinearLayout
@@ -268,6 +295,7 @@
                                 android:id="@+id/btnContactGif"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
+                                android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/appointment" />
 
@@ -275,9 +303,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/btnContactGif"
+                                android:id="@+id/esigalnih"
                                 android:layout_marginLeft="@dimen/padding"
                                 android:layout_marginRight="@dimen/padding"
-                                android:layout_toRightOf="@id/btnContactGif"
                                 android:text="@string/btnContact"
                                 android:textColor="@color/black" />
                         </RelativeLayout>
@@ -298,6 +327,7 @@
 
                         <RelativeLayout
                             android:layout_width="match_parent"
+                            android:id="@+id/buybuttonrelative"
                             android:layout_height="wrap_content">
 
                             <TextView
@@ -305,8 +335,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/padding"
+                                android:id="@+id/buyButtonText"
+                                android:layout_toRightOf="@+id/btnBuygif"
                                 android:layout_marginRight="@dimen/padding"
-                                android:layout_toLeftOf="@id/btnBuygif"
+                                android:layout_alignParentRight="true"
                                 android:text="@string/btnBuy"
                                 android:textColor="@color/black" />
 
@@ -314,7 +346,6 @@
                                 android:id="@+id/btnBuygif"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/buy" />
 
@@ -333,6 +364,16 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/topmargin"
                     android:layout_marginBottom="@dimen/topmargin" />
+
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    ads:adSize="BANNER"
+                    android:layout_marginBottom="@dimen/topmargin"
+                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                </com.google.android.gms.ads.AdView>
 
             </LinearLayout>
 

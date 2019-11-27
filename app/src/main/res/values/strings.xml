@@ -4,38 +4,30 @@
     <string name="information">© M8s World 2019. All rights reserved</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click"><u>click here</u></string>
-    <string name="commission">Commission "\n"Tree</string>
-    <string name="Upload">Upload"\n"Items</string>
+    <string name="commission">Commission "\n"Trees</string>
+    <string name="Upload">Upload"\n"Item(s)</string>
     <string name="View">View all"\n"Items</string>
     <string name="myAccount">My"\n"Account</string>
     <string name="refer">M8s business referral services earn 50% commission of services purchased</string>
-    <string name="concept">"\n\n"Concept by Bainzy for M8s  World "\n"Build by www.mandywebdesign.com</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="commisiontree">My Commission Tree List</string>
+    <string name="commisiontree">My Commission Trees</string>
     <string name="descrip"><u>Description :</u></string>
     <string name="description">i m a android developer in mandywebdesing</string>
     <string name="feature"><u>Features :</u></string>
     <string name="sharing">Share in any or all networks to create new commission trees</string>
-    <string name="myshare"><u>buy more shares</u></string>
     <string name="sharethis">Buy or Share</string>
     <string name="viewallprperty">Any M8 can share any property in any part of the world with any other M8 if they believe that share will result in a sale</string>
-    <string name="contact">Contact"\n"seller</string>
     <string name="mandata">Please indicate what % of your commission you would like to offer M8s for finding you a buyer. 50% is our normal average.</string>
     <string name="mandata2">Indicate a cash amount you would like to offer M8\'s for selling your property(s) :</string>
-    <string name="mandata3">Set this amount for all of your property(s) sold on M8\'s World :</string>
-    <string name="viewmandata"><u>View Mandata text</u></string>
+    <string name="mandata3">Set this amount for all of your property(s) sold on M8\'s :</string>
     <string name="date">Date "\n" 18/2/2019</string>
     <string name="edit"><u>Edit</u></string>
     <string name="power">Min M<sup>2</sup></string>
     <string name="googleclientId">AIzaSyCGlfDp6qPfEGc71tvwynC-X0dOXWpkIQs</string>
-    <string name="title_activity_maps">Map</string>
     <string name="facebook_app_id">328697287838869</string>
     <string name="fb_login_protocol_scheme">fb328697287838869</string>
     <string name="NoInternet">No internet connection</string>
-    <string name="chf">CHF"\n"0</string>
+    <string name="chf">USD"\n"0</string>
 
     <string name="mytree">My Tree: </string>
     <string name="propertyName">Property Name: </string>
@@ -53,36 +45,74 @@
     <string name="TownCity">Town/City*</string>
     <string name="Postcode">Post code*</string>
     <string name="next">Next</string>
-    <string name="totalcommission">Total Commission Available each If you find a buyer with your M8s</string>
-    <string name="link">This is your share link don\'t lose this link</string>
+    <string name="totalcommission2">Commissions/discounts paid out vary depending on how many people on the tree. Press the arrows to see how the amounts change.</string>
+    <string name="totalcommission3">is the first sharer in all of this items commission trees, the more times this item is shared the more the commission is divided in each tree."\n""\n"The more times you share this item the more commission trees you create so the more chances you have earning the commission or part of it."\n""\n"Please look at the amount next to your name, that is the amount all of the tree above your name will earn if you decide to buy."\n""\n"If you share on, the amount next to the buyer’s name is the amount everyone on the winning commission tree will earn."\n""\n"Share intelligently to earn more and good luck!</string>
     <string name="iagree">I agree with M8\'s terms and conditions, privacy policy and  art statement</string>
-    <string name="GPSAlertDialogTitle">Gps Tittle</string>
-    <string name="GPSAlertDialogMessage">GPS Meesage</string>
-    <string name="action_settings">Seeting gps</string>
-    <string name="cancel">Cancel</string>
-    <string name="doyou">Your package is expired.You have to purchase more packages to continue.</string>
+    <string name="doyou">Your package is expired.You need to upgrade to a professional package to continue.</string>
     <string name="logoutmessage">Are you sure want to Logout ?</string>
-    <string name="terms">Please accept the terms and condition</string>
-    <string name="sharCommision">Share Comission :</string>
+    <string name="sharCommision">Sharers Commission :</string>
     <string name="uploadPro">Upload  property images (max 10)</string>
-    <string name="Download">Download PDF</string>
+    <string name="Download">Download Mandate and Continue</string>
     <string name="propertyNumber">Property number(if Known)</string>
-    <string name="agent">For our 1000s of M8s to market and find buyers for your properties we need to know the average % of a properties sell price you charge your clients."\n\n"As experienced real estate agents we understand that all deals are SUBJECT TO CONTRACT which is only calculable on completion of each sale."\n\n"Please indicate that average  fee here.</string>
     <string name="agent2">Important."\n\n"PLEASE BE AS ACCURATE AS POSSIBLE. IF AMOUNTS THAT ARE ADVERTISED ON OUR COMMISSION TREES VARY TOO MUCH FROM THE FINAL COMPLETION PRICES OUR M8S MAY AVOID DEALING WITH YOUR COMPANY IN THE FUTURE.</string>
-    <string name="ShreBtn">You can share this item up to 10 times. Share intelligently, EARN wisely!"\n"You have shared this item</string>
-    <string name="btnBuy">By pressing BUY you are committing  to buy this property. Once you have exchanged contracts or given a deposit to the seller this property will be taken off the market. Your request and contact details have been sent to the seller.</string>
-    <string name="btnContact">To arrange a viewing click the icon so an email will be  sent to the seller. Please wait for them to contact you</string>
-    <string name="freagent">For our 1000s of M8s to market and find a buyer for your property we charge the standard real estate agent fee of 3% of the selling price to pay them."\n\n"As experienced real estate agents we understand that all deals are SUBJECT TO CONTRACT and the price is only calculable on completion of each individual sale."\n\n"We will only charge you this fee when your property has been sold."\n\n"YOU DO NOT PAY ANYTHING TO M8 IF WE DO NOT FIND YOU A BUYER."\n\n"Please click OK to begin the M8 process and to create your mandate.</string>
+    <string name="agent3">Read the M8 guide to "\n"<u>Selling your own house.</u>"\n""\n"</string>
+    <!--<string name="ShreBtn">You can share this item up to 10 times. Share intelligently, EARN wisely!"\n"You have shared this item</string>-->
+    <string name="ShreBtn"><b><font color='#68DF2E'>CLICK TO SHARE</font></b>"\n"To earn from the M8 commission trees, share intelligently."\n"<b><font color='#68DF2E'>Sharing makes you money!</font></b></string>
+    <string name="btnBuy">By pressing BUY you are committing (subject to contract) to buy this property. Once you have exchanged contracts or given a deposit to the seller this property will be taken off the market. Your request and contact details have been sent to the seller.</string>
+    <string name="btnBuyProperty">By pressing BUY you are committing(subject to contract) to buy this property. Once you have exchanged contracts or given a deposit to the seller this property will be taken off the market. Your request and contact details have been sent to the seller.</string>
+    <string name="btnBuyInvestment">To invest, click here and we will send you details on how to transfer your investment funds.</string>
+    <string name="btnBuyJobs">Please pay my commission."\n"(On reciept of copy of contract M8 will pay this commission tree).</string>
+    <string name="btnContact">To arrange a viewing click the icon so an email will be  sent to the seller. Please wait for them to contact you.</string>
+    <string name="btnContactJobs">To arrange an interview click the icon so an email will be sent to the seller. Please wait for them to contact you.</string>
+    <string name="btnContactInvestment">To get more details about this investment, click here.</string>
+    <string name="btnContactOther">If you would like to view this item before you buy click this button, your details will be sent to the seller.</string>
+    <string name="freagent">For our 1000s of M8s to market your property and finds a buyer for you, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"As experienced real estate agents we understand that all deals are SUBJECT TO CONTRACT which is only calculable on completion of each sale."\n\nTo find a successful buyer for your property M8 charges the standard real estate agent commission of 3% once the purchase is completed."\n\nThis amount is shared amongst the successful M8s that helped sell your property and the M8 property administration that oversees the sale.</string>
+    <string name="freagentJobs">For our 1000s of M8s to assist you in finding suitable employees for your company you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find successful applicants for your company M8 charges the standard fee of 10% of the employees yearly salary."\n\nThis amount is shared amongst the successful M8s that helped find your employee and the M8 sales administration that oversees the process.</string>
+    <string name="freagentCars">For our 1000s of M8s to market your car to find a buyer for you, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find a successful buyer for your car M8 charges the standard sales agent commission of 12% once the purchase is completed."\n\nThis amount is shared amongst the successful M8s that helped sell your car and the M8 sales administration that oversees the sale.</string>
+    <string name="freagentBoatss">For our 1000s of M8s to market your boat to find a buyer for you, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find a successful buyer for your boat M8 charges the standard sales agent commission of 12% once the purchase is completed."\n\nThis amount is shared amongst the successful M8s that helped sell your boat and the M8 sales administration that oversees the sale.</string>
+    <string name="freagentJwels">For our 1000s of M8s to market your jewellery to find a buyer for you, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find a successful buyer for your jewellery M8 charges the standard sales agent commission of 12% once the purchase is completed."\n\nThis amount is shared amongst the successful M8s that helped sell your jewellery and the M8 sales administration that oversees the sale.</string>
+    <string name="freagentMics">For our 1000s of M8s to market your item to find a buyer for you, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find a successful buyer for your item M8 charges the standard sales agent commission of 12% once the purchase is completed."\n\nThis amount is shared amongst the successful M8s that helped sell your item and the M8 sales administration that oversees the sale.</string>
+    <string name="freagentInvest">For our 1000s of M8s to market your company to help you find investors to, you need to give us the mandate to work on your behalf as referral agents, please read the text below then press next, you will be lead to the mandate page where you can sign it on your phone with your finger."\n\n"To find a successful buyer for your item M8 needs to achieve a competitive commission to offer our M8s to find your investors."\n\nPlease tell us what % of the total amount we raise for you will offer us to as commission once the investment has been completed.</string>
+    <string name="freagentInvest2">This amount is shared amongst the successful M8s that helped find your investors and the M8 sales administration that oversees the process.</string>
+    <string name="agent">For our 1000s of M8s to market and find buyers for your properties we need to know the average % of a properties sell price you charge your clients."\n\n"As experienced real estate agents we understand that all deals are SUBJECT TO CONTRACT which is only calculable on completion of each sale."\n\n"Please indicate that average  fee here.</string>
     <string name="noInternet">No internet Connection</string>
     <string name="slowinternet">Slow or no Internet Connection"\n"Please check your internet setting</string>
-    <string name="ga_trackingId" translatable="false">${YOUR_TRACKING_ID}</string>
-<!--    <head>-->
-<!--        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-<!--        <script>-->
-<!--            (adsbygoogle = window.adsbygoogle || []).push({-->
-<!--            google_ad_client: "ca-pub-3864021669352159",-->
-<!--            enable_page_level_ads: true-->
-<!--            });-->
-<!--        </script>-->
-<!--    </head>-->
+    <string name="freeuseralert">"\n" Title: Subject to contract"\n\n"
+
+Points to pay attention to when selling your own house."\n\n"
+
+Although the process of selling a property sounds daunting, it is actually relatively easy as long as you follow a few basic rules."\n\n"
+
+1. M8 strongly recommends that all clients that find their buyers through the M8 application hire the services of a legal representative (obligatory in most countries anyway) this can be:"\n\n"
+
+i) A Lawyer"\n\n"
+ii) A solicitor"\n\n"
+iii) A notary"\n\n"
+iv) A real-estate professional"\n\n"
+
+A professional legal representative can guide you in your sale, making sure the documentation is complete."\n\n"
+
+2. Remember, no sale is ever complete until the contracts have been signed and the money received."\n\n"
+
+3. Make sure that when M8 sends people to view your property, that it is presentable, clean and tidy, get rid of clutter, when it comes to selling, less is more and if you are able to refresh the paintwork, do so. If you have a garden, keep it tidy. Some sellers have found that brewing coffee during the viewing gives a homely smell, likewise with baking bread!"\n\n"
+
+4. Make sure that there is no objection to the sale from all owners and interested parties."\n\n"
+
+5. Organise the handover conditions with the purchaser."\n\n"
+
+6. Selling privately is not difficult. Your legal representative can guide you if need be."\n\n"
+
+
+Disclaimer"\n\n"
+
+The information contained in this simple guide is for reference only it is not a contract of any type, you may choose to follow it or ignore it, it will not effect your sale and nothing mentioned in it will appear on your contract."\n\n"
+
+The information provided on this site relating to all properties has been furnished to us by the vendor/s. We have not verified whether or not that information is accurate and do not have any belief in one way or the other in its accuracy. We do not accept any responsibility to any person for its accuracy and do no more than pass it on. All interested parties should make and rely upon their own inquiries in order to determine whether or not this information is in fact accurate."\n\n"
+Our company (including its owners, employees and agents) are not bound by any warranty, representation, collateral agreement or implied terms under the general law or imposed by legislation in relation to goods, services and other offers advertised on or purchased through our application."\n\n"
+We accept no liability whatsoever in relation to the advertisement, sale or use of goods, services of other offers advertised on or purchased through our application ."\n\n"
+Our company accepts advertisements for the sale of goods, services and is not involved with any transactions in relation to the advertised goods, services or other offers."\n\n"
+If our company advertises your goods or services for sale, it does so only on the condition that you agree to indemnify from all liabilities or claims of liability that may arise from the sale of or subsequent use of those goods, services or other offers."\n\n"
+If you purchase any item or service through our company you agree that you will not seek any remedy for any default in the item or for any damages that flow from the purchase of the item or service for any other reason."\n\n"</string>
+    <string name="checkbusiness">Check box if you have a buisness account?</string>
+
 </resources>

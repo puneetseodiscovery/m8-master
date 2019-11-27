@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,13 +15,25 @@
         android:id="@+id/tooolbar"
         layout="@layout/toolbar2" />
 
-
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_below="@id/tooolbar"
         android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/itemStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding"
+        android:layout_marginTop="@dimen/padding"
+        android:background="@color/green"
+        android:text=""
+        android:layout_below="@id/tooolbar"
+        android:textColor="@color/white"
+        android:textSize="@dimen/subheading">
+    </TextView>
 
     <LinearLayout
         android:id="@+id/linear"
@@ -103,6 +118,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:scaleType="centerCrop"
+            android:layout_below="@+id/parent_text"
             app:riv_oval="true" />
 
         <TextView
@@ -110,9 +126,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding"
-            android:layout_toRightOf="@id/parent_image"
             android:paddingTop="@dimen/padding"
-            android:text="@string/totalcommission"
+            android:text="@string/totalcommission3"
             android:textColor="@color/headingcolor"
             android:textSize="@dimen/text" />
 
@@ -120,10 +135,10 @@
             android:id="@+id/parent_chf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/parent_text"
+            android:layout_below="@+id/parent_image"
             android:layout_marginLeft="@dimen/padding"
-            android:layout_toRightOf="@id/parent_image"
             android:paddingLeft="@dimen/padding"
+            android:paddingBottom="5dp"
             android:text=""
             android:textColor="@color/green"
             android:textSize="@dimen/text"
@@ -141,3 +156,4 @@
     </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
+</ScrollView>

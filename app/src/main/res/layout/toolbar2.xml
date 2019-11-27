@@ -17,10 +17,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/tooolbarImage"
-            android:layout_marginRight="@dimen/topmargin"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text"
+            android:layout_marginRight="20dp"
             android:textStyle="bold" />
 
         <ImageView

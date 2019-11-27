@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/property_layout"
     android:background="@color/white"
     tools:context=".UploadActivity.UploadSubFragment.UploadFragment">
 
@@ -56,7 +57,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="County*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -69,7 +70,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Town*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -96,7 +97,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Address1*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -109,7 +110,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Address2*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 

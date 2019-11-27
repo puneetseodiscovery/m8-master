@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/property_layout"
+    android:background="@color/white"
+    tools:context=".UploadActivity.UploadSubFragment.UploadFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/upload_county"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Enter investment type*"
+                android:inputType="textCapSentences"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/upload_address1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:visibility="gone"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Enter youtube link of promotion video"
+                android:inputType="textCapSentences"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/relative1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Enter youtube link of promotion video"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_marginRight="@dimen/margin"
+                android:background="@drawable/potentialbuttoninactive">
+
+                <TextView
+                    android:id="@+id/txt_upload_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/ic_file_upload"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:elevation="1dp"
+                    android:padding="10dp"
+                    android:text="Upload video"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/round_upload_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:riv_corner_radius="13dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/upload_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txt_upload_image1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="gone"
+                android:text="Postcode"
+                android:gravity="center|start"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/upload_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Currency*"
+                    android:padding="@dimen/padding"
+                    android:textSize="@dimen/text" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:background="#b1b1b1" />
+
+                <EditText
+                    android:id="@+id/upload_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:background="@color/gray"
+                    android:drawableLeft="@drawable/setdrawabletoleft"
+                    android:drawablePadding="@dimen/drawablepadding"
+                    android:hint="Price*"
+                    android:inputType="number"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/upload_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/upload_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Postcode*"
+                android:inputType="text"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/upload_city"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="City/Town*"
+                android:inputType="textCapSentences"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_hintExampleNumber="true"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false" />
+
+            <EditText
+                android:id="@+id/upload_address2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                android:visibility="gone"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:hint="Address2*"
+                android:inputType="textCapSentences"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray">
+
+
+                <Spinner
+                    android:id="@+id/Spinner_Property"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </Spinner>
+
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/Upload_Next"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin"
+                android:background="@drawable/buttonback"
+                android:text="Next"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

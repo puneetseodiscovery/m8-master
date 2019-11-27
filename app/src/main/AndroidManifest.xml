@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mandy.m8">
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    package="com.m8sworld.m8">
 
     <uses-feature android:name="android.hardware.location.gps" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature
         android:name="android.hardware.camera.autofocus"
@@ -24,28 +12,32 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3864021669352159~4680319766"/>
-
-<!--        //ca-app-pub-3940256099942544~3347511713-->
-
+        <activity android:name=".Activities.itservices.ITServices"></activity>
+        <activity android:name=".SpripePayment" />
+        <activity android:name=".Activities.WatchVideoActivity" />
         <activity
             android:name=".Activities.NoInternetActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
-        <receiver android:name=".Activities.NoInternetActivity"
-             />
-
+            android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- //ca-app-pub-3940256099942544~3347511713 -->
         <activity
             android:name=".UploadActivity.Mandate.Mandate2Activity"
             android:screenOrientation="portrait"
@@ -89,14 +81,6 @@
             android:name=".Activities.StartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
-
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="d8234e6b517958c46f3aa852b9d439ed3e223f06" />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/googleclientId" />
-
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"
@@ -116,11 +100,6 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
         <activity
             android:name=".Activities.SignupActivity"
             android:screenOrientation="portrait"
@@ -142,16 +121,20 @@
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
 
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.VIEW" /> -->
 
-<!--                <data-->
-<!--                    android:host="amrm8.page.link"-->
-<!--                    android:scheme="https" />-->
-<!--            </intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+
+
+            <!-- <data -->
+            <!-- android:host="amrm8.page.link" -->
+            <!-- android:scheme="https" /> -->
+            <!-- </intent-filter> -->
+
 
             <!-- android:host="amitpandey12.page.link" -->
 
@@ -161,6 +144,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3864021669352159~4680319766" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d8234e6b517958c46f3aa852b9d439ed3e223f06" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/googleclientId" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <receiver android:name=".Activities.NoInternetActivity" />
     </application>
 
 </manifest>

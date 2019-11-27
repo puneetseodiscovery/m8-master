@@ -21,7 +21,37 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/topmargin">
+            android:paddingBottom="@dimen/buttonback">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/topmargin"
+                android:layout_height="@dimen/edtSize">
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/legal_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:background="@color/gray"
+                    app:ccp_showFullName="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false">
+
+                </com.hbb20.CountryCodePicker>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/countryText"
+                    android:gravity="center"
+                    android:clickable="false"
+                    android:background="@color/gray"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text"
+                    android:text="Select country">
+                </TextView>
+
+            </RelativeLayout>
+
+
 
 
             <EditText
@@ -33,7 +63,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative name*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -46,7 +76,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative email address*"
-                android:inputType="textEmailAddress"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -72,7 +102,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative address1*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -85,7 +115,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative address2*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -98,7 +128,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Town/City*"
-                android:inputType="text"
+                android:inputType="textCapSentences"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -116,17 +146,7 @@
                 android:textSize="@dimen/text" />
 
 
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/legal_country"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edtSize"
-                android:layout_marginTop="@dimen/topmargin"
-                android:background="@color/gray"
-                app:ccp_showFullName="true"
-                app:ccp_showNameCode="false"
-                app:ccp_showPhoneCode="false">
 
-            </com.hbb20.CountryCodePicker>
 
 
             <Button
