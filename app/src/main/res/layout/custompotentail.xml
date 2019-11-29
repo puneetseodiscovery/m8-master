@@ -164,7 +164,8 @@
             android:background="@color/green"
             android:text=""
             android:textColor="@color/white"
-            android:textSize="@dimen/subheading"></TextView>
+            android:textSize="@dimen/subheading">
+        </TextView>
 
     </RelativeLayout>
 

@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/topmargin"
-                    android:text="Watch video:"
+                    android:text="Watch our company promotion video:"
                     android:visibility="gone"
                     android:id="@+id/watchVideo"
                     android:textColor="@color/toolbarColorblue"

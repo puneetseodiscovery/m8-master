@@ -24,13 +24,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.m8sworld.m8.TouchyWebView
+            <com.m8.m8.TouchyWebView
                 android:id="@+id/webview"
                 android:layout_width="match_parent"
                 android:layout_height="370dp"
                 android:layout_marginBottom="@dimen/topmargin">
 
-            </com.m8sworld.m8.TouchyWebView>
+            </com.m8.m8.TouchyWebView>
 
 
             <RelativeLayout

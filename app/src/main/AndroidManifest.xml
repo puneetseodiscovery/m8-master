@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.m8sworld.m8">
+    package="com.m8.m8">
 
     <uses-feature android:name="android.hardware.location.gps" />
     <uses-feature android:name="android.hardware.camera" />
@@ -31,54 +31,54 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.itservices.ITServices"></activity>
-        <activity android:name=".SpripePayment" />
-        <activity android:name=".Activities.WatchVideoActivity" />
+        <activity android:name="com.m8.m8.Activities.itservices.ITServices"></activity>
+        <activity android:name="com.m8.m8.SpripePayment" />
+        <activity android:name="com.m8.m8.Activities.WatchVideoActivity" />
         <activity
-            android:name=".Activities.NoInternetActivity"
+            android:name="com.m8.m8.Activities.NoInternetActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- //ca-app-pub-3940256099942544~3347511713 -->
         <activity
-            android:name=".UploadActivity.Mandate.Mandate2Activity"
+            android:name="com.m8.m8.UploadActivity.Mandate.Mandate2Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".UploadActivity.Mandate.MandateActivity"
+            android:name="com.m8.m8.UploadActivity.Mandate.MandateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".UploadActivity.Mandate.AgentActivity"
+            android:name="com.m8.m8.UploadActivity.Mandate.AgentActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".UploadActivity.UploadImagesActivity"
+            android:name="com.m8.m8.UploadActivity.UploadImagesActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".UploadActivity.Upload2Activity"
-            android:parentActivityName=".UploadActivity.UploadActivity"
+            android:name="com.m8.m8.UploadActivity.Upload2Activity"
+            android:parentActivityName="com.m8.m8.UploadActivity.UploadActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".UploadActivity.UploadActivity"
+            android:name="com.m8.m8.UploadActivity.UploadActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".Activities.Terms.TermsActivity"
+            android:name="com.m8.m8.Activities.Terms.TermsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.CommingActivity"
+            android:name="com.m8.m8.Activities.CommingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.ConfirmEmailActivity"
+            android:name="com.m8.m8.Activities.ConfirmEmailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".Activities.OTPActivity"
+            android:name="com.m8.m8.Activities.OTPActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".Activities.StartActivity"
+            android:name="com.m8.m8.Activities.StartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
@@ -86,22 +86,21 @@
             android:configChanges="orientation|screenSize"
             android:hardwareAccelerated="false" />
         <activity
-            android:name=".Activities.HomeActivity"
+            android:name="com.m8.m8.Activities.HomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter android:label="M8">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data
                     android:host="amrm8.page.link"
                     android:scheme="https" />
+
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.SignupActivity"
+            android:name="com.m8.m8.Activities.SignupActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
@@ -114,11 +113,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name="com.m8.m8.Activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.m8.m8.SplashScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
 
@@ -158,7 +157,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <receiver android:name=".Activities.NoInternetActivity" />
+        <receiver android:name="com.m8.m8.Activities.NoInternetActivity" />
     </application>
 
 </manifest>

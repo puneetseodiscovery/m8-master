@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/topmargin"
             android:text="@string/viewallprperty"
-            android:textColor="@color/subheading"
+            android:textColor="@color/headingcolor"
             android:textSize="@dimen/subtext" />
 
         <RelativeLayout

@@ -84,12 +84,12 @@
             android:layout_height="wrap_content">
 
 
-            <com.m8sworld.m8.AppMapView
+            <com.m8.m8.AppMapView
                 android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="250dp">
 
-            </com.m8sworld.m8.AppMapView>
+            </com.m8.m8.AppMapView>
 
 
             <RelativeLayout

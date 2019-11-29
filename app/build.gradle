@@ -6,11 +6,11 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.m8sworld.m8"
+        applicationId "com.m8.m8"
         minSdkVersion 19
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 2
+        versionCode 1
         versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

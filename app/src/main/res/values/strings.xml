@@ -16,7 +16,8 @@
     <string name="feature"><u>Features :</u></string>
     <string name="sharing">Share in any or all networks to create new commission trees</string>
     <string name="sharethis">Buy or Share</string>
-    <string name="viewallprperty">Any M8 can share any property in any part of the world with any other M8 if they believe that share will result in a sale</string>
+    <string name="viewallprperty">Any M8 can share any item in any part of the world with any other M8 if they believe that share will result in a sale</string>
+    <string name="bulkviewallprperty">To bulk upload your portfolio please choose the format that suits you best, we will then email you a blank one to complete and upload</string>
     <string name="mandata">Please indicate what % of your commission you would like to offer M8s for finding you a buyer. 50% is our normal average.</string>
     <string name="mandata2">Indicate a cash amount you would like to offer M8\'s for selling your property(s) :</string>
     <string name="mandata3">Set this amount for all of your property(s) sold on M8\'s :</string>

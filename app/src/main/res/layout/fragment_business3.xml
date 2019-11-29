@@ -68,6 +68,14 @@
 
             </Spinner>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/bulkviewallprperty"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/subtext" />
+
 
             <TextView
                 android:id="@+id/select_file"
@@ -140,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/topmargin"
-            android:background="@color/red"
+            android:background="@drawable/buttonback"
             android:padding="@dimen/padding"
             android:text="Choose file from gallery"
             android:textAllCaps="false"
@@ -166,7 +174,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/topmargin"
             android:background="@drawable/buttonback"
-            android:text="View Portfolio"
+            android:text="Upload portfolio"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/text" />
