@@ -6,6 +6,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -86,13 +87,19 @@ public class MandateActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(edtPrice.getText().toString())) {
 
                     } else {
-                        int number = Integer.parseInt(edtPrice.getText().toString());
-                        if (number > max || number < mi) {
-                            edtPrice.setError("Enter the minimun amount " + mi + " and max amount: " + max);
-                        }else {
-                            SharedRate sharedRate = new SharedRate(MandateActivity.this);
-                            double price = Double.valueOf(sharedRate.getShared()) * Double.valueOf(edtPrice.getText().toString());
-                            priceValue = String.valueOf(price);
+                        try {
+                            int number = Integer.parseInt(edtPrice.getText().toString());
+                            if (number > max || number < mi) {
+                                edtPrice.setError("Enter the minimun amount " + mi + " and max amount: " + max);
+                            } else {
+                                SharedRate sharedRate = new SharedRate(MandateActivity.this);
+                                double price = Double.valueOf(sharedRate.getShared()) * Double.valueOf(edtPrice.getText().toString());
+                                priceValue = String.valueOf(price);
+                            }
+                        }
+                        catch (NumberFormatException e)
+                        {
+                            Toast.makeText(MandateActivity.this, "Invalid number", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -127,6 +134,10 @@ public class MandateActivity extends AppCompatActivity {
             edtPrice.setFocusable(false);
             edtPrice.setFocusableInTouchMode(false);
             edtPrice.setClickable(false);
+            edtCurrency.setEnabled(false);
+            edtCurrency.setFocusable(false);
+            edtCurrency.setFocusableInTouchMode(false);
+            edtCurrency.setClickable(false);
         }
 
 
@@ -135,16 +146,16 @@ public class MandateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (type.equals("1")) {
-                    if (!offer.equals("25 % Launch offer only") && !edtPrice.getText().toString().equals("")) {
-                        Snackbar.make(findViewById(android.R.id.content), "Enter only one  Comission field ", Snackbar.LENGTH_LONG).show();
-                    } else if (!offer.equals("25 % Launch offer only")) {
+                    if (!offer.equals("Choose % commission") && !edtPrice.getText().toString().equals("")) {
+                        Snackbar.make(findViewById(android.R.id.content), "Enter only one commission field ", Snackbar.LENGTH_LONG).show();
+                    } else if (!offer.equals("Choose % commission")) {
                         pType = "P";
                         priceValue = offer;
                         SendData();
                     } else if (!edtPrice.getText().toString().equals("")) {
-//                        SharedRate sharedRate = new SharedRate(MandateActivity.this);
-//                        double price = Double.valueOf(sharedRate.getShared()) * Double.valueOf(edtPrice.getText().toString());
-//                        priceValue = String.valueOf(price);
+                        SharedRate sharedRate = new SharedRate(MandateActivity.this);
+                        //double price = Double.valueOf(sharedRate.getShared()) * Double.valueOf(edtPrice.getText().toString());
+                        priceValue = edtPrice.getText().toString();
                         pType = "F";
                         SendData();
                     } else {
@@ -152,7 +163,15 @@ public class MandateActivity extends AppCompatActivity {
                     }
                 }
                 if (type.equals("0")) {
-                    getBulkmandate();
+                    if (!offer.equals("Choose % commission")) {
+                        pType = "P";
+                        priceValue = offer;
+                        getBulkmandate();
+                    }
+                    else
+                    {
+                        Snackbar.make(findViewById(android.R.id.content), "Please enter your offer.", Snackbar.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -177,8 +196,6 @@ public class MandateActivity extends AppCompatActivity {
 //                picker.show(manager, "CURRENCY_PICKER");
 //            }
 //        });
-
-
     }
 
 
@@ -193,7 +210,7 @@ public class MandateActivity extends AppCompatActivity {
         edtPercentage = (Spinner) findViewById(R.id.mandata_add);
         edtPrice = (EditText) findViewById(R.id.mandata_price);
         textHint = (TextView) findViewById(R.id.txtPriceHint);
-
+        edtCurrency.setText("CHF");
 
     }
 
@@ -236,7 +253,7 @@ public class MandateActivity extends AppCompatActivity {
     }
 
     private void AddSpinner() {
-        String data[] = {"RE/MAX", "50", "55", "60", "65"};
+        String data[] = {"Choose % commission","RE/MAX", "50", "55", "60", "65"};
         //mandate percentage   drop down
         ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<>(MandateActivity.this, R.layout.spinnertext, data);
         arrayAdapter1.setDropDownViewResource(R.layout.simple_spinner_dropdown);
@@ -246,7 +263,11 @@ public class MandateActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (parent.getSelectedItem().toString().equals("RE/MAX"))
+                if (parent.getSelectedItem().toString().equals("Choose % commission"))
+                {
+                    offer = "Choose % commission";
+                }
+                else if (parent.getSelectedItem().toString().equals("RE/MAX"))
                 {
                     offer = "25";
                 }

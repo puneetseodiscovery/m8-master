@@ -40,8 +40,6 @@ import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.UploadPropertyApi;
 import com.m8.m8.ServiceGenerator;
 import com.m8.m8.util.SharedToken;
-import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
-import com.zfdang.multiple_images_selector.SelectorSettings;
 
 import org.json.JSONObject;
 
@@ -51,6 +49,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -108,15 +107,26 @@ public class UploadImagesActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                select multiple image
 
-                // start multiple photos selector
-                Intent intent = new Intent(UploadImagesActivity.this, ImagesSelectorActivity.class);
-
-                intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 10);
-                // intent.putExtra(SelectorSettings.SELECTOR_MIN_IMAGE_SIZE, 100000);
-                intent.putExtra(SelectorSettings.SELECTOR_SHOW_CAMERA, true);
-                intent.putStringArrayListExtra(SelectorSettings.SELECTOR_INITIAL_SELECTED_LIST, image_uris);
-                // start the selector
+                Intent intent = new Intent(UploadImagesActivity.this, MultiImageSelectorActivity.class);
+// whether show camera
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
+// max select image amount
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, 10);
+// select mode (MultiImageSelectorActivity.MODE_SINGLE OR MultiImageSelectorActivity.MODE_MULTI)
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, MultiImageSelectorActivity.MODE_MULTI);
+// default select images (support array list)
+                intent.putStringArrayListExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, image_uris);
                 startActivityForResult(intent, RESULT_LOAD_IMAGE);
+
+                // start multiple photos selector
+//                Intent intent = new Intent(UploadImagesActivity.this, ImagesSelectorActivity.class);
+//
+//                intent.putExtra(SelectorSettings.SELECTOR_MAX_IMAGE_NUMBER, 10);
+//                // intent.putExtra(SelectorSettings.SELECTOR_MIN_IMAGE_SIZE, 100000);
+//                intent.putExtra(SelectorSettings.SELECTOR_SHOW_CAMERA, true);
+//                intent.putStringArrayListExtra(SelectorSettings.SELECTOR_INITIAL_SELECTED_LIST, image_uris);
+//                // start the selector
+//                startActivityForResult(intent, RESULT_LOAD_IMAGE);
 
             }
         });
@@ -186,7 +196,8 @@ public class UploadImagesActivity extends AppCompatActivity {
             part.clear();
 
             if (resultCode == RESULT_OK) {
-                image_uris = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
+                //image_uris = data.getStringArrayListExtra(SelectorSettings.SELECTOR_RESULTS);
+                image_uris = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
                 assert image_uris != null;
 
                 SetImage(image_uris);

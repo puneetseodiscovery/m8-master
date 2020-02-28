@@ -3,30 +3,13 @@ package com.m8.m8.Activities;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.material.internal.NavigationMenuView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.appcompat.widget.Toolbar;
-
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.SpannableString;
@@ -41,42 +24,59 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DividerItemDecoration;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.internal.NavigationMenuView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.m8.controller.Controller;
 import com.m8.m8.Adapter.StartAdapter;
-import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment;
-import com.m8.m8.Fragments.WatchHowToFragment;
-import com.m8.m8.Models.LegalIsPresentOrNot;
-import com.m8.m8.RetrofitModel.GetPotentialEarn;
-import com.m8.m8.SplashScreen;
-import com.m8.m8.util.CheckInternet;
-import com.m8.m8.RetrofitModel.GetShareNumberApi;
-import com.m8.m8.UploadActivity.UploadActivity;
-import com.m8.m8.Fragments.DetailsFragment;
-import com.m8.m8.Fragments.HomeFragment;
-import com.m8.m8.Fragments.MyPotentialFragment;
-import com.m8.m8.Fragments.ReferFragment;
-import com.m8.m8.R;
 import com.m8.m8.ApiInterface;
 import com.m8.m8.Fragments.CommissionFragment;
 import com.m8.m8.Fragments.CommissionSubFragment.DescrptedFragment;
+import com.m8.m8.Fragments.DetailsFragment;
 import com.m8.m8.Fragments.DrawerNavigation.ArtStatementFragment;
 import com.m8.m8.Fragments.DrawerNavigation.MyPropertyFragment;
 import com.m8.m8.Fragments.DrawerNavigation.PrivacyPolicyFragment;
 import com.m8.m8.Fragments.DrawerNavigation.Terms_ConditionFragment;
+import com.m8.m8.Fragments.HomeFragment;
+import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.EditBankFragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.ViewAllMandateFragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.ViewProfileFragment;
+import com.m8.m8.Fragments.MyPotentialFragment;
 import com.m8.m8.Fragments.MyShareSubFragment.SharePackageFragment;
+import com.m8.m8.Fragments.ReferFragment;
 import com.m8.m8.Fragments.ViewAllFragment;
+import com.m8.m8.Fragments.WatchHowToFragment;
+import com.m8.m8.Models.LegalIsPresentOrNot;
+import com.m8.m8.R;
+import com.m8.m8.RetrofitModel.GetPotentialEarn;
+import com.m8.m8.RetrofitModel.GetShareNumberApi;
 import com.m8.m8.RetrofitModel.TermsConditionApi;
 import com.m8.m8.ServiceGenerator;
+import com.m8.m8.SplashScreen;
+import com.m8.m8.UploadActivity.UploadActivity;
+import com.m8.m8.util.CheckInternet;
 import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.util.SharedToken;
 import com.m8.m8.util.UtileDilog;
@@ -89,6 +89,7 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity implements Controller.GetPropertyNumber {
 
     public static String userId = "";
+    public static String abcd = "";
     public static String categoryId = "";
     public static int propertyNumber;
     public static int cunter;
@@ -96,6 +97,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
     public static BottomNavigationView bottomNavigationView;
     public static DrawerLayout drawerLayout;
     public String earning;
+    RelativeLayout view;
 
     NavigationView navigationView;
     FragmentManager fragmentManager;
@@ -115,8 +117,6 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-
 
         // TODO : Google ad code for future use -->
 
@@ -160,108 +160,281 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
 
         userId = sharedToken.getUserId();
         categoryId = sharedToken.getCatId();
-        if (!StartAdapter.fromStart)
-        getShareDataNew();
-        StartAdapter.fromStart = true;
 
+        if (userId.equals(""))
+        {
+            final ProgressDialog dialog = ProgressBarClass.showProgressDialog(this, "Please wait...");
+            dialog.show();
+            //deep link
+            bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+            view = findViewById(R.id.view);
+            if (userId.equals(""))
+            {
+                bottomNavigationView.setVisibility(View.INVISIBLE);
+                view.setVisibility(View.INVISIBLE);
+            }
 
-        init();
+            FirebaseDynamicLinks.getInstance()
+                    .getDynamicLink(getIntent())
+                    .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                        @Override
+                        public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                            // Get deep link from result (may be null if no link is found)
+                            Uri deepLink = null;
+                            if (pendingDynamicLinkData != null) {
+                                deepLink = pendingDynamicLinkData.getLink();
 
-        if (CheckInternet.isInternetAvailable(HomeActivity.this)) {
-            controller.setGetPropertyNumber(userId);
-        } else {
-            startActivity(new Intent(HomeActivity.this, NoInternetActivity.class));
-        }
+                                //String url = deepLink.toString(); https://www.m8s.world/1CV9P8
+                                String url = method(deepLink.toString());
+                                Log.d("+++++", "++ url deep ++" + url.charAt(12));
+                                Log.d("+++++", "++ url deep ++" + url);
+                                //Toast.makeText(HomeActivity.this, ""+url.charAt(13), Toast.LENGTH_SHORT).show();
+                                if (url.charAt(12) == 'm') {
+                                    if (url != null) {
+                                        if (dialog!=null)
+                                        dialog.dismiss();
+                                        DescrptedFragment descrptedFragment = new DescrptedFragment();
+                                        Bundle bundle = new Bundle();
+                                        descrptedFragment.setArguments(bundle);
+                                        bundle.putString("deeplink", url.toString());
+                                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                        transaction.replace(R.id.framelayout, descrptedFragment);
+                                        transaction.addToBackStack(null);
+                                        transaction.commit();
+                                    }
+                                } else {
 
+                                    if (url.charAt(11) == 'm') {
+                                        if (url.contains("="))
+                                        {
+                                            if (dialog!=null)
+                                            dialog.dismiss();
+                                            String[] separated = url.split("=");
+                                            String[] separateditem = separated[1].split("&");
+                                            DetailsFragment descrptedFragment = new DetailsFragment();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("deeplink", url.toString());
+                                            bundle.putString("ItemId", separateditem[0]);
+                                            descrptedFragment.setArguments(bundle);
+                                            Log.d("+++++", "++ url deep ++" + separateditem[0]);
+                                            Log.d("+++++", "++ url deep ++" + separated[2]);
+                                            SharedToken sharedToken = new SharedToken(HomeActivity.this);
+                                            sharedToken.setCatid(separated[2]);
+                                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                            transaction.replace(R.id.framelayout, descrptedFragment);
+                                            transaction.addToBackStack(null);
+                                            transaction.commit();
+                                        }
+                                        else
+                                        {
+                                            if (dialog!=null)
+                                            dialog.dismiss();
+                                            SplashScreen.code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                                            Intent intent = new Intent(HomeActivity.this, SplashScreen.class);
+                                            startActivity(intent);
 
-        setSupportActionBar(toolbar);
+                                            finish();
+                                        }
 
+                                    }
+                                    else {
+                                        if (dialog!=null)
+                                        dialog.dismiss();
+                                        SplashScreen.code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                                        Intent intent = new Intent(HomeActivity.this, SplashScreen.class);
+                                        startActivity(intent);
 
-        //Bottomvnavigation item click listner
-        BottomNavigationClick();
-
-
-        onCLick();
-
-
-        NavigationMenuView navigationMenu = (NavigationMenuView) navigationView.getChildAt(0);
-        navigationMenu.addItemDecoration(new DividerItemDecoration(HomeActivity.this, DividerItemDecoration.VERTICAL));
-
-
-
-
-        //deep link
-
-        FirebaseDynamicLinks.getInstance()
-                .getDynamicLink(getIntent())
-                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
-                    @Override
-                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
-                        // Get deep link from result (may be null if no link is found)
-                        Uri deepLink = null;
-                        if (pendingDynamicLinkData != null) {
-                            deepLink = pendingDynamicLinkData.getLink();
-
-                            //String url = deepLink.toString();
-                            String url = method(deepLink.toString());
-                            Log.d("+++++", "++ url deep ++" + url.charAt(12));
-                            Log.d("+++++", "++ url deep ++" + url);
-                            //Toast.makeText(HomeActivity.this, ""+url.charAt(13), Toast.LENGTH_SHORT).show();
-                            if (url.charAt(12) == 'm') {
-                                if (url != null) {
-                                    DescrptedFragment descrptedFragment = new DescrptedFragment();
-                                    Bundle bundle = new Bundle();
-                                    descrptedFragment.setArguments(bundle);
-                                    bundle.putString("deeplink", url.toString());
-                                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                                    transaction.replace(R.id.framelayout, descrptedFragment);
-                                    transaction.addToBackStack(null);
-                                    transaction.commit();
+                                        finish();
+                                    }
                                 }
-                            } else {
 
-                                if (url.charAt(11) == 'm') {
-                                    String[] separated = url.split("=");
-                                    String[] separateditem = separated[1].split("&");
-                                    DetailsFragment descrptedFragment = new DetailsFragment();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("deeplink", url.toString());
-                                    bundle.putString("ItemId", separateditem[0]);
-                                    descrptedFragment.setArguments(bundle);
-                                    Log.d("+++++", "++ url deep ++" + separateditem[0]);
-                                    Log.d("+++++", "++ url deep ++" + separated[2]);
-                                    SharedToken sharedToken = new SharedToken(HomeActivity.this);
-                                    sharedToken.setCatid(separated[2]);
-                                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-                                    transaction.replace(R.id.framelayout, descrptedFragment);
-                                    transaction.addToBackStack(null);
-                                    transaction.commit();
-                                }
-                                else {
-
-                                    SplashScreen.code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
-                                    Intent intent = new Intent(HomeActivity.this, StartActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                                //Log.d("deeplink", "" + code);
                             }
-
-
-                            //Log.d("deeplink", "" + code);
+                            // ...
                         }
-                        // ...
-                    }
-                })
-                .addOnFailureListener(this, new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w("abc", "getDynamicLink:onFailure", e);
-                    }
-                });
+                    })
+                    .addOnFailureListener(this, new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("abc", "getDynamicLink:onFailure", e);
+                        }
+                    });
+        }
+        else {
 
-        getData();
+            if (!StartAdapter.fromStart)
+                getShareDataNew();
+            StartAdapter.fromStart = true;
 
-        getEarning();
+
+            init();
+
+            if (CheckInternet.isInternetAvailable(HomeActivity.this)) {
+                controller.setGetPropertyNumber(userId);
+            } else {
+                startActivity(new Intent(HomeActivity.this, NoInternetActivity.class));
+            }
+
+
+            setSupportActionBar(toolbar);
+
+
+            //Bottomvnavigation item click listner
+            BottomNavigationClick();
+
+
+            onCLick();
+
+
+            NavigationMenuView navigationMenu = (NavigationMenuView) navigationView.getChildAt(0);
+            navigationMenu.addItemDecoration(new DividerItemDecoration(HomeActivity.this, DividerItemDecoration.VERTICAL));
+
+
+            if (SplashScreen.code.length() > 0) {
+                //String url = deepLink.toString();
+                String url = method(SplashScreen.code);
+//            Log.d("+++++", "++ url deep ++" + url.charAt(12));
+                Log.d("+++++", "++ url deep ++" + url);
+
+                if (url.length() > 10) {
+                    if (url.charAt(12) == 'm') {
+                        if (url != null) {
+                            DescrptedFragment descrptedFragment = new DescrptedFragment();
+                            Bundle bundle = new Bundle();
+                            descrptedFragment.setArguments(bundle);
+                            bundle.putString("deeplink", url.toString());
+                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                            transaction.replace(R.id.framelayout, descrptedFragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                            SplashScreen.code = "";
+                        }
+                    } else {
+
+                        if (url.charAt(11) == 'm') {
+                            if (url.contains("=")) {
+                                String[] separated = url.split("=");
+                                String[] separateditem = separated[1].split("&");
+                                DetailsFragment descrptedFragment = new DetailsFragment();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("deeplink", url.toString());
+                                bundle.putString("ItemId", separateditem[0]);
+                                descrptedFragment.setArguments(bundle);
+                                Log.d("+++++", "++ url deep ++" + separateditem[0]);
+                                Log.d("+++++", "++ url deep ++" + separated[2]);
+                                SharedToken sharedToken1 = new SharedToken(HomeActivity.this);
+                                sharedToken1.setCatid(separated[2]);
+                                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                transaction.replace(R.id.framelayout, descrptedFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                                SplashScreen.code = "";
+                            }
+                            else
+                            {
+                                SplashScreen.code = SplashScreen.code.substring(SplashScreen.code.lastIndexOf('/') + 1);
+                                Intent intent = new Intent(HomeActivity.this, StartActivity.class);
+                                startActivity(intent);
+                                finish();
+                                SplashScreen.code = "";
+                            }
+                        } else {
+
+                            SplashScreen.code = SplashScreen.code.substring(SplashScreen.code.lastIndexOf('/') + 1);
+                            Intent intent = new Intent(HomeActivity.this, StartActivity.class);
+                            startActivity(intent);
+                            finish();
+                            SplashScreen.code = "";
+                        }
+                    }
+                } else {
+                    SplashScreen.code = SplashScreen.code.substring(SplashScreen.code.lastIndexOf('/') + 1);
+                    Intent intent = new Intent(HomeActivity.this, StartActivity.class);
+                    startActivity(intent);
+                    SplashScreen.code = "";
+                }
+
+            }
+
+            //deep link
+
+            FirebaseDynamicLinks.getInstance()
+                    .getDynamicLink(getIntent())
+                    .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                        @Override
+                        public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                            // Get deep link from result (may be null if no link is found)https://www.m8s.world/1CV9P8
+                            Uri deepLink = null;
+                            if (pendingDynamicLinkData != null) {
+                                deepLink = pendingDynamicLinkData.getLink();
+
+                                //String url = deepLink.toString();
+                                String url = method(deepLink.toString());
+                                Log.d("+++++", "++ url deep ++" + url.charAt(12));
+                                Log.d("+++++", "++ url deep ++" + url);
+                                //Toast.makeText(HomeActivity.this, ""+url.charAt(13), Toast.LENGTH_SHORT).show();
+                                if (url.charAt(12) == 'm') {
+                                    if (url != null) {
+                                        DescrptedFragment descrptedFragment = new DescrptedFragment();
+                                        Bundle bundle = new Bundle();
+                                        descrptedFragment.setArguments(bundle);
+                                        bundle.putString("deeplink", url.toString());
+                                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                        transaction.replace(R.id.framelayout, descrptedFragment);
+                                        transaction.addToBackStack(null);
+                                        transaction.commit();
+                                    }
+                                } else {
+
+                                    if (url.charAt(11) == 'm') {
+                                        if (url.contains("=")) {
+                                            String[] separated = url.split("=");
+                                            String[] separateditem = separated[1].split("&");
+                                            DetailsFragment descrptedFragment = new DetailsFragment();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("deeplink", url.toString());
+                                            bundle.putString("ItemId", separateditem[0]);
+                                            descrptedFragment.setArguments(bundle);
+                                            Log.d("+++++", "++ url deep ++" + separateditem[0]);
+                                            Log.d("+++++", "++ url deep ++" + separated[2]);
+                                            SharedToken sharedToken = new SharedToken(HomeActivity.this);
+                                            sharedToken.setCatid(separated[2]);
+                                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                            transaction.replace(R.id.framelayout, descrptedFragment);
+                                            transaction.addToBackStack(null);
+                                            transaction.commit();
+                                        } else {
+                                            SplashScreen.code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                                            Intent intent = new Intent(HomeActivity.this, SplashScreen.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+
+                                    } else {
+
+                                        SplashScreen.code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                                        Intent intent = new Intent(HomeActivity.this, SplashScreen.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                //Log.d("deeplink", "" + code);
+                            }
+                            // ...
+                        }
+                    })
+                    .addOnFailureListener(this, new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("abc", "getDynamicLink:onFailure", e);
+                        }
+                    });
+
+            getData();
+
+            getEarning();
+        }
 
     }
 
@@ -275,6 +448,12 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
     private void init() {
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        view = findViewById(R.id.view);
+        if (userId.equals(""))
+        {
+            bottomNavigationView.setVisibility(View.INVISIBLE);
+            view.setVisibility(View.INVISIBLE);
+        }
         navigationView = (NavigationView) findViewById(R.id.Drawer_navigation);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         toolbar = (Toolbar) findViewById(R.id.tooolbar);
@@ -283,6 +462,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
         String abc = getIntent().getStringExtra("ItemId");
         if (!TextUtils.isEmpty(abc) && abc.equals("ItemId")){
 
+            abcd = getIntent().getStringExtra("Itemid");
             Business2Fragment detailsFragment = new Business2Fragment();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.replace(R.id.framelayout, detailsFragment);
@@ -457,7 +637,6 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
                     transaction.replace(R.id.framelayout, new PrivacyPolicyFragment());
                     transaction.addToBackStack(null);
                     transaction.commit();
-
                 }
                 if (id == R.id.Art) {
                     drawerLayout.closeDrawer(Gravity.RIGHT);
@@ -487,7 +666,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
 
         final Dialog dialog = new Dialog(HomeActivity.this);
         dialog.setContentView(R.layout.custom_dialog_upload);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -516,6 +695,35 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
                 dialog.dismiss();
                 SharedToken sharedToken = new SharedToken(HomeActivity.this);
                 sharedToken.clearShaerd();
+                SharedPreferences preferences =getSharedPreferences("check", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                SharedPreferences preferences1 =getSharedPreferences("Currency", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1 = preferences1.edit();
+                editor1.clear();
+                editor1.apply();
+                SharedPreferences preferences2 =getSharedPreferences("Business", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor2 = preferences2.edit();
+                editor2.clear();
+                editor2.apply();
+                SharedPreferences preferences3 =getSharedPreferences("abc", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor3 = preferences3.edit();
+                editor3.clear();
+                editor3.apply();
+                SharedPreferences preferences4 =getSharedPreferences("UserProperty", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor4 = preferences4.edit();
+                editor4.clear();
+                editor4.apply();
+                SharedPreferences preferences5 =getSharedPreferences("User", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor5 = preferences5.edit();
+                editor5.clear();
+                editor5.apply();
+                SharedPreferences preferences6 =getSharedPreferences("First", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor6 = preferences6.edit();
+                editor6.clear();
+                editor6.apply();
+                ViewProfileFragment.data=null;
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext()).
                         edit().clear().apply();
                 Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
@@ -547,7 +755,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
 
             @Override
             public void onFailure(Call<TermsConditionApi> call, Throwable t) {
-                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -557,30 +765,56 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
         int count = fm.getBackStackEntryCount();
-        if (HomeActivity.drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
-            HomeActivity.drawerLayout.closeDrawer(Gravity.RIGHT);
-        } else if (count == 0) {
-           Intent intent = new Intent(this,StartActivity.class);
-           startActivity(intent);
-//            if (doubleBackToExitPressedOnce) {
-//                super.onBackPressed();
-//                return;
-//            }
-//            this.doubleBackToExitPressedOnce = true;
-//            Toast.makeText(this, "Please click back twice to exit.", Toast.LENGTH_LONG).show();
-//
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    doubleBackToExitPressedOnce = false;
-//                }
-//            }, 1000);
-        } else {
+//        if (HomeActivity.drawerLayout.isDrawerOpen(Gravity.RIGHT)) {
+//            HomeActivity.drawerLayout.closeDrawer(Gravity.RIGHT);
+//        } else if (count == 0) {
+//           Intent intent = new Intent(this,StartActivity.class);
+//           startActivity(intent);
+////            if (doubleBackToExitPressedOnce) {
+////                super.onBackPressed();
+////                return;
+////            }
+////            this.doubleBackToExitPressedOnce = true;
+////            Toast.makeText(this, "Please click back twice to exit.", Toast.LENGTH_LONG).show();
+////
+////            new Handler().postDelayed(new Runnable() {
+////                @Override
+////                public void run() {
+////                    doubleBackToExitPressedOnce = false;
+////                }
+////            }, 1000);
+//        } else {
+//            super.onBackPressed();
+//        }
 
-            super.onBackPressed();
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        int seletedItemId = bottomNavigationView.getSelectedItemId();
+//        if (R.id.navigationHome != seletedItemId) {
+//            setHomeItem(HomeActivity.this);
+//        } else {
+//            super.onBackPressed();
+//        }
+        if (ViewProfileFragment.fromProfileToSale==2)
+        {
+            HomeActivity.bottomNavigationView.setSelectedItemId(R.id.navigationMyAccount);
+            ViewProfileFragment.fromProfileToSale=0;
         }
+        else {
+            if (count == 0 && R.id.navigationHome != seletedItemId) {
+                setHomeItem(HomeActivity.this);
+            } else if (count == 0 && R.id.navigationHome == seletedItemId) {
+                Intent intent = new Intent(this, StartActivity.class);
+                startActivity(intent);
+            } else {
+                super.onBackPressed();
+            }
+        }
+    }
 
-
+    public static void setHomeItem(AppCompatActivity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.navigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigationHome);
     }
 
 
@@ -589,13 +823,13 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
         if (response.body().getStatus() == 200) {
             propertyNumber = response.body().getData();
         } else {
-            Toast.makeText(this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onError(String error) {
-        Toast.makeText(this, "" + error, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "" + error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -636,7 +870,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
 
             @Override
             public void onFailure(Call<GetPotentialEarn> call, Throwable t) {
-                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -697,7 +931,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
                     }
 
                 } else {
-                    Toast.makeText(HomeActivity.this, "" + response.message(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(HomeActivity.this, "" + response.message(), Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -705,7 +939,7 @@ public class HomeActivity extends AppCompatActivity implements Controller.GetPro
             @Override
             public void onFailure(Call<LegalIsPresentOrNot> call, Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(HomeActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         });

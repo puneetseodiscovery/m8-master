@@ -1,9 +1,12 @@
 package com.m8.m8.Fragments;
 
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -28,6 +31,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.Activities.NoInternetActivity;
 import com.m8.m8.Activities.StartActivity;
@@ -67,6 +75,7 @@ public class ReferFragment extends Fragment {
     String abc;
     String Bname, Bemail, BownerName = "", Bphone, name, email, phone;
     ProgressDialog progressDialog;
+    public com.google.android.gms.ads.AdView mAdView;
 
 
     public ReferFragment() {
@@ -175,12 +184,12 @@ public class ReferFragment extends Fragment {
     //create link for refer
     private void createLink(String referCode) {
         DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
-                .setLink(Uri.parse("https://www.amit.com/" + referCode))
-                .setDomainUriPrefix("amrm8.page.link")
+                .setLink(Uri.parse("https://m8s.world/" + referCode))
+                .setDomainUriPrefix("m8sworld.page.link")
                 // Open links with this app on Android  amitpandey12.page.link
-                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder().build())
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.m8.m8").build())
                 // Open links with com.example.ios on iOS
-                .setIosParameters(new DynamicLink.IosParameters.Builder("amrm8.page.link").build())
+                .setIosParameters(new DynamicLink.IosParameters.Builder("com.Bainzy.M8").setFallbackUrl(Uri.parse("https://apps.apple.com/in/app/M8/id1479388084")).setAppStoreId("id1479388084").build())
                 .buildDynamicLink();
 
         Uri dynamicLinkUri = dynamicLink.getUri();
@@ -222,6 +231,8 @@ public class ReferFragment extends Fragment {
         toolbar = (Toolbar) view.findViewById(R.id.tooolbar);
         toolbarText = (TextView) view.findViewById(R.id.toolbarText);
         drawer = (ImageView) view.findViewById(R.id.tooolbarImage);
+
+        addAds();
 
     }
 
@@ -278,14 +289,52 @@ public class ReferFragment extends Fragment {
                 if (response.isSuccessful()) {
                     progressDialog.dismiss();
                     if (response.body().getStatus().equals(200)) {
-                        for (int i=0; i < 3; i++)
-                        {
-                            Toast.makeText(context, "Thank you for referring a business to M8. If they buy a M8 package we will send you half of what they pay. Good luck, the more businesses you refer to us the more you will earn.", Toast.LENGTH_LONG).show();
-                        }
-                        FragmentManager manager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction transaction = manager.beginTransaction();
-                        transaction.replace(R.id.framelayout, new HomeFragment());
-                        transaction.commit();
+//                        for (int i=0; i < 5; i++)
+//                        {
+//                            Toast.makeText(context, "Thank you for referring a business to M8. If they buy a M8 package we will send you half of what they pay. Good luck, the more businesses you refer to us the more you will earn.", Toast.LENGTH_LONG).show();
+//                        }
+                        final Dialog dialog = new Dialog(context);
+
+                        dialog.setContentView(R.layout.custom_dialog_upload);
+                        dialog.setCancelable(false);
+
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                        dialog.show();
+
+                        final Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+                        Button btnBuy = (Button) dialog.findViewById(R.id.btnDelete);
+                        TextView text = (TextView) dialog.findViewById(R.id.txt_title);
+                        text.setText("Thank you for referring a business to M8. If they buy a M8 package we will send you half of what they pay. Good luck, the more businesses you refer to us the more you will earn.");
+
+                        btnBuy.setText("Ok");
+
+                        btnCancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                FragmentManager manager = getActivity().getSupportFragmentManager();
+                                FragmentTransaction transaction = manager.beginTransaction();
+                                transaction.replace(R.id.framelayout, new HomeFragment());
+                                transaction.commit();
+                            }
+                        });
+
+                        btnBuy.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();
+                                FragmentManager manager = getActivity().getSupportFragmentManager();
+                                FragmentTransaction transaction = manager.beginTransaction();
+                                transaction.replace(R.id.framelayout, new HomeFragment());
+                                transaction.commit();
+                            }
+                        });
+//                        FragmentManager manager = getActivity().getSupportFragmentManager();
+//                        FragmentTransaction transaction = manager.beginTransaction();
+//                        transaction.replace(R.id.framelayout, new HomeFragment());
+//                        transaction.commit();
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -341,5 +390,35 @@ public class ReferFragment extends Fragment {
     public void onAttach(Context context1) {
         super.onAttach(context1);
         context = context1;
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 }

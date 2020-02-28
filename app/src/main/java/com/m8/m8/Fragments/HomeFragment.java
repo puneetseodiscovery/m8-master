@@ -2,8 +2,6 @@ package com.m8.m8.Fragments;
 
 
 import android.Manifest;
-
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -24,18 +22,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.widget.NestedScrollView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
@@ -54,29 +40,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.widget.NestedScrollView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.m8.controller.Controller;
-import com.m8.m8.Activities.HomeActivity;
-import com.m8.m8.Activities.NoInternetActivity;
-import com.m8.m8.Fragments.DrawerNavigation.MyPropertyFragment;
-import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment2;
-import com.m8.m8.Models.SearchResultResponseModel;
-import com.m8.m8.RetrofitModel.GetMetaData;
-import com.m8.m8.RetrofitModel.GetShareNumberApi;
-import com.m8.m8.util.CheckInternet;
-import com.m8.m8.R;
-import com.m8.m8.ApiInterface;
-import com.m8.m8.AppMapView;
-import com.m8.m8.RetrofitModel.GetPotentialEarn;
-import com.m8.m8.RetrofitModel.MapApi;
-import com.m8.m8.ServiceGenerator;
-
-
-import com.m8.m8.util.ProgressBarClass;
-import com.m8.m8.util.SharedToken;
-import com.m8.m8.util.UtileDilog;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -97,13 +79,29 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
 import com.google.maps.android.ui.IconGenerator;
+import com.m8.controller.Controller;
+import com.m8.m8.Activities.HomeActivity;
+import com.m8.m8.Activities.NoInternetActivity;
+import com.m8.m8.ApiInterface;
+import com.m8.m8.AppMapView;
+import com.m8.m8.Fragments.DrawerNavigation.MyPropertyFragment;
+import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment2;
+import com.m8.m8.Models.SearchResultResponseModel;
+import com.m8.m8.R;
+import com.m8.m8.RetrofitModel.GetMetaData;
+import com.m8.m8.RetrofitModel.GetPotentialEarn;
+import com.m8.m8.RetrofitModel.GetShareNumberApi;
+import com.m8.m8.RetrofitModel.MapApi;
+import com.m8.m8.ServiceGenerator;
+import com.m8.m8.util.CheckInternet;
+import com.m8.m8.util.ProgressBarClass;
+import com.m8.m8.util.SharedToken;
+import com.m8.m8.util.UtileDilog;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
@@ -116,7 +114,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.app.Activity.RESULT_CANCELED;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_CANCELED;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -170,6 +168,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
 
     ImageView iconimage;
     TextView icontext;
+
+    public com.google.android.gms.ads.AdView mAdView;
 
 
     public HomeFragment() {
@@ -327,13 +327,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
 
                     if (progressDialog!=null)
                         progressDialog.dismiss();
-                    Toast.makeText(getContext(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
         else
         {
-            Toast.makeText(context, "Check your internet connection.", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Check your internet connection.", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -370,6 +370,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
         iconimage = clusterView.findViewById(R.id.iconimage);
         icontext = clusterView.findViewById(R.id.icontext);
         generator.setContentView(clusterView);
+
+        addAds();
 
     }
 
@@ -551,7 +553,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mapView.onDestroy();
+//        mapView.onDestroy();
     }
 
     @Override
@@ -764,13 +766,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
                     }
 
                 } else {
-                    Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MapApi> call, Throwable t) {
-                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -1004,13 +1006,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
                     txtEarn.setText(response.body().getData().getCurrency() + " " + response.body().getData().getTotal());
 
                 } else {
-                    Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
+ //                   Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<GetPotentialEarn> call, Throwable t) {
-                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -1021,13 +1023,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
         if (response.body().getStatus() == 200) {
             propertyNumber = response.body().getData();
         } else {
-            Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+ //           Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onError(String error) {
-        Toast.makeText(context, "" + error, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "" + error, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -1046,7 +1048,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
                     dialog.dismiss();
                     if (response.isSuccessful()) {
                         data = response.body().getData();
-                            if (data.getProfile().getAddress()==null || data.getProfile().getAddress().equals("")) {
+                            if (data.getProfile()==null || data.getProfile().getAddress()==null || data.getProfile().getAddress().equals("")) {
                                 Toast.makeText(context, "Update your profile.", Toast.LENGTH_SHORT).show();
                                 transaction.replace(R.id.framelayout, new MyAccountFragment());
                                 transaction.addToBackStack(null);
@@ -1078,14 +1080,14 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
 
 
                     } else {
-                        Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<GetMetaData> call, Throwable t) {
                     dialog.dismiss();
-                    Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
 
@@ -1098,5 +1100,79 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Locati
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         activity1 = activity;
+    }
+
+    public void addAds()
+    {
+
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
+
+//        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//            }
+//        });
+//
+//        AdView adView = new AdView(getContext());
+//        adView.setAdSize(AdSize.BANNER);
+//        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+//
+//        mAdView = view.findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
+
+//        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+//
+//        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+//            @Override
+//            public void onInitializationComplete(InitializationStatus initializationStatus) {
+//            }
+//        });
+//
+//
+//
+//        mAdView = view.findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
+//
+//        mAdView.setAdListener(new AdListener(){
+//
+//            @Override
+//            public void onAdLoaded() {
+//                super.onAdLoaded();
+//                Log.d("+++++++","+++++ loaded ++++++");
+//            }
+//
+//            @Override
+//            public void onAdFailedToLoad(int i) {
+//                super.onAdFailedToLoad(i);
+//                Log.d("+++++++","+++++ not loaded ++++++"+i);
+//            }
+//        });
     }
 }

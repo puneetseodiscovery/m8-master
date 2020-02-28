@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -20,6 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.R;
 
@@ -39,6 +45,7 @@ public class WatchHowToFragment extends Fragment implements AdvancedWebView.List
     String watch="";
     //WebView webview;
     private AdvancedWebView webview;
+    public com.google.android.gms.ads.AdView mAdView;
 
     public WatchHowToFragment() {
         // Required empty public constructor
@@ -110,6 +117,7 @@ public class WatchHowToFragment extends Fragment implements AdvancedWebView.List
         imageView = (ImageView) view.findViewById(R.id.toolbarLogo);
         //txtTerms = (TextView) view.findViewById(R.id.textView);
         webview = (AdvancedWebView) view.findViewById(R.id.webview);
+        addAds();
     }
 
     @Override
@@ -169,5 +177,35 @@ public class WatchHowToFragment extends Fragment implements AdvancedWebView.List
     @Override
     public void onExternalPageRequest(String url) {
 
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 }

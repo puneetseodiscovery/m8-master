@@ -76,7 +76,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative email address*"
-                android:inputType="textCapSentences"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
@@ -89,7 +89,7 @@
                 android:drawableLeft="@drawable/setdrawabletoleft"
                 android:drawablePadding="@dimen/drawablepadding"
                 android:hint="Legal representative telephone no*"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 

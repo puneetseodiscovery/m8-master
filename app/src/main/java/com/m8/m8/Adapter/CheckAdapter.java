@@ -49,4 +49,14 @@ public class CheckAdapter extends RecyclerView.Adapter<CheckAdapter.ViewHolder> 
             textView = itemView.findViewById(R.id.txtCheck);
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.m8.m8.util.CheckInternet;
@@ -28,8 +29,10 @@ import retrofit2.Response;
 public class OTPActivity extends AppCompatActivity {
 
     EditText editText;
-    String userId;
+    String userId,otpId;
     Button button;
+    TextView codeText;
+    boolean referCode;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,23 +41,50 @@ public class OTPActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.Otp);
         button = findViewById(R.id.btn_send);
+        codeText = findViewById(R.id.codeText);
 
 
         userId = getIntent().getStringExtra("UserId");
+        otpId = getIntent().getStringExtra("otpId");
+
+        referCode = getIntent().getBooleanExtra("referId",false);
+        if (referCode)
+        {
+            codeText.setText("Enter Referral code");
+        }else {
+            if (otpId.length() > 0) {
+                editText.setText(otpId);
+            }
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(editText.getText().toString())) {
-                    editText.setError("Enter your recovery code");
-                    editText.requestFocus();
-                } else if (editText.getText().length() > 4) {
-                    editText.setError("Enter only 4 numbers  recovery code");
-                    editText.requestFocus();
-                } else {
-                    if (CheckInternet.isInternetAvailable(OTPActivity.this)) {
-                        getData();
+                if (referCode)
+                {
+                    if (TextUtils.isEmpty(editText.getText().toString())) {
+                        editText.setError("Enter your recovery code");
+                        editText.requestFocus();
+                    }else {
+                        if (CheckInternet.isInternetAvailable(OTPActivity.this)) {
+                            getData();
+                        } else {
+                            Snackbar.make(findViewById(android.R.id.content), "" + getResources().getString(R.string.noInternet), Snackbar.LENGTH_LONG).show();
+                        }
+                    }
+                }
+                else {
+                    if (TextUtils.isEmpty(editText.getText().toString())) {
+                        editText.setError("Enter your recovery code");
+                        editText.requestFocus();
+                    } else if (editText.getText().length() > 4) {
+                        editText.setError("Enter only 4 numbers  recovery code");
+                        editText.requestFocus();
                     } else {
-                        Snackbar.make(findViewById(android.R.id.content), "" + getResources().getString(R.string.noInternet), Snackbar.LENGTH_LONG).show();
+                        if (CheckInternet.isInternetAvailable(OTPActivity.this)) {
+                            getData();
+                        } else {
+                            Snackbar.make(findViewById(android.R.id.content), "" + getResources().getString(R.string.noInternet), Snackbar.LENGTH_LONG).show();
+                        }
                     }
                 }
             }
@@ -63,7 +93,7 @@ public class OTPActivity extends AppCompatActivity {
 
     private void getData() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
-        Call<GetOtpApi> call = apiInterface.getOtp(editText.getText().toString(), userId);
+        Call<GetOtpApi> call = apiInterface.getOtp(editText.getText().toString(), userId,referCode);
         final ProgressDialog dialog = ProgressBarClass.showProgressDialog(OTPActivity.this, "Please wait...");
         call.enqueue(new Callback<GetOtpApi>() {
             @Override
@@ -71,18 +101,38 @@ public class OTPActivity extends AppCompatActivity {
                 dialog.dismiss();
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals(200)) {
-                        SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        SharedToken sharedToken = new SharedToken(OTPActivity.this);
-                        sharedToken.setUserId(response.body().getData().getUserId().toString());
-                        editor.putString("Token", response.body().getData().getUserId().toString());
-                        editor.putString("UserStatus", response.body().getData().getProfileStatus().toString());
-                        editor.apply();
-                        startActivity(new Intent(getApplicationContext(), StartActivity.class));
-                        finish();
+                        if (referCode)
+                        {
+                            SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            SharedToken sharedToken = new SharedToken(OTPActivity.this);
+                            sharedToken.setUserId(response.body().getData().getUserId().toString());
+                            sharedToken.setTokenId(response.body().getData().getToken());
+                            sharedToken.setEmailId(response.body().getData().getEmail());
+                            editor.putString("Token", response.body().getData().getUserId().toString());
+                            editor.putString("UserStatus", response.body().getData().getProfileStatus().toString());
+                            editor.apply();
+                            startActivity(new Intent(getApplicationContext(), BuyPackageAfterRefer.class));
+                            finish();
 
-                        Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
 
+                        }
+                        else {
+                            SharedPreferences sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            SharedToken sharedToken = new SharedToken(OTPActivity.this);
+                            sharedToken.setUserId(response.body().getData().getUserId().toString());
+                            sharedToken.setTokenId(response.body().getData().getToken());
+                            sharedToken.setEmailId(response.body().getData().getEmail());
+                            editor.putString("Token", response.body().getData().getUserId().toString());
+                            editor.putString("UserStatus", response.body().getData().getProfileStatus().toString());
+                            editor.apply();
+                            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+                            finish();
+
+                            Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
+                        }
                     } else {
                         Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
                     }

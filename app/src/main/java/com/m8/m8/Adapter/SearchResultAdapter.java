@@ -91,7 +91,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
         SharedToken sharedToken = new SharedToken(context);
         String catid = sharedToken.getCatId();
 
-        if (ViewAllFragment.catName!=null&&!ViewAllFragment.catName.equals("Property"))
+        if (ViewAllFragment.catName!=null&&!ViewAllFragment.catName.equals("1"))
         {
             String s = datum.getTitle();
             viewHolder.txtHeading.setText(s.replace("Bedroom",""));
@@ -142,6 +142,16 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
             txtPrice = itemView.findViewById(R.id.potential_price);
             avLoadingIndicatorView = itemView.findViewById(R.id.avloading);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
 }

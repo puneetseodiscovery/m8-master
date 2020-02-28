@@ -385,6 +385,7 @@ public class Mandate2Activity extends AppCompatActivity {
                                 dialog.dismiss();
                                 Intent intent = new Intent(Mandate2Activity.this, HomeActivity.class);
                                 intent.putExtra("ItemId", "ItemId");
+                                intent.putExtra("Itemid", getItemId);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             }
@@ -457,6 +458,7 @@ public class Mandate2Activity extends AppCompatActivity {
                                 dialog.dismiss();
                                 Intent intent = new Intent(Mandate2Activity.this, HomeActivity.class);
                                 intent.putExtra("ItemId", "ItemId");
+                                intent.putExtra("Itemid", getItemId);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             }

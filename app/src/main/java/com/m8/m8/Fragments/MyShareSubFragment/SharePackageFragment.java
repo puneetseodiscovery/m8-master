@@ -6,11 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,16 +16,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.ApiInterface;
-import com.m8.m8.SpripePayment;
-import com.m8.m8.UploadActivity.UploadActivity;
-import com.m8.m8.util.Config;
-import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.GetPlanApi;
 import com.m8.m8.RetrofitModel.SendPlanData;
 import com.m8.m8.ServiceGenerator;
+import com.m8.m8.SpripePayment;
+import com.m8.m8.UploadActivity.UploadActivity;
+import com.m8.m8.util.Config;
+import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.util.SharedRate;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -43,20 +48,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SharePackageFragment extends Fragment {
 
-
     View view;
     Context context;
     Toolbar toolbar;
     ImageView drawer;
     TextView textView;
-    Button btnNovice, btnPlayer, btnProfessional, btnBusiness;
+    Button btnNovice, btnPlayer, btnProfessional, btnBusiness,btnFree;
     String number;
     SharedRate sharedRate;
 
@@ -71,14 +75,13 @@ public class SharePackageFragment extends Fragment {
     private static PayPalConfiguration configuration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.PAYPAL_CLIENT_ID);
 
-
     String amount = "";
 
+    public com.google.android.gms.ads.AdView mAdView;
 
     public SharePackageFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,39 +114,29 @@ public class SharePackageFragment extends Fragment {
 
         textView.setText("Buy Package");
 
-
         // start payment Gateway
 
         Intent intent = new Intent(context, PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
         getActivity().startService(intent);
 
-
         //get the paln details
         getPlanDetails();
-
-
         return view;
     }
 
-
     //paypal payment
     private void PaymentProgress(String id, String plan) {
-
         /*PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)), "USD", "Purchase the " + plan + " share package", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(context, PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, configuration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);*/
-
         Intent intent = new Intent(getContext(),SpripePayment.class);
         intent.putExtra("userId",HomeActivity.userId);
         intent.putExtra("shareId",shareId);
         startActivity(intent);
-
-
     }
-
 
     @Override
     public void onDestroy() {
@@ -159,7 +152,7 @@ public class SharePackageFragment extends Fragment {
         btnBusiness = (Button) view.findViewById(R.id.btnBusiness);
         btnPlayer = (Button) view.findViewById(R.id.btnPlayer);
         btnProfessional = (Button) view.findViewById(R.id.btnProfessional);
-
+        btnFree = (Button) view.findViewById(R.id.btnFree);
 
         txtFreePrice = (TextView) view.findViewById(R.id.txtFreePrice);
         txtFreeHeading = (TextView) view.findViewById(R.id.txtFreeHeading);
@@ -189,8 +182,8 @@ public class SharePackageFragment extends Fragment {
         number = String.valueOf(HomeActivity.propertyNumber);
 
         sharedRate = new SharedRate(context);
+        addAds();
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -207,7 +200,6 @@ public class SharePackageFragment extends Fragment {
                         Log.d("++++", "" + id);
 
                         sendintoServer(id);
-
 
                         Log.d("payment", payemtDetails + "\n" + id);
 
@@ -249,7 +241,6 @@ public class SharePackageFragment extends Fragment {
         });
     }
 
-
     private void getPlanDetails() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
         Call<GetPlanApi> call = apiInterface.getPlanData();
@@ -270,6 +261,13 @@ public class SharePackageFragment extends Fragment {
                             txtFreeHeading.setText(datum.getPlanName());
                             //txtFreeShare.setText(datum.getPlanShareQty() + " Shares");
                             //txtFreeProperty.setText("Upload " + datum.getPlanItemQty() + " Property to Sell");
+                            btnFree.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(context,HomeActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
                         }
 
                         if (i == 1) {
@@ -293,7 +291,6 @@ public class SharePackageFragment extends Fragment {
                                 }
                             });
                         }
-
 
                         if (i == 2) {
                             final GetPlanApi.Datum datum = response.body().getData().get(2);
@@ -366,14 +363,12 @@ public class SharePackageFragment extends Fragment {
                 } else {
                     Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
             public void onFailure(Call<GetPlanApi> call, Throwable t) {
                 dialog.dismiss();
                 Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
-
             }
         });
     }
@@ -396,5 +391,33 @@ public class SharePackageFragment extends Fragment {
             UploadActivity.linaer.setVisibility(View.VISIBLE);
             UploadActivity.toolbar.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 }

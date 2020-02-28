@@ -117,6 +117,9 @@ public class DetailsFragment extends Fragment {
 
     MediaController mc;
     boolean bVideoIsBeingTouched = false;
+    String imageForStripe;
+
+
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -356,7 +359,8 @@ public class DetailsFragment extends Fragment {
                 dialog.dismiss();
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals(200)) {
-                        Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        //
+                        // Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                         if (!response.body().getLegalAddress())
                         {
                             final Dialog dialog = new Dialog(context);
@@ -458,6 +462,7 @@ public class DetailsFragment extends Fragment {
                                     intent.putExtra("shareId",Id);
                                     intent.putExtra("directBuy",txtPrice.getText().toString());
                                     intent.putExtra("directBuyName",txtHeading.getText().toString());
+                                    intent.putExtra("imageForStripe",imageForStripe);
                                     startActivity(intent);
                                 }
                             });
@@ -633,7 +638,7 @@ public class DetailsFragment extends Fragment {
                             }
                             else
                             {
-                                if (!datum.getItemMeta().get(i).getItemValue().equals("")) {
+                                if (datum.getItemMeta().get(i).getItemValue()!=null && !datum.getItemMeta().get(i).getItemValue().equals("")) {
                                     if (datum.getItemMeta().get(i).getItemKey().equals("item_video")) {
                                         watchVideo.setVisibility(View.VISIBLE);
                                         //videoUrl = "https://app.m8s.world/upload/items/videos/" + datum.getItemMeta().get(0).getItemValue();
@@ -666,6 +671,10 @@ public class DetailsFragment extends Fragment {
                         for (int a = 0; a < datum.getImages().size(); a++) {
 
                             array.add("https://app.m8s.world/public/upload/items/" + datum.getImages().get(a).getImage());
+                            if (a==0)
+                            {
+                                imageForStripe = "https://app.m8s.world/public/upload/items/" + datum.getImages().get(a).getImage();
+                            }
 
                             setImage(array);
                         }
@@ -745,12 +754,17 @@ public class DetailsFragment extends Fragment {
     private void createLink(String referCode) {
         DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLink(Uri.parse("" + referCode))
-                .setDomainUriPrefix("amrm8.page.link")
-
+                .setDomainUriPrefix("m8sworld.page.link")
+//                .setSocialMetaTagParameters(new DynamicLink.SocialMetaTagParameters.Builder()
+//                .setTitle("M8")
+//                .setImageUrl(Uri.parse("" + referCode))
+//                .setDescription("This is a test")
+//                .build())
                 // Open links with this app on Android  amitpandey12.page.link
-                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder().build())
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.m8.m8").build())
                 // Open links with com.example.ios on iOS
-                .setIosParameters(new DynamicLink.IosParameters.Builder("amrm8.page.link").build())
+                //.setIosParameters(new DynamicLink.IosParameters.Builder("amrm8.page.link").build())
+                .setIosParameters(new DynamicLink.IosParameters.Builder("com.Bainzy.M8").setFallbackUrl(Uri.parse("https://apps.apple.com/in/app/M8/id1479388084")).setAppStoreId("id1479388084").build())
                 .buildDynamicLink();
 
         Uri dynamicLinkUri = dynamicLink.getUri();
@@ -773,10 +787,9 @@ public class DetailsFragment extends Fragment {
 
                             String firstPart = "Dear M8,\n" +
                                     "\n" + UserName +
-                                    " has sent you a M8 link containing an item that you may want to buy to receive an amazing discount.";
+                                    " has sent you a M8's (mates) link containing an item that you may want to buy to receive an amazing discount of "+commission;
 
-                            String secondPart = "\n\nIf you do not want to buy the item you can share it to someone you may think will buy it, if you buy it you will receive a discount of "+commission
-                                    +" if you share the link to some one who buys it they will receive a great discount and you will receive a commission  equal to the amount of the buyers discount.\n" +
+                            String secondPart = "\n\nHowever, if you do not buy it, you can earn an amount equal to that of the buyers discount simply by clicking the link and sharing it with your M8s.\n" +
                                     "\n" +
                                     "M8s making money with M8s is the future of buying and selling on the internet, download the M8 app and start saving or earning now.\n" +
                                     "\n" +
@@ -787,6 +800,7 @@ public class DetailsFragment extends Fragment {
                             share.setType("text/plain");
                             //share.putExtra(Intent.EXTRA_TEXT, firstPart +"\n\n"+ shortLink + secondPart +"");
                             share.putExtra(Intent.EXTRA_TEXT, firstPart +"\n\n"+ shortLink + secondPart +"");
+                            share.putExtra(Intent.EXTRA_SUBJECT, "One of your mates from M8 has sent you one of their money making offers");
                             share.putExtra("shared", "shared");
                             startActivity(Intent.createChooser(share, "Share M8 Items with others"));
                             getShareNumber();

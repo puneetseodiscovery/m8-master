@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.m8.m8.Adapter.PotentialAdapter;
@@ -40,6 +41,7 @@ public class OfferFragment extends Fragment {
     ArrayList<GetPotentailApi.Datum> arrayList = new ArrayList<>();
     SharedToken sharedToken;
     String userId, categoryId;
+    RelativeLayout noRecord;
 
     public OfferFragment() {
         // Required empty public constructor
@@ -57,6 +59,7 @@ public class OfferFragment extends Fragment {
 
         manager = getActivity().getSupportFragmentManager();
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        noRecord = view.findViewById(R.id.noRecord);
 
 
         //get all offer property
@@ -89,11 +92,20 @@ public class OfferFragment extends Fragment {
                 if (response.isSuccessful()) {
                     clear();
                     if (response.body().getStatus().equals(200)) {
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            arrayList.add(response.body().getData().get(i));
+                        if (response.body().getData().size()>0)
+                        {
+                            noRecord.setVisibility(View.GONE);
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                arrayList.add(response.body().getData().get(i));
 
-                            setIntoRecycler();
+                                setIntoRecycler();
+                            }
                         }
+                        else
+                        {
+                            noRecord.setVisibility(View.VISIBLE);
+                        }
+
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }

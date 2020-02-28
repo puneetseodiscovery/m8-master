@@ -73,18 +73,24 @@ public class MyShareAdapter extends RecyclerView.Adapter<MyShareAdapter.ViewHold
         viewHolder.avLoadingIndicatorView.setVisibility(View.VISIBLE);
 
 
-        Glide.with(context).load("https://app.m8s.world/public/upload/items/" + datum.getImages().get(0).getImage()).listener(new RequestListener<Drawable>() {
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                return false;
-            }
+        if (datum.getImages().size()>0) {
+            Glide.with(context).load("https://app.m8s.world/public/upload/items/" + datum.getImages().get(0).getImage()).listener(new RequestListener<Drawable>() {
+                @Override
+                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                    return false;
+                }
 
-            @Override
-            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
-                return false;
-            }
-        }).into(viewHolder.imageView);
+                @Override
+                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                    viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
+                    return false;
+                }
+            }).into(viewHolder.imageView);
+        }
+        else
+        {
+            viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
+        }
 //        Glide.with(context).load("https://app.m8s.world/public/upload/items/" + datum.getImages().get(0).getImage()).dontAnimate().dontTransform().into(viewHolder.imageView);
 
         if (datum.getItemTreeStatus()!=null) {
@@ -122,5 +128,15 @@ public class MyShareAdapter extends RecyclerView.Adapter<MyShareAdapter.ViewHold
             itemStatus = itemView.findViewById(R.id.itemStatus);
 
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -13,6 +14,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.R;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -26,6 +32,8 @@ public class WatchVideoActivity extends AppCompatActivity {
     VideoView videoView1;
     private ProgressDialog progDailog;
     ProgressBar progressBar;
+
+    public com.google.android.gms.ads.AdView mAdView;
 
 
     @Override
@@ -48,6 +56,8 @@ public class WatchVideoActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        addAds();
 
 
         final String videoUrl = getIntent().getStringExtra("videoUrl");
@@ -112,4 +122,34 @@ public class WatchVideoActivity extends AppCompatActivity {
 //                + "</iframe>\n";
 //        return html;
    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(this, "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
+    }
 }

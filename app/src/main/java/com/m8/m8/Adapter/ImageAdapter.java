@@ -63,7 +63,7 @@ public class ImageAdapter extends PagerAdapter {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (DetailsFragment.abc == false) {
+                if (!DetailsFragment.abc) {
                     DetailsFragment.viewPager.setVisibility(View.VISIBLE);
                     DetailsFragment.scrollView.setVisibility(View.GONE);
                     DetailsFragment.abc = true;
@@ -104,4 +104,6 @@ public class ImageAdapter extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         ((ViewPager) container).removeView((RelativeLayout) object);
     }
+
+
 }

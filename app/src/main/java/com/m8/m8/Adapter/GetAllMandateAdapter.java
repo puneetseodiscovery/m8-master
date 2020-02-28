@@ -70,4 +70,14 @@ public class GetAllMandateAdapter extends RecyclerView.Adapter<GetAllMandateAdap
             textView2 = itemView.findViewById(R.id.text2);
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

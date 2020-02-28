@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.Adapter.SearchResultAdapter;
 import com.m8.m8.Fragments.ViewAllFragment;
@@ -35,6 +42,7 @@ public class SearchReultFragment extends Fragment {
     FragmentManager manager;
     SharedToken sharedToken;
     String userId, categoryId;
+    public com.google.android.gms.ads.AdView mAdView;
 
     public SearchReultFragment() {
         // Required empty public constructor
@@ -88,6 +96,7 @@ public class SearchReultFragment extends Fragment {
         textView = view.findViewById(R.id.toolbarText);
         drawer = view.findViewById(R.id.tooolbarImage);
         recyclerView = view.findViewById(R.id.recyclerView);
+        addAds();
     }
 
     private void setData() {
@@ -103,6 +112,36 @@ public class SearchReultFragment extends Fragment {
     public void onAttach(Context context1) {
         super.onAttach(context1);
         context = context1;
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 
 }

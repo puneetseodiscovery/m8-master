@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.m8.m8.Activities.LoginActivity;
+import com.m8.m8.Activities.SignupActivity;
 import com.m8.m8.Activities.StartActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,27 +37,6 @@ public class SplashScreen extends AppCompatActivity {
             Toast.makeText(this, "" + getResources().getString(R.string.noInternet), Toast.LENGTH_SHORT).show();
         }
 
-        SharedToken sharedToken = new SharedToken(SplashScreen.this);
-        final String token = sharedToken.getUserId();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                if (token.equals("")) {
-                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Intent intent = new Intent(SplashScreen.this, StartActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-
-            }
-        }, 2000);
-
-
         FirebaseDynamicLinks.getInstance()
                 .getDynamicLink(getIntent())
                 .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
@@ -67,9 +47,11 @@ public class SplashScreen extends AppCompatActivity {
                         if (pendingDynamicLinkData != null) {
                             deepLink = pendingDynamicLinkData.getLink();
 
-                            code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                            //code = deepLink.toString().substring(deepLink.toString().lastIndexOf('/') + 1);
+                            code = deepLink.toString();
 
-                            Log.d("deeplink", "" + code);
+                            Log.d("deeplink", "" + deepLink);
+                            return;
                         }
                         // ...
                     }
@@ -81,11 +63,35 @@ public class SplashScreen extends AppCompatActivity {
                     }
                 });
 
+        final SharedToken sharedToken = new SharedToken(SplashScreen.this);
+        final String token = sharedToken.getUserId();
+        if (sharedToken.getFirstTime()==null || sharedToken.getFirstTime().equals("")) {
+            sharedToken.setFirstTime("Yes");
+        }
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (sharedToken.getFirstTime().equals("Yes"))
+                {
+                    sharedToken.setFirstTime("No");
+                    Intent intent = new Intent(SplashScreen.this, SignupActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    if (token.equals("")) {
+                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(SplashScreen.this, StartActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+            }
+        }, 2000);
     }
-
-
-
-
-
 }

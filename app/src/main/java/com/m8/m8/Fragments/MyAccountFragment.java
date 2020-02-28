@@ -48,7 +48,7 @@ import retrofit2.Response;
 public class MyAccountFragment extends Fragment {
 
     Toolbar toolbar;
-    TextView textView;
+    TextView textView,countryText;
     ImageView drawer;
     View view;
     Context context;
@@ -189,6 +189,7 @@ public class MyAccountFragment extends Fragment {
         toolbar = (Toolbar) view.findViewById(R.id.tooolbar);
         drawer = (ImageView) view.findViewById(R.id.tooolbarImage);
         textView = (TextView) view.findViewById(R.id.toolbarText);
+        countryText = (TextView) view.findViewById(R.id.countryText);
         radioGroup = (RadioGroup) view.findViewById(R.id.radio_group);
         edtName = (EditText) view.findViewById(R.id.business_name);
         edtContactName = (EditText) view.findViewById(R.id.business_contactName);
@@ -207,6 +208,13 @@ public class MyAccountFragment extends Fragment {
         edtBusinessEmail = (EditText) view.findViewById(R.id.editEmail);
         edtBusinessPhone = (EditText) view.findViewById(R.id.editPhone);
         edtBusinessAddress = (EditText) view.findViewById(R.id.editAddress);
+
+        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countryText.setText(ccp.getSelectedCountryName());
+            }
+        });
 
         manager = getActivity().getSupportFragmentManager();
         setData();
@@ -289,7 +297,7 @@ public class MyAccountFragment extends Fragment {
 
     private void getShareDataNew() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
-        Call<ProfileDataApi> call = apiInterface.getShareProfileApi(HomeActivity.userId, bType, bName, bContact, bEmail, bPhone, bAddress1,
+        Call<ProfileDataApi> call = apiInterface.getShareProfileApi(HomeActivity.userId, bType, bName +" "+bContact, bContact, bEmail, bPhone, bAddress1,
                 bAddress2, bCity, bPostcode, bCountry, Lname, Lemail, Lphone, Laddress1, Laddress2, Lcity, Lpostcode, Lcountry, name, mobile, address, email);
         final ProgressDialog dialog = ProgressBarClass.showProgressDialog(context, "Please wait...");
         dialog.show();
@@ -355,9 +363,12 @@ public class MyAccountFragment extends Fragment {
         else {
             String[] spt = ViewProfileFragment.data.getName().split(" ");
             edtName.setText(spt[0]);
+            if (spt.length>1)
             edtContactName.setText(spt[1]);
             edtEmail.setText(ViewProfileFragment.data.getEmail());
             edtPhone.setText(ViewProfileFragment.data.getContactNo());
+
+
             if (ViewProfileFragment.data.getProfile() != null) {
                 if (ViewProfileFragment.data.getProfile().getAddress() != null)
                     edtAddress1.setText(ViewProfileFragment.data.getProfile().getAddress().toString());
@@ -365,6 +376,10 @@ public class MyAccountFragment extends Fragment {
                     edtCity.setText(ViewProfileFragment.data.getProfile().getTown().toString());
                 if (ViewProfileFragment.data.getProfile().getPostalCode() != null)
                     edtPostcode.setText(ViewProfileFragment.data.getProfile().getPostalCode().toString());
+                if (ViewProfileFragment.data.getProfile().getAddress2() != null)
+                    edtAdress2.setText(ViewProfileFragment.data.getProfile().getAddress2().toString());
+                if (ViewProfileFragment.data.getProfile().getCountry()!=null)
+                    countryText.setText(ViewProfileFragment.data.getProfile().getCountry());
             }
             if (ViewProfileFragment.data.getProfile().getBName() != null) {
                 if (ViewProfileFragment.data.getProfile().getBName() != null)
@@ -375,13 +390,9 @@ public class MyAccountFragment extends Fragment {
                     edtBusinessPhone.setText(ViewProfileFragment.data.getProfile().getBPhone().toString());
                 if (ViewProfileFragment.data.getProfile().getBAddress() != null)
                     edtBusinessAddress.setText(ViewProfileFragment.data.getProfile().getBAddress().toString());
-                if (ViewProfileFragment.data.getProfile().getAddress2() != null)
-                    edtAdress2.setText(ViewProfileFragment.data.getProfile().getAddress2().toString());
+
             }
         }
-
-
-
     }
 
     @Override

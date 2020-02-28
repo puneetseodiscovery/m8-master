@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
@@ -40,6 +41,7 @@ public class SeleFragment extends Fragment {
     FragmentManager manager;
     SharedToken sharedToken;
     String userId, categoryId;
+    RelativeLayout noRecord;
 
     public SeleFragment() {
         // Required empty public constructor
@@ -57,6 +59,7 @@ public class SeleFragment extends Fragment {
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        noRecord = view.findViewById(R.id.noRecord);
 
         manager = getActivity().getSupportFragmentManager();
 
@@ -92,11 +95,20 @@ public class SeleFragment extends Fragment {
                 if (response.isSuccessful()) {
                     clear();
                     if (response.body().getStatus().equals(200)) {
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            arrayList.add(response.body().getData().get(i));
+                        if (response.body().getData().size()>0)
+                        {
+                            noRecord.setVisibility(View.GONE);
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                arrayList.add(response.body().getData().get(i));
 
-                            setIntoRecycler();
+                                setIntoRecycler();
+                            }
                         }
+                        else
+                        {
+                            noRecord.setVisibility(View.VISIBLE);
+                        }
+
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }

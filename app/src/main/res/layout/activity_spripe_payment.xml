@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingBottom="20dp"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <include
+        android:id="@+id/tooolbar"
+        layout="@layout/toolbar" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_gravity="start">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_toRightOf="@id/imglogo"
+            android:text="Payment for Platinum Level"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/productImage"
+            android:layout_height="200dp">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/priceText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_toRightOf="@id/imglogo"
+            android:text="99.9 USD"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_marginTop="@dimen/topmargin"
+            android:background="@color/gray"
+            android:layout_marginBottom="20dp"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Email"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/card_widget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkboxSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remember me"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/tvNameOnCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_marginTop="@dimen/topmargin"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Name on card"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:inputType="textCapSentences"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/topmargin"
+            android:layout_height="@dimen/edtSize">
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/business_country"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:background="@color/gray"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false">
+
+            </com.hbb20.CountryCodePicker>
+            <TextView
+                android:id="@+id/tvCountrySelect"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:clickable="false"
+                android:drawableRight="@drawable/ic_arrow_down"
+                android:background="@color/gray"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text"
+                android:text="Select country">
+            </TextView>
+
+        </RelativeLayout>
+
+
+        <EditText
+            android:id="@+id/tvZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtSize"
+            android:layout_marginTop="@dimen/topmargin"
+            android:layout_marginBottom="20dp"
+            android:background="@color/gray"
+            android:drawableLeft="@drawable/setdrawabletoleft"
+            android:drawablePadding="@dimen/drawablepadding"
+            android:gravity="center_vertical"
+            android:hint="Zip"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColor="@color/headingcolor"
+            android:textSize="@dimen/text" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/paybutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/toolbarColorblue"
+        android:textColor="@color/white"
+        android:text="Pay $99.9">
+    </Button>
+</LinearLayout>
+</ScrollView>
+

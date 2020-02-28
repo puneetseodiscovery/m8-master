@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ import android.widget.Toast;
 
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.ApiInterface;
-import com.m8.m8.Fragments.HomeFragment;
+import com.m8.m8.Fragments.DetailsFragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.ViewProfileFragment;
 import com.m8.m8.RetrofitModel.GetMetaData;
 import com.m8.m8.util.ProgressBarClass;
@@ -150,24 +149,24 @@ public class Business2Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-
-                    //your code
-                    //getActivity().finishAffinity();
-                    Intent intent = new Intent(context,HomeActivity.class);
-                    startActivity(intent);
-
-                    return true;
-                }
-                return false;
-            }
-        });
+//        getView().setFocusableInTouchMode(true);
+//        getView().requestFocus();
+//        getView().setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//
+//                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+//
+//                    //your code
+//                    //getActivity().finishAffinity();
+//                    Intent intent = new Intent(context,HomeActivity.class);
+//                    startActivity(intent);
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     private void init() {
@@ -240,11 +239,26 @@ public class Business2Fragment extends Fragment {
                     editor.clear();
                     editor.commit();
 
-                    FragmentManager manager = getActivity().getSupportFragmentManager();
-                    FragmentTransaction transaction = manager.beginTransaction();
-                    //transaction.replace(R.id.framelayout, new ViewProfileFragment());
-                    transaction.replace(R.id.framelayout, new HomeFragment());
-                    transaction.commit();
+                    if (HomeActivity.abcd.length()>0)
+                    {
+                        DetailsFragment detailsFragment = new DetailsFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("ItemId", HomeActivity.abcd);
+                        detailsFragment.setArguments(bundle);
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.replace(R.id.framelayout, detailsFragment);
+                        transaction.commit();
+                        HomeActivity.abcd = "";
+                    }
+                    else {
+
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.replace(R.id.framelayout, new ViewProfileFragment());
+                        //transaction.replace(R.id.framelayout, new HomeFragment());
+                        transaction.commit();
+                    }
                 } else {
                     Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                 }

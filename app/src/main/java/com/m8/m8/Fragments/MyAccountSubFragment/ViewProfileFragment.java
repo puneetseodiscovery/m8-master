@@ -2,7 +2,6 @@ package com.m8.m8.Fragments.MyAccountSubFragment;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,14 +11,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,39 +24,54 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
+import com.m8.m8.Activities.LoginActivity;
+import com.m8.m8.Activities.MyM8sEarningActivity;
 import com.m8.m8.ApiInterface;
+import com.m8.m8.Fragments.DrawerNavigation.MyPropertyFragment;
+import com.m8.m8.Fragments.MyAccountFragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment.Business2Fragment2;
 import com.m8.m8.Fragments.MyPotentialFragment;
+import com.m8.m8.Fragments.MyShareSubFragment.SharePackageFragment;
 import com.m8.m8.Fragments.ViewingCommissionFragment;
 import com.m8.m8.Models.PayOutstandingModel;
-import com.m8.m8.util.CheckInternet;
-import com.m8.m8.Fragments.DrawerNavigation.MyPropertyFragment;
-import com.m8.m8.Fragments.MyAccountFragment;
-import com.m8.m8.util.MultiPart;
-import com.m8.m8.util.ProgressBarClass;
+import com.m8.m8.Models.TokenResponseModel;
 import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.AccountDetailsApi;
 import com.m8.m8.RetrofitModel.GetMetaData;
 import com.m8.m8.RetrofitModel.ProfileImageApi;
 import com.m8.m8.ServiceGenerator;
-import com.makeramen.roundedimageview.RoundedImageView;
+import com.m8.m8.util.CheckInternet;
+import com.m8.m8.util.MultiPart;
+import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.util.SharedRate;
 import com.m8.m8.util.SharedToken;
-
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.IOException;
 
 import okhttp3.MultipartBody;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +82,7 @@ public class ViewProfileFragment extends Fragment {
     public static int REQUEST_CAMERA = 122;
     public static int MY_PERMISSIONS_REQUEST_CAMERA = 555;
     Context context;
-
+    public static int fromProfileToSale = 0;
 
     Toolbar toolbar;
     ImageView imageLogo, drawer;
@@ -86,9 +95,10 @@ public class ViewProfileFragment extends Fragment {
     Bitmap bitmap;
     TextView txtAccount, txtAccountStatus, txtProperty, txtComission, txtView, txtSale, txtMandate, txtEarning, txtRefer;
 
-    LinearLayout linearMyContract, linearItemslist, linearCommission, linearSales, linearBank,linearViewing;
+    LinearLayout linearMyContract, linearItemslist, linearCommission, linearSales, linearBank,linearViewing,myEarningTillDate,paidOut;
     FragmentManager manager;
     public static GetMetaData.Data data;
+
     SharedRate sharedRate;
     SharedToken sharedToken;
     String userId, categoryId;
@@ -97,6 +107,9 @@ public class ViewProfileFragment extends Fragment {
     LinearLayout linearbusiness;
 
     Button payOutstanding;
+    String balanceMoney;
+
+    public com.google.android.gms.ads.AdView mAdView;
     public ViewProfileFragment() {
         // Required empty public constructor
     }
@@ -110,6 +123,13 @@ public class ViewProfileFragment extends Fragment {
         sharedToken = new SharedToken(context);
         userId = sharedToken.getUserId();
         categoryId = sharedToken.getCatId();
+
+        SharedToken sharedToken = new SharedToken(context);
+        final String token = sharedToken.getTokenId();
+        if (token.length()>0)
+        {
+            getTokenData(token);
+        }
 
         init();
 
@@ -189,6 +209,8 @@ public class ViewProfileFragment extends Fragment {
         linearSales = (LinearLayout) view.findViewById(R.id.linearSales);
         linearBank = (LinearLayout) view.findViewById(R.id.linearBank);
         linearViewing = (LinearLayout) view.findViewById(R.id.linearViewing);
+        myEarningTillDate = (LinearLayout) view.findViewById(R.id.myEarningTillDate);
+        paidOut = (LinearLayout) view.findViewById(R.id.paidOut);
 
         txtBAdress = (TextView) view.findViewById(R.id.txtBusinessAddress);
         txtBName = (TextView) view.findViewById(R.id.txtBusinessName);
@@ -226,9 +248,18 @@ public class ViewProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                sendPayOutstandings();
+
+                if (balanceMoney.equals("CHF  0.00"))
+                {
+                    Toast.makeText(context, "No amount to pay.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    sendPayOutstandings();
+                }
             }
         });
+
+        addAds();
     }
 
     //    chose image from camera and gallery
@@ -396,28 +427,21 @@ public class ViewProfileFragment extends Fragment {
         });
     }
 
-
-
-
     //get all inforamtion
     private void GetAllData() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
         Call<AccountDetailsApi> call = apiInterface.getAccount(userId);
-
         call.enqueue(new Callback<AccountDetailsApi>() {
             @Override
             public void onResponse(Call<AccountDetailsApi> call, Response<AccountDetailsApi> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals(200)) {
                         txtAccountStatus.setText(response.body().getData().getAccountStatus() + " Agent package");
-
                         txtProperty.setText(response.body().getData().getPropertyListed().toString());
                         txtComission.setText(response.body().getData().getCommisionTreeInPlay().toString());
                         txtView.setText(response.body().getData().getViewingThrough().toString());
                         txtSale.setText(response.body().getData().getSalesThrough().toString());
                         txtMandate.setText(response.body().getData().getMyMandates().toString());
-
-
 //                        double earningPrice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getEarningsToDate().toString());
 //                        double accountPrice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getPaidOut().toString());
 //                        double referPrice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getReferEarn().toString());
@@ -425,11 +449,11 @@ public class ViewProfileFragment extends Fragment {
 //                        txtEarning.setText(sharedRate.getCurrencyCode() + " " + String.format("%.2f", earningPrice));
 //                        txtAccount.setText(sharedRate.getCurrencyCode() + " " + String.format("%.2f", accountPrice));
 //                        txtRefer.setText(sharedRate.getCurrencyCode() + " " + String.format("%.2f", referPrice));
-
                         txtEarning.setText(response.body().getData().getCurrency() + " " + response.body().getData().getEarningsToDate().toString());
                         txtAccount.setText(response.body().getData().getCurrency() + " " + response.body().getData().getPaidOut().toString());
                         txtRefer.setText(response.body().getData().getCurrency() + " " + response.body().getData().getReferEarn().toString());
-
+                        payOutstanding.setText("Pay outstanding balance: "+response.body().getData().getCurrency() + " " + response.body().getData().getPayOutstandingBalance());
+                        balanceMoney = response.body().getData().getCurrency() + " " + response.body().getData().getPayOutstandingBalance();
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -468,14 +492,12 @@ public class ViewProfileFragment extends Fragment {
             }
         });
 
-
-
-
         // go to the commission tree
         linearCommission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HomeActivity.bottomNavigationView.setSelectedItemId(R.id.navigationCommission);
+                fromProfileToSale = 2;
             }
         });
 
@@ -484,6 +506,7 @@ public class ViewProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 HomeActivity.bottomNavigationView.setSelectedItemId(R.id.navigationCommission);
+                fromProfileToSale = 2;
             }
         });
 
@@ -512,9 +535,9 @@ public class ViewProfileFragment extends Fragment {
         linearSales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.framelayout, new MyPotentialFragment());
+                fromProfileToSale = 1;
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -523,9 +546,9 @@ public class ViewProfileFragment extends Fragment {
         txtSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.framelayout, new MyPotentialFragment());
+                fromProfileToSale = 1;
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -553,6 +576,42 @@ public class ViewProfileFragment extends Fragment {
             }
         });
 
+        txtAccountStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.framelayout, new SharePackageFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        myEarningTillDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.replace(R.id.framelayout, new MyPotentialFragment());
+//                fromProfileToSale = 1;
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+                Intent intent = new Intent(context, MyM8sEarningActivity.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+            }
+        });
+
+        paidOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.framelayout, new MyPotentialFragment());
+                fromProfileToSale = 1;
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
     }
 
 
@@ -574,11 +633,21 @@ public class ViewProfileFragment extends Fragment {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    if (Build.VERSION.SDK_INT >= 26) {
-                        ft.setReorderingAllowed(false);
+                    if (response.body().getMessage().equals("Please add your PayPal address or enter your bank details."))
+                    {
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.replace(R.id.framelayout, new EditBankFragment());
+                        transaction.addToBackStack(null);
+                        transaction.commit();
                     }
-                    ft.detach(ViewProfileFragment.this).attach(ViewProfileFragment.this).commit();
+                    else {
+                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        if (Build.VERSION.SDK_INT >= 26) {
+                            ft.setReorderingAllowed(false);
+                        }
+                        ft.detach(ViewProfileFragment.this).attach(ViewProfileFragment.this).commit();
+                    }
 
                 } else {
                     Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
@@ -590,6 +659,68 @@ public class ViewProfileFragment extends Fragment {
                 progressDialog.dismiss();
                 Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
 
+            }
+        });
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
+    }
+
+    private void getTokenData(String token) {
+        ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
+        Call<TokenResponseModel> call = apiInterface.getTokenDetails("Bearer "+token,"application/json");
+        call.enqueue(new Callback<TokenResponseModel>() {
+            @Override
+            public void onResponse(Call<TokenResponseModel> call, Response<TokenResponseModel> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equals(402)) {
+
+                        SharedToken sharedToken = new SharedToken(context);
+                        sharedToken.clearShaerd();
+                        PreferenceManager.getDefaultSharedPreferences(context).
+                                edit().clear().apply();
+                        Intent intent = new Intent(context, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    } else {
+                        //Toast.makeText(StartActivity.this, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TokenResponseModel> call, Throwable t) {
+                Toast.makeText(context, "" + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

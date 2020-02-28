@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:826816050457:android:7ebb5bc53eff8d9f",
+        "mobilesdk_app_id": "1:826816050457:android:519c08402d9fbf36d6c188",
         "android_client_info": {
           "package_name": "com.m8.m8"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "826816050457-sltq71ip4uvtrielnmhdqrn3lfjcasl8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.m8.m8",
+            "certificate_hash": "1a7e8201bc06d6281ef6a1d0589d23dab9b600ca"
+          }
+        },
         {
           "client_id": "826816050457-jnpsihbmfanhqrtf4edv3dea1bt0030a.apps.googleusercontent.com",
           "client_type": 3
@@ -32,11 +40,56 @@
               "client_type": 3
             },
             {
-              "client_id": "826816050457-s48s8hramua8776ab4qeml46o9527a96.apps.googleusercontent.com",
+              "client_id": "826816050457-04kfc1f0ve7bjvgduogtuv41v5cq73fk.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.amr.m8",
-                "app_store_id": "1476045906"
+                "bundle_id": "com.Bainzy.M8",
+                "app_store_id": "1479388084"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826816050457:android:7ebb5bc53eff8d9f",
+        "android_client_info": {
+          "package_name": "com.mandy.m8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826816050457-98ii07va6lkavpk5neagipmv00ahje0c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mandy.m8",
+            "certificate_hash": "9f16c234ec4e618ab9261a34ecab159ed3c8e20a"
+          }
+        },
+        {
+          "client_id": "826816050457-jnpsihbmfanhqrtf4edv3dea1bt0030a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7IWORyhMm3FIeYp3FslDt_2e0UILU_GM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826816050457-jnpsihbmfanhqrtf4edv3dea1bt0030a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "826816050457-04kfc1f0ve7bjvgduogtuv41v5cq73fk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Bainzy.M8",
+                "app_store_id": "1479388084"
               }
             }
           ]

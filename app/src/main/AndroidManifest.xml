@@ -21,86 +21,106 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 
     <application
-        android:allowBackup="true"
+        android:name=".DemoApplication"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name="com.m8.m8.Activities.itservices.ITServices"></activity>
-        <activity android:name="com.m8.m8.SpripePayment" />
-        <activity android:name="com.m8.m8.Activities.WatchVideoActivity" />
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity android:name=".Activities.PaypalAddAtStart"></activity>
+        <activity android:name=".Activities.OpenStripeAccount" />
+        <activity android:name=".Activities.StripeConnectActivity" />
+        <activity android:name=".Activities.WatchHowToUseAtStart" />
+        <activity android:name=".Activities.MyM8sEarningDetailActivity" />
+        <activity android:name=".Activities.MyM8sEarningActivity" />
+        <activity android:name=".Activities.LegalRepActivityFirstTime" />
+        <activity android:name=".Activities.ProfilePageAfterSignUp" />
+        <activity android:name=".Activities.BuyPackageAfterRefer" />
+        <activity android:name=".StripePayment" />
+        <activity android:name=".Activities.itservices.ITServices" />
+        <activity android:name=".SpripePayment" />
+        <activity android:name=".Activities.WatchVideoActivity" />
         <activity
-            android:name="com.m8.m8.Activities.NoInternetActivity"
+            android:name=".Activities.NoInternetActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- //ca-app-pub-3940256099942544~3347511713 -->
         <activity
-            android:name="com.m8.m8.UploadActivity.Mandate.Mandate2Activity"
+            android:name=".UploadActivity.Mandate.Mandate2Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.UploadActivity.Mandate.MandateActivity"
+            android:name=".UploadActivity.Mandate.MandateActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.UploadActivity.Mandate.AgentActivity"
+            android:name=".UploadActivity.Mandate.AgentActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.UploadActivity.UploadImagesActivity"
+            android:name=".UploadActivity.UploadImagesActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.UploadActivity.Upload2Activity"
-            android:parentActivityName="com.m8.m8.UploadActivity.UploadActivity"
+            android:name=".UploadActivity.Upload2Activity"
+            android:parentActivityName=".UploadActivity.UploadActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.UploadActivity.UploadActivity"
+            android:name=".UploadActivity.UploadActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.Activities.Terms.TermsActivity"
+            android:name=".Activities.Terms.TermsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.m8.m8.Activities.CommingActivity"
+            android:name=".Activities.CommingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.m8.m8.Activities.ConfirmEmailActivity"
+            android:name=".Activities.ConfirmEmailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.Activities.OTPActivity"
+            android:name=".Activities.OTPActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.Activities.StartActivity"
+            android:name=".Activities.StartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
             android:configChanges="orientation|screenSize"
-            android:hardwareAccelerated="false" />
+            android:hardwareAccelerated="false" /> <!-- Image Selector Entry -->
         <activity
-            android:name="com.m8.m8.Activities.HomeActivity"
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Activities.HomeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter android:label="M8">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:host="amrm8.page.link"
-                    android:scheme="https" />
 
+                <data
+                    android:host="m8sworld.page.link"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.m8.m8.Activities.SignupActivity"
+            android:name=".Activities.SignupActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
@@ -113,11 +133,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.m8.m8.Activities.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name="com.m8.m8.SplashScreen"
+            android:name=".SplashScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing">
 
@@ -157,7 +177,20 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <receiver android:name="com.m8.m8.Activities.NoInternetActivity" />
+        <receiver android:name=".Activities.NoInternetActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
 
 </manifest>

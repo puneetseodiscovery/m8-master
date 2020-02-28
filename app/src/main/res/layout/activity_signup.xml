@@ -32,7 +32,7 @@
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin"
-                    android:src="@drawable/mlogo" />
+                    app:srcCompat="@drawable/mlogo" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -172,6 +172,21 @@
                 android:gravity="center_vertical"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
+                android:textColor="@color/headingcolor"
+                android:textSize="@dimen/text" />
+
+            <EditText
+                android:id="@+id/c_refer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtSize"
+                android:layout_marginTop="@dimen/topmargin"
+                android:visibility="gone"
+                android:background="@color/gray"
+                android:drawableLeft="@drawable/setdrawabletoleft"
+                android:drawablePadding="@dimen/drawablepadding"
+                android:gravity="center_vertical"
+                android:hint="Refer code"
+                android:inputType="textCapCharacters"
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 

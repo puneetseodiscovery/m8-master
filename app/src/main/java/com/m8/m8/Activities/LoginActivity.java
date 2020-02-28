@@ -153,6 +153,8 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                         SharedToken sharedToken = new SharedToken(LoginActivity.this);
                         sharedToken.setUserId(response.body().getData().getUserId().toString());
+                        sharedToken.setTokenId(response.body().getData().getToken());
+                        sharedToken.setEmailId(response.body().getData().getEmail());
                         Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
                         if (checkBox.isChecked()) {
                             SharedPreferences shared = getSharedPreferences("check", Context.MODE_PRIVATE);

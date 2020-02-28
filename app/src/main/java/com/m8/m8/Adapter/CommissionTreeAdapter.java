@@ -132,4 +132,14 @@ public class CommissionTreeAdapter extends RecyclerView.Adapter<CommissionTreeAd
             propertyt = itemView.findViewById(R.id.propertyt);
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

@@ -65,4 +65,14 @@ public class UploadImageAdapter extends RecyclerView.Adapter<UploadImageAdapter.
             Image = itemView.findViewById(R.id.image);
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

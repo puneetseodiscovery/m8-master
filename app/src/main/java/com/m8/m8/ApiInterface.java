@@ -2,9 +2,13 @@ package com.m8.m8;
 
 import com.m8.m8.Activities.itservices.ITServiceRequestModel;
 import com.m8.m8.Activities.itservices.ITServiceResponseModel;
+import com.m8.m8.Models.CommissionModel;
 import com.m8.m8.Models.LegalIsPresentOrNot;
+import com.m8.m8.Models.MyM8sReferralModel;
 import com.m8.m8.Models.PayOutstandingModel;
+import com.m8.m8.Models.SalesModel;
 import com.m8.m8.Models.SearchResultResponseModel;
+import com.m8.m8.Models.TokenResponseModel;
 import com.m8.m8.RetrofitModel.AccountDetailsApi;
 import com.m8.m8.RetrofitModel.AccpectedApi;
 import com.m8.m8.RetrofitModel.AddMandataApi;
@@ -58,6 +62,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -82,14 +87,16 @@ public interface ApiInterface {
             @Field("password") String password,
             @Field("contact_no") String contact,
             @Field("c_password") String name,
-            @Field("refer_code") String code
+            @Field("refer_code") String code,
+            @Field("device_token") String deviceToken
     );
 
     //get the otp for registeration
     @POST("varify_otp")
     Call<GetOtpApi> getOtp(
             @Query("otp") String otp,
-            @Query("user_id") String userId
+            @Query("user_id") String userId,
+            @Query("isrefer") boolean isrefer
     );
 
     //search property
@@ -294,7 +301,6 @@ public interface ApiInterface {
             @Query("b_phone") String b_phone,
             @Query("b_address") String b_address,
             @Query("b_email") String b_email
-
     );
 
     //add profile share data
@@ -329,12 +335,13 @@ public interface ApiInterface {
     Call<AccpectedApi> accptedUrl(
             @Query("user_id") String userId,
             @Query("share_url_id") String shareId
-
     );
 
     //get the category list
     @GET("getcategories")
-    Call<GetStartCategoryApi> startApi();
+    Call<GetStartCategoryApi> startApi(
+            @Query("user_id") String userId
+    );
 
 
     //get the all item details
@@ -469,7 +476,6 @@ public interface ApiInterface {
             @Query("your_email") String your_email,
             @Query("your_phone") String your_phone,
             @Query("share_app_url") String share_app_url
-
     );
 
     //get terms and condition and privecy
@@ -582,7 +588,6 @@ public interface ApiInterface {
             @Query("b_country") String b_country,
             @Query("b_email") String b_email,
             @Part MultipartBody.Part logo
-
     );
 
     @POST("payoutstandings")
@@ -598,6 +603,32 @@ public interface ApiInterface {
     Call<ITServiceRequestModel> sendITRequest(
             @Query("user_id") String user_id,
             @Query("category_id") String category_id
+    );
+
+
+    //get the all item details
+    @POST("checklogin")
+    Call<TokenResponseModel> getTokenDetails(
+            @Header("Authorization") String auth,
+            @Header("Accept") String accept
+    );
+
+    //get the referrals
+    @POST("UserReferEarningDetails")
+    Call<MyM8sReferralModel> getReferrals(
+            @Query("user_id") String userId
+    );
+
+    //get the commission
+    @POST("UserCommissionEarningDetails")
+    Call<CommissionModel> getCommission(
+            @Query("user_id") String userId
+    );
+
+    //get the sales
+    @POST("UserSalesEarningDetails")
+    Call<SalesModel> getSales(
+            @Query("user_id") String userId
     );
 
 }

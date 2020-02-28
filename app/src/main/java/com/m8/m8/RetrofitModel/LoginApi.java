@@ -48,11 +48,15 @@ public class LoginApi {
         @SerializedName("user_id")
         @Expose
         private Integer userId;
-
+        @SerializedName("email")
+        @Expose
+        private String email;
         @SerializedName("profile_status")
         @Expose
         private Integer profileStatus;
-
+        @SerializedName("user_profile")
+        @Expose
+        private Integer userProfile;
 
         public String getToken() {
             return token;
@@ -70,12 +74,28 @@ public class LoginApi {
             this.userId = userId;
         }
 
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
         public Integer getProfileStatus() {
             return profileStatus;
         }
 
         public void setProfileStatus(Integer profileStatus) {
             this.profileStatus = profileStatus;
+        }
+
+        public Integer getUserProfile() {
+            return userProfile;
+        }
+
+        public void setUserProfile(Integer userProfile) {
+            this.userProfile = userProfile;
         }
 
 

@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Color;
 import androidx.annotation.Nullable;
+
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.m8.m8.Activities.Terms.TermsActivity;
 import com.m8.m8.R;
 import com.m8.m8.ApiInterface;
@@ -63,7 +67,7 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText firstName, lastName, Email, Contact, Passsword, cPassword;
+    EditText firstName, lastName, Email, Contact, Passsword, cPassword,c_refer;
     LinearLayout login;
     Button SignUp;
     SharedPreferences sharedPreferences;
@@ -74,6 +78,7 @@ public class SignupActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     CheckBox imageView;
     TextView textView;
+    String device_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,13 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         callbackManager = CallbackManager.Factory.create();
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                device_token = instanceIdResult.getToken();
+                Log.e("token",device_token);
+            }
+        });
         init();
 
         sharedPreferences = getSharedPreferences("User", Context.MODE_PRIVATE);
@@ -174,6 +186,7 @@ public class SignupActivity extends AppCompatActivity {
 
     private void init() {
         firstName = (EditText) findViewById(R.id.firstname);
+        c_refer = (EditText) findViewById(R.id.c_refer);
         lastName = (EditText) findViewById(R.id.lastname);
         Email = (EditText) findViewById(R.id.email);
         Contact = (EditText) findViewById(R.id.contact);
@@ -198,9 +211,15 @@ public class SignupActivity extends AppCompatActivity {
         String password = Passsword.getText().toString();
         String contact = Contact.getText().toString();
         String c_Password = cPassword.getText().toString();
+        String c_Refer = c_refer.getText().toString();
+        if (c_Refer.length()>0)
+        {
+            SplashScreen.code = c_Refer;
+        }
 
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
-        Call<RegisterApi> call = apiInterface.register(first, last, email, password, contact, c_Password, SplashScreen.code);
+        //Call<RegisterApi> call = apiInterface.register(first, last, email, password, contact, c_Password, SplashScreen.code);
+        Call<RegisterApi> call = apiInterface.register(first, last, email, password, contact, c_Password, "",device_token);
         //Progress bar
         final ProgressDialog myDialog = ProgressBarClass.showProgressDialog(this, "Please wait...");
         myDialog.show();
@@ -214,6 +233,8 @@ public class SignupActivity extends AppCompatActivity {
                         Snackbar.make(findViewById(android.R.id.content), "" + response.body().getMessage(), Snackbar.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), OTPActivity.class);
                         intent.putExtra("UserId", response.body().getData().getUserId().toString());
+                        intent.putExtra("otpId", response.body().getData().getOtp());
+                        intent.putExtra("referId", response.body().getData().getIsrefer());
                         startActivity(intent);
                         finish();
 

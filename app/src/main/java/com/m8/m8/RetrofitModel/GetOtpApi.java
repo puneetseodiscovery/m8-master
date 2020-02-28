@@ -47,11 +47,12 @@ public class GetOtpApi {
         @SerializedName("user_id")
         @Expose
         private Integer userId;
-
+        @SerializedName("email")
+        @Expose
+        private String email;
         @SerializedName("profile_status")
         @Expose
         private Integer profileStatus;
-
 
         public String getToken() {
             return token;
@@ -69,6 +70,14 @@ public class GetOtpApi {
             this.userId = userId;
         }
 
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
         public Integer getProfileStatus() {
             return profileStatus;
         }
@@ -76,7 +85,5 @@ public class GetOtpApi {
         public void setProfileStatus(Integer profileStatus) {
             this.profileStatus = profileStatus;
         }
-
-
     }
 }

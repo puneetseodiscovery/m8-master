@@ -3,6 +3,7 @@
     <dimen name="heading">17sp</dimen>
     <dimen name="subheading">15sp</dimen>
     <dimen name="text">13sp</dimen>
+    <dimen name="texttext">11sp</dimen>
     <dimen name="margin">20dp</dimen>
     <dimen name="marginleft">15dp</dimen>
     <dimen name="drawablepadding">5dp</dimen>

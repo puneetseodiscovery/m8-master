@@ -66,12 +66,15 @@ public class CommissionDetailsFragment extends Fragment {
     String userId;
     public ArrayList<TreeListApi.Treeuser> arrayList = new ArrayList<>();
 
+
     FragmentManager manager;
     SharedToken sharedToken;
     String userid, catId;
 
     Context context;
     final String totalCommissionPrice="";
+    ArrayList<String> backForCommission;
+    ArrayList<String> backForCommissionName;
 
     public CommissionDetailsFragment() {
         // Required empty public constructor
@@ -86,6 +89,8 @@ public class CommissionDetailsFragment extends Fragment {
         sharedToken = new SharedToken(context);
         catId = sharedToken.getCatId();
         userid = sharedToken.getUserId();
+        backForCommission = new ArrayList<>();
+        backForCommissionName = new ArrayList<>();
 
         init();
 
@@ -98,7 +103,40 @@ public class CommissionDetailsFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                if (backForCommission.size()>=1)
+                {
+                    if (puneet)
+                    {
+                        getUserCommission(backForCommission.get(backForCommission.size()-2));
+                        backForCommission.remove(backForCommission.size()-1);
+                        if (backForCommission.size()!=1) {
+                            String[] arrayList = backForCommissionName.get(backForCommissionName.size()-2).split("~!~");
+                            String text = "<font color=#444862>" + arrayList[0] + "</font> <br>" + arrayList[1];
+                            //txtChf.setText("<font color=\"#444862\">" + response.body().getData().getName() + "</font>" + "\n" + comission);
+                            txtChf.setText(Html.fromHtml(text));
+                            backForCommissionName.remove(backForCommissionName.size()-1);
+                            puneet = true;
+                        }
+                        if (backForCommission.size()==1)
+                        {
+                            getUserCommission(ownerIdString);
+                            getCommsionPrice();
+                            puneet = false;
+                        }
+                    }
+                    else
+                    {
+                        getActivity().onBackPressed();
+                        backForCommissionName.clear();
+                        backForCommission.clear();
+                    }
+
+                }
+                else {
+                    getActivity().onBackPressed();
+                    backForCommissionName.clear();
+                    backForCommission.clear();
+                }
             }
         });
 
@@ -139,6 +177,8 @@ public class CommissionDetailsFragment extends Fragment {
             //getUserCommission(HomeActivity.userId);
             getUserCommission(ownerIdString);
             getCommsionPrice();
+            backForCommission.add(ownerIdString);
+            backForCommissionName.add(ownerIdString);
         } else {
             context.startActivity(new Intent(context, NoInternetActivity.class));
         }
@@ -250,6 +290,8 @@ public class CommissionDetailsFragment extends Fragment {
             @Override
             public void onItemclick(int pos,String name) {
                 userId = String.valueOf(pos);
+                backForCommission.add(userId);
+                backForCommissionName.add(name);
                 getUserCommission(userId);
                 String[] arrayList = name.split("~!~");
                 String text = "<font color=#444862>"+arrayList[0]+"</font> <br>" + arrayList[1];

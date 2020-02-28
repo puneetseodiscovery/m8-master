@@ -2,7 +2,6 @@ package com.m8.m8.Fragments.MyAccountSubFragment.BusinessFragment;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
@@ -31,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -41,10 +41,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.hbb20.CountryCodePicker;
-import com.makeramen.roundedimageview.RoundedImageView;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.ApiInterface;
-import com.m8.m8.Fragments.HomeFragment;
 import com.m8.m8.Fragments.MyAccountSubFragment.ViewProfileFragment;
 import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.BulkUploadApi;
@@ -54,6 +52,7 @@ import com.m8.m8.ServiceGenerator;
 import com.m8.m8.UploadActivity.Mandate.AgentActivity;
 import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.util.SharedToken;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -68,7 +67,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -334,8 +333,8 @@ public class Business2Fragment2 extends Fragment {
 
                     FragmentManager manager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
-                    //transaction.replace(R.id.framelayout, new ViewProfileFragment());
-                    transaction.replace(R.id.framelayout, new HomeFragment());
+                    transaction.replace(R.id.framelayout, new ViewProfileFragment());
+                    //transaction.replace(R.id.framelayout, new HomeFragment());
                     transaction.commit();
                 } else {
                     Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.Adapter.MyShareAdapter;
 import com.m8.m8.ApiInterface;
@@ -51,6 +58,7 @@ public class MyShareFragment extends Fragment {
     SharedToken sharedToken;
     String userId, categoryId;
     ArrayList<GetSharedApi.Datum> arrayList = new ArrayList<>();
+    public com.google.android.gms.ads.AdView mAdView;
 
     public MyShareFragment() {
         // Required empty public constructor
@@ -104,6 +112,7 @@ public class MyShareFragment extends Fragment {
         textView = (TextView) view.findViewById(R.id.toolbarText);
         drawer = (ImageView) view.findViewById(R.id.tooolbarImage);
         noRecord = view.findViewById(R.id.noRecord);
+        addAds();
     }
 
 
@@ -120,23 +129,25 @@ public class MyShareFragment extends Fragment {
                     arrayList.clear();
                     if (response.body().getStatus().equals(200)) {
 
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            arrayList.add(response.body().getData().get(i));
-                            if (arrayList.size()>0)
-                            {
-                                noRecord.setVisibility(View.GONE);
-                            }
-                            else
-                            {
-                                noRecord.setVisibility(View.VISIBLE);
-                            }
-                            //set data into recyclerView
-                            adapter = new MyShareAdapter(context, manager, arrayList);
-                            LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                            recyclerView.setLayoutManager(manager);
-                            recyclerView.setAdapter(adapter);
+                        if (response.body().getData().size()>0)
+                        {
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                arrayList.add(response.body().getData().get(i));
 
+                                    noRecord.setVisibility(View.GONE);
+                                    //set data into recyclerView
+                                    adapter = new MyShareAdapter(context, manager, arrayList);
+                                    LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                                    recyclerView.setLayoutManager(manager);
+                                    recyclerView.setAdapter(adapter);
+
+                            }
                         }
+                        else
+                        {
+                            noRecord.setVisibility(View.VISIBLE);
+                        }
+
 
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
@@ -159,6 +170,36 @@ public class MyShareFragment extends Fragment {
     public void onAttach(Context context1) {
         super.onAttach(context1);
         context = context1;
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 
 }

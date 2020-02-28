@@ -13,14 +13,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.Activities.NoInternetActivity;
 import com.m8.m8.Adapter.CommissionTreeAdapter;
@@ -57,6 +65,8 @@ public class CommissionFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     SharedToken sharedToken;
     String catId, userid;
+    RelativeLayout noRecord;
+    public com.google.android.gms.ads.AdView mAdView;
 
 
     public CommissionFragment() {
@@ -127,8 +137,10 @@ public class CommissionFragment extends Fragment {
         toolbarLo = (ImageView) view.findViewById(R.id.toolbarLogo);
         textView = (TextView) view.findViewById(R.id.toolbarText);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swip);
+        noRecord = view.findViewById(R.id.noRecord);
 
         HomeActivity.cunter = 0;
+        addAds();
 
     }
 
@@ -146,12 +158,22 @@ public class CommissionFragment extends Fragment {
                     clear();
                     if (response.body().getStatus().equals(200)) {
 
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            arraylist.add(response.body().getData().get(i));
+                        if (response.body().getData().size()>0)
+                        {
+                            noRecord.setVisibility(View.GONE);
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                arraylist.add(response.body().getData().get(i));
 
-                            setDataIntoRecycler();
+                                setDataIntoRecycler();
 
+                            }
                         }
+                        else
+                        {
+                            noRecord.setVisibility(View.VISIBLE);
+                        }
+
+
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -186,5 +208,35 @@ public class CommissionFragment extends Fragment {
     public void onAttach(Context context1) {
         super.onAttach(context1);
         context = context1;
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 }

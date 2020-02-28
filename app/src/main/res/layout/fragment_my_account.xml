@@ -236,19 +236,35 @@
                 android:textColor="@color/headingcolor"
                 android:textSize="@dimen/text" />
 
-
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/business_country"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edtSize"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_marginTop="@dimen/topmargin"
-                android:background="@color/gray"
-                app:ccp_autoDetectCountry="true"
-                app:ccp_showFullName="true"
-                app:ccp_showNameCode="false"
-                app:ccp_showPhoneCode="false">
+                android:layout_height="@dimen/edtSize">
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/business_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtSize"
+                    android:layout_marginTop="@dimen/topmargin"
+                    android:background="@color/gray"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_showFullName="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false">
 
-            </com.hbb20.CountryCodePicker>
+                </com.hbb20.CountryCodePicker>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/countryText"
+                    android:gravity="center"
+                    android:clickable="false"
+                    android:background="@color/gray"
+                    android:textColor="@color/headingcolor"
+                    android:textSize="@dimen/text"
+                    android:text="Select country">
+                </TextView>
+
+            </RelativeLayout>
 
 
             <Button

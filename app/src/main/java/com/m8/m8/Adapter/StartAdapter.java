@@ -122,4 +122,14 @@ public class StartAdapter extends RecyclerView.Adapter<StartAdapter.ViewHolder> 
 
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

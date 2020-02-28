@@ -7,7 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.text.TextUtils;
+
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,6 +18,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
 import com.m8.m8.ApiInterface;
 import com.m8.m8.util.CheckInternet;
@@ -46,6 +51,8 @@ public class EditBankFragment extends Fragment {
     String bankName, address1, address2, city, country, postcode, accountName, accountNumber, iban, swift, paypal;
 
     CountryCodePicker ccp;
+
+    public com.google.android.gms.ads.AdView mAdView;
 
     public EditBankFragment() {
         // Required empty public constructor
@@ -94,25 +101,36 @@ public class EditBankFragment extends Fragment {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(edtBankName.getText().toString()) && edtBankName.getText().length() > 20) {
-                    edtBankName.setError("Invalid Bank name");
-                } else if (TextUtils.isEmpty(edtAddress1.getText().toString())) {
-                    edtAddress1.setError("Invalid Address");
-                } else if (TextUtils.isEmpty(edtCity.getText().toString())) {
-                    edtCity.setError("Invalid City");
-                } else if (TextUtils.isEmpty(edtPostcode.getText().toString())) {
-                    edtPostcode.setError("Invalid Postcode");
-                } else if (TextUtils.isEmpty(edtAccountName.getText().toString())) {
-                    edtAccountName.setError("Invalid Account Name");
-                } else if (TextUtils.isEmpty(edtAccountNumber.getText().toString())) {
-                    edtAccountNumber.setError("Invalid Accout Number");
-                } else if (TextUtils.isEmpty(edtIBAN.getText().toString())) {
-                    edtIBAN.setError("Invalid IBAN");
-                } else if (TextUtils.isEmpty(edtSwift.getText().toString())) {
-                    edtSwift.setError("Invalid Swift code");
-                } else if (TextUtils.isEmpty(edtPaypal.getText().toString())) {
-                    edtPaypal.setError("Invalid PayPal email");
-                } else {
+//                if (TextUtils.isEmpty(edtBankName.getText().toString()) && edtBankName.getText().length() > 20) {
+//                    edtBankName.setError("Invalid Bank name");
+//                } else if (TextUtils.isEmpty(edtAddress1.getText().toString())) {
+//                    edtAddress1.setError("Invalid Address");
+//                } else if (TextUtils.isEmpty(edtCity.getText().toString())) {
+//                    edtCity.setError("Invalid City");
+//                } else if (TextUtils.isEmpty(edtPostcode.getText().toString())) {
+//                    edtPostcode.setError("Invalid Postcode");
+//                } else if (TextUtils.isEmpty(edtAccountName.getText().toString())) {
+//                    edtAccountName.setError("Invalid Account Name");
+//                } else if (TextUtils.isEmpty(edtAccountNumber.getText().toString())) {
+//                    edtAccountNumber.setError("Invalid Accout Number");
+//                } else if (TextUtils.isEmpty(edtIBAN.getText().toString())) {
+//                    edtIBAN.setError("Invalid IBAN");
+//                } else if (TextUtils.isEmpty(edtSwift.getText().toString())) {
+//                    edtSwift.setError("Invalid Swift code");
+//                } else if (TextUtils.isEmpty(edtPaypal.getText().toString())) {
+//                    edtPaypal.setError("Invalid PayPal email");
+//                } else {
+//                    if (CheckInternet.isInternetAvailable(context)) {
+//
+//                        BankApi();
+//                    } else {
+//                        Toast.makeText(context, "" + getActivity().getResources().getString(R.string.NoInternet), Toast.LENGTH_LONG).show();
+//                    }
+//
+//                }
+//                if (TextUtils.isEmpty(edtPaypal.getText().toString())) {
+//                    edtPaypal.setError("Invalid PayPal email");
+//                } else {
                     if (CheckInternet.isInternetAvailable(context)) {
 
                         BankApi();
@@ -120,7 +138,7 @@ public class EditBankFragment extends Fragment {
                         Toast.makeText(context, "" + getActivity().getResources().getString(R.string.NoInternet), Toast.LENGTH_LONG).show();
                     }
 
-                }
+//                }
             }
         });
 
@@ -143,6 +161,7 @@ public class EditBankFragment extends Fragment {
         edtPostcode = (EditText) view.findViewById(R.id.bank_postcode);
         edtSwift = (EditText) view.findViewById(R.id.bank_swift);
         edtPaypal = (EditText) view.findViewById(R.id.paypal);
+        addAds();
     }
 
 
@@ -220,7 +239,7 @@ public class EditBankFragment extends Fragment {
                     }
                 } else {
 
-                    Toast.makeText(context, "Fill the bank Details", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(context, "Fill the bank Details", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -238,6 +257,36 @@ public class EditBankFragment extends Fragment {
     public void onAttach(Context context1) {
         super.onAttach(context1);
         context = context1;
+    }
+
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
     }
 
 }

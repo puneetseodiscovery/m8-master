@@ -19,6 +19,12 @@ public class GetStartCategoryApi {
     @SerializedName("show_itservice")
     @Expose
     private Boolean showItservice;
+    @SerializedName("stripe")
+    @Expose
+    private Boolean stripe;
+    @SerializedName("paypal")
+    @Expose
+    private Boolean paypal;
 
     public Integer getStatus() {
         return status;
@@ -52,6 +58,22 @@ public class GetStartCategoryApi {
         this.showItservice = showItservice;
     }
 
+    public Boolean getStripe() {
+        return stripe;
+    }
+
+    public void setStripe(Boolean stripe) {
+        this.stripe = stripe;
+    }
+
+    public Boolean getPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(Boolean paypal) {
+        this.paypal = paypal;
+    }
+
 
     public class Datum {
 
@@ -63,7 +85,7 @@ public class GetStartCategoryApi {
         private String name;
         @SerializedName("image")
         @Expose
-        private Object image;
+        private String image;
 
         public Integer getId() {
             return id;
@@ -81,11 +103,11 @@ public class GetStartCategoryApi {
             this.name = name;
         }
 
-        public Object getImage() {
+        public String getImage() {
             return image;
         }
 
-        public void setImage(Object image) {
+        public void setImage(String image) {
             this.image = image;
         }
 

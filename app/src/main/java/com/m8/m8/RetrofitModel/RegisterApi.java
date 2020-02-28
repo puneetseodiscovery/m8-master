@@ -47,6 +47,9 @@ public class RegisterApi {
         @SerializedName("otp")
         @Expose
         private String otp;
+        @SerializedName("isrefer")
+        @Expose
+        private Boolean isrefer;
 
         public Integer getUserId() {
             return userId;
@@ -62,6 +65,14 @@ public class RegisterApi {
 
         public void setOtp(String otp) {
             this.otp = otp;
+        }
+
+        public Boolean getIsrefer() {
+            return isrefer;
+        }
+
+        public void setIsrefer(Boolean isrefer) {
+            this.isrefer = isrefer;
         }
 
     }

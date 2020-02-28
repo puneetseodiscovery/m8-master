@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,11 +12,20 @@
         android:id="@+id/tooolbar"
         layout="@layout/toolbar2" />
 
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tooolbar"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/topRelative"
+        android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:layout_below="@id/tooolbar"
         android:scaleType="centerCrop" />
 
     <TextView
@@ -30,7 +36,6 @@
         android:layout_marginTop="@dimen/padding"
         android:background="@color/green"
         android:text=""
-        android:layout_below="@id/tooolbar"
         android:textColor="@color/white"
         android:textSize="@dimen/subheading">
     </TextView>
@@ -155,5 +160,8 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    </RelativeLayout>
+
+    </ScrollView>
+
 </RelativeLayout>
-</ScrollView>

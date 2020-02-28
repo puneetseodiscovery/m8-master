@@ -25,7 +25,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/mlogo" />
+                app:srcCompat="@drawable/mlogo" />
 
 
             <EditText
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:padding="@dimen/padding"
-                android:src="@drawable/navigation" />
+                app:srcCompat="@drawable/navigation" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -133,6 +133,7 @@
                     android:layout_below="@id/spineer"
                     android:text="@string/click"
                     android:textSize="@dimen/text"
+                    android:padding="5dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -329,6 +330,18 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    ads:adSize="BANNER"
+                    android:layout_marginBottom="@dimen/topmargin"
+                    android:layout_marginTop="@dimen/topmargin"
+                    ads:adUnitId="ca-app-pub-3864021669352159/5075620176">
+                </com.google.android.gms.ads.AdView>
 
 
             </LinearLayout>

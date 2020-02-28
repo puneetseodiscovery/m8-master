@@ -15,6 +15,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/adView"
         android:layout_below="@id/tooolbar">
         
         <RelativeLayout
@@ -55,7 +56,7 @@
                         android:background="@android:color/transparent"
                         android:elevation="1dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_image_add" />
+                        app:srcCompat="@drawable/ic_image_add" />
 
                 </RelativeLayout>
 
@@ -640,6 +641,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/myEarningTillDate"
                         android:layout_marginTop="@dimen/padding"
                         android:orientation="horizontal">
 
@@ -677,6 +679,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
+                        android:id="@+id/paidOut"
                         android:orientation="horizontal">
 
                         <TextView
@@ -705,22 +708,36 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin"
+                        android:layout_margin="@dimen/padding"
                         android:id="@+id/payOutstanding"
                         android:background="@drawable/buttonback"
-                        android:text="Pay outstanding balance"
+                        android:text="Pay outstanding balance: "
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text" />
+
+
 
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
 
+
+
         </RelativeLayout>
 
     </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        android:layout_alignParentBottom="true"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
 
 </RelativeLayout>

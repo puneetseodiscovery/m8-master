@@ -52,34 +52,34 @@ public class AddMandataApi {
         private String userId;
         @SerializedName("price_type")
         @Expose
-        private String priceType;
+        private Object priceType;
         @SerializedName("price_value")
         @Expose
-        private String priceValue;
+        private Object priceValue;
         @SerializedName("meight_commision")
         @Expose
-        private String meightCommision;
+        private Object meightCommision;
         @SerializedName("agent_commission")
         @Expose
-        private String agentCommission;
+        private Object agentCommission;
         @SerializedName("total_commision_amount")
         @Expose
-        private Integer totalCommisionAmount;
+        private Double totalCommisionAmount;
         @SerializedName("calculate_price")
         @Expose
-        private String calculatePrice;
+        private Object calculatePrice;
         @SerializedName("total_commision")
         @Expose
         private String totalCommision;
         @SerializedName("mandate_date")
         @Expose
-        private String mandateDate;
+        private Object mandateDate;
         @SerializedName("sign_image")
         @Expose
         private Object signImage;
         @SerializedName("mandate_pdf")
         @Expose
-        private String mandatePdf;
+        private Object mandatePdf;
         @SerializedName("agree")
         @Expose
         private Integer agree;
@@ -126,51 +126,51 @@ public class AddMandataApi {
             this.userId = userId;
         }
 
-        public String getPriceType() {
+        public Object getPriceType() {
             return priceType;
         }
 
-        public void setPriceType(String priceType) {
+        public void setPriceType(Object priceType) {
             this.priceType = priceType;
         }
 
-        public String getPriceValue() {
+        public Object getPriceValue() {
             return priceValue;
         }
 
-        public void setPriceValue(String priceValue) {
+        public void setPriceValue(Object priceValue) {
             this.priceValue = priceValue;
         }
 
-        public String getMeightCommision() {
+        public Object getMeightCommision() {
             return meightCommision;
         }
 
-        public void setMeightCommision(String meightCommision) {
+        public void setMeightCommision(Object meightCommision) {
             this.meightCommision = meightCommision;
         }
 
-        public String getAgentCommission() {
+        public Object getAgentCommission() {
             return agentCommission;
         }
 
-        public void setAgentCommission(String agentCommission) {
+        public void setAgentCommission(Object agentCommission) {
             this.agentCommission = agentCommission;
         }
 
-        public Integer getTotalCommisionAmount() {
+        public Double getTotalCommisionAmount() {
             return totalCommisionAmount;
         }
 
-        public void setTotalCommisionAmount(Integer totalCommisionAmount) {
+        public void setTotalCommisionAmount(Double totalCommisionAmount) {
             this.totalCommisionAmount = totalCommisionAmount;
         }
 
-        public String getCalculatePrice() {
+        public Object getCalculatePrice() {
             return calculatePrice;
         }
 
-        public void setCalculatePrice(String calculatePrice) {
+        public void setCalculatePrice(Object calculatePrice) {
             this.calculatePrice = calculatePrice;
         }
 
@@ -182,11 +182,11 @@ public class AddMandataApi {
             this.totalCommision = totalCommision;
         }
 
-        public String getMandateDate() {
+        public Object getMandateDate() {
             return mandateDate;
         }
 
-        public void setMandateDate(String mandateDate) {
+        public void setMandateDate(Object mandateDate) {
             this.mandateDate = mandateDate;
         }
 
@@ -198,11 +198,11 @@ public class AddMandataApi {
             this.signImage = signImage;
         }
 
-        public String getMandatePdf() {
+        public Object getMandatePdf() {
             return mandatePdf;
         }
 
-        public void setMandatePdf(String mandatePdf) {
+        public void setMandatePdf(Object mandatePdf) {
             this.mandatePdf = mandatePdf;
         }
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +58,7 @@ public class ViewingCommissionFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     SharedToken sharedToken;
     String catId, userid;
-
+    RelativeLayout noRecord;
 
     public ViewingCommissionFragment() {
         // Required empty public constructor
@@ -73,6 +74,8 @@ public class ViewingCommissionFragment extends Fragment {
 
         catId = sharedToken.getCatId();
         userid = sharedToken.getUserId();
+
+        noRecord = view.findViewById(R.id.noRecord);
 
         //find all id
         init();
@@ -103,7 +106,6 @@ public class ViewingCommissionFragment extends Fragment {
             startActivity(new Intent(context, NoInternetActivity.class));
         }
 
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -116,7 +118,6 @@ public class ViewingCommissionFragment extends Fragment {
                 }, 1000);
             }
         });
-
         return view;
     }
 
@@ -127,11 +128,8 @@ public class ViewingCommissionFragment extends Fragment {
         toolbarLo = (ImageView) view.findViewById(R.id.toolbarLogo);
         textView = (TextView) view.findViewById(R.id.toolbarText);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swip);
-
         HomeActivity.cunter = 0;
-
     }
-
 
     public void getData() {
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
@@ -145,12 +143,16 @@ public class ViewingCommissionFragment extends Fragment {
                 if (response.isSuccessful()) {
                     clear();
                     if (response.body().getStatus().equals(200)) {
-
-                        for (int i = 0; i < response.body().getData().size(); i++) {
-                            arraylist.add(response.body().getData().get(i));
-
-                            setDataIntoRecycler();
-
+                        if (response.body().getData().size()>0) {
+                            noRecord.setVisibility(View.GONE);
+                            for (int i = 0; i < response.body().getData().size(); i++) {
+                                arraylist.add(response.body().getData().get(i));
+                                setDataIntoRecycler();
+                            }
+                        }
+                        else
+                        {
+                            noRecord.setVisibility(View.VISIBLE);
                         }
                     } else {
                         Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
@@ -158,7 +160,6 @@ public class ViewingCommissionFragment extends Fragment {
                 } else {
                     Toast.makeText(context, "" + response.message(), Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
@@ -168,7 +169,6 @@ public class ViewingCommissionFragment extends Fragment {
             }
         });
     }
-
 
     private void setDataIntoRecycler() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);

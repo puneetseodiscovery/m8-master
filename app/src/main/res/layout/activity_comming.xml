@@ -15,6 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tooolbar"
-        android:src="@drawable/comming_soon" />
+        app:srcCompat="@drawable/comming_soon" />
 
 </RelativeLayout>

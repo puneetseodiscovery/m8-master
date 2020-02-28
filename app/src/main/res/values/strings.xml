@@ -19,7 +19,7 @@
     <string name="viewallprperty">Any M8 can share any item in any part of the world with any other M8 if they believe that share will result in a sale</string>
     <string name="bulkviewallprperty">To bulk upload your portfolio please choose the format that suits you best, we will then email you a blank one to complete and upload</string>
     <string name="mandata">Please indicate what % of your commission you would like to offer M8s for finding you a buyer. 50% is our normal average.</string>
-    <string name="mandata2">Indicate a cash amount you would like to offer M8\'s for selling your property(s) :</string>
+    <string name="mandata2">Indicate a cash amount you would like to offer M8\'s for selling your property(s) :"\n""\n"This amount must be in CHF (Swiss Francs) because all commissions on M8 are paid in that currency</string>
     <string name="mandata3">Set this amount for all of your property(s) sold on M8\'s :</string>
     <string name="date">Date "\n" 18/2/2019</string>
     <string name="edit"><u>Edit</u></string>
@@ -49,7 +49,7 @@
     <string name="totalcommission2">Commissions/discounts paid out vary depending on how many people on the tree. Press the arrows to see how the amounts change.</string>
     <string name="totalcommission3">is the first sharer in all of this items commission trees, the more times this item is shared the more the commission is divided in each tree."\n""\n"The more times you share this item the more commission trees you create so the more chances you have earning the commission or part of it."\n""\n"Please look at the amount next to your name, that is the amount all of the tree above your name will earn if you decide to buy."\n""\n"If you share on, the amount next to the buyer’s name is the amount everyone on the winning commission tree will earn."\n""\n"Share intelligently to earn more and good luck!</string>
     <string name="iagree">I agree with M8\'s terms and conditions, privacy policy and  art statement</string>
-    <string name="doyou">Your package is expired.You need to upgrade to a professional package to continue.</string>
+    <string name="doyou">Your package has expired, you may now upgrade to a more professional package.</string>
     <string name="logoutmessage">Are you sure want to Logout ?</string>
     <string name="sharCommision">Sharers Commission :</string>
     <string name="uploadPro">Upload  property images (max 10)</string>
@@ -115,5 +115,11 @@ Our company accepts advertisements for the sale of goods, services and is not in
 If our company advertises your goods or services for sale, it does so only on the condition that you agree to indemnify from all liabilities or claims of liability that may arise from the sale of or subsequent use of those goods, services or other offers."\n\n"
 If you purchase any item or service through our company you agree that you will not seek any remedy for any default in the item or for any damages that flow from the purchase of the item or service for any other reason."\n\n"</string>
     <string name="checkbusiness">Check box if you have a buisness account?</string>
+
+
+    <string name="strip_link"><u>https://www.stripe.com</u></string>
+    <string name="this_form"><u>This form</u></string>
+    <string name="here"><u>here.</u></string>
+    <string name="please_click_here"><u>please click here</u></string>
 
 </resources>

@@ -155,4 +155,14 @@ public class MypropertyAdapter extends RecyclerView.Adapter<MypropertyAdapter.Vi
 
         }
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }

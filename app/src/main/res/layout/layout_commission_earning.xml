@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+
+<!--    <RelativeLayout-->
+
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/selection_bg">-->
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/layout_liner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="15dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvHeading"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:text="Withdrawing your commission &amp; earnings"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="16sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvAccounthere"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvHeading"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:gravity="start"-->
+<!--                android:lineSpacingExtra="2dp"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvThisForm"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvAccounthere"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:gravity="start"-->
+<!--                android:text="if you have a STRIPE account please fill out"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvThis"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvThisForm"-->
+<!--                android:gravity="start"-->
+<!--                android:text="this form"-->
+<!--                android:textColor="#1d34fa"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvIntensive"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvThis"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:gravity="start"-->
+<!--                android:text="If you don't not want a STRIPE account and you would Like M8 to manually pay you via PayPal we have to charge an administration fee of 15% because it is so labour intensive. "-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvMinAmount"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvIntensive"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:gravity="start"-->
+<!--                android:text="The minimum amount you can withdraw at any one time via PayPal is CHF100"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvPaypalDetails"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvMinAmount"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:gravity="start"-->
+<!--                android:text="Please enter your PayPal details"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvHere"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvMinAmount"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:layout_toEndOf="@+id/tvPaypalDetails"-->
+<!--                android:gravity="start"-->
+<!--                android:text=" here."-->
+<!--                android:textColor="#1d34fa"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvWatch"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvPaypalDetails"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                android:gravity="start"-->
+<!--                android:text="To watch M8 HOW TO USE VIDEOS"-->
+<!--                android:textColor="#1d34fa"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvClickHere"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvWatch"-->
+<!--                android:text="Please click here"-->
+<!--                android:textColor="#1d34fa"-->
+<!--                android:textSize="12sp"-->
+<!--                android:gravity="start"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/checkbox"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/tvClickHere"-->
+<!--                android:layout_marginTop="18dp"-->
+<!--                android:visibility="gone"-->
+<!--                android:text="Do not show me again."-->
+<!--                android:textColor="@android:color/darker_gray"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal" />-->
+
+<!--        </RelativeLayout>-->
+
+
+<!--        <View-->
+<!--            android:id="@+id/view_cam"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0.5dp"-->
+<!--            android:layout_below="@+id/layout_liner"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@android:color/darker_gray" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_cancel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/view_cam"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:padding="15dp"-->
+<!--            android:text="Cancel"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="17sp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_ok"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/view_cam"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:visibility="invisible"-->
+<!--            android:layout_marginRight="25dp"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:padding="15dp"-->
+<!--            android:text="Ok"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="17sp" />-->
+
+<!--    </RelativeLayout>-->
+<!--</RelativeLayout>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:background="@drawable/selection_bg">
+
+        <RelativeLayout
+            android:id="@+id/layout_liner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/mnew">
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Withdrawing your \ncommission &amp; earnings"
+                android:textColor="	#626368"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:id="@+id/view_earning"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/tvHeading"
+                android:layout_margin="7dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:id="@+id/layout_liner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_earning"
+                android:layout_margin="7dp">
+
+                <TextView
+                    android:id="@+id/tvAccounthere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:lineSpacingExtra="5dp"
+                    android:text="To withdraw sales earnings and sharers commission automatically from M8 you must have a STRIPE account,\nyou can open an account here"
+                    android:textColor="	#626368"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvStripLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvAccounthere"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/strip_link"
+                    android:textColor="	#F63437"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/tvThisForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvStripLink"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="If you have a STRIPE account please fill out"
+                    android:textColor="	#626368"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvThis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvThisForm"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/this_form"
+                    android:textColor="	#F63437"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvIntensive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvThis"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="If you don't not want a STRIPE account and you would Like M8 to manually pay you via PayPal we have to charge an administration fee of 15% because it is so labour intensive. "
+                    android:textColor="	#626368"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvMinAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvIntensive"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="5dp"
+                    android:text="The minimum amount you can withdraw at any one time via\n PayPal is CHF 100"
+                    android:textColor="	#626368"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvPaypalDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvMinAmount"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Please enter your PayPal details "
+                    android:textColor="	#626368"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvHere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvMinAmount"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/tvPaypalDetails"
+                    android:text="@string/here"
+                    android:textColor="	#F63437"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPaypalDetails"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWatch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To watch M8 HOW TO USE VIDEOS"
+                        android:textColor="	#626368"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/tvClickHere"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_toRightOf="@+id/tvWatch"
+                        android:text="@string/please_click_here"
+                        android:textColor="	#F63437"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_video"
+                    android:layout_marginTop="10dp"
+                    android:text="Do not show me again."
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_below="@+id/layout_liner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/button_bg"
+            android:gravity="center"
+            android:text="Close"
+            android:textColor="	#FFFFFF"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

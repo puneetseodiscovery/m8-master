@@ -353,8 +353,10 @@ public class AgentActivity extends AppCompatActivity {
                         double Maxprice;
 
                         if (sharedRate.getShared()!=null && response.body().getData().getFixedStart()!=null && sharedRate.getShared()!=null && response.body().getData().getFixedEnd()!=null) {
-                            Minprice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getFixedStart());
-                            Maxprice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getFixedEnd());
+//                            Minprice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getFixedStart());
+//                            Maxprice = Double.valueOf(sharedRate.getShared()) * Double.valueOf(response.body().getData().getFixedEnd());
+                            Minprice = response.body().getData().getFixedStart();
+                            Maxprice = response.body().getData().getFixedEnd();
                         }
                         else
                         {

@@ -47,6 +47,16 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         final TreeListApi.Treeuser data = arrayList.get(i);
 
@@ -74,9 +84,11 @@ public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 if (onItem != null) {
-                    int pos = (data.getId());
-                    if (pos != RecyclerView.NO_POSITION) {
-                        onItem.onItemclick(pos,data.getName());
+                    if (data.getParentusers()!=0) {
+                        int pos = (data.getId());
+                        if (pos != RecyclerView.NO_POSITION) {
+                            onItem.onItemclick(pos, data.getName());
+                        }
                     }
                 }
             }

@@ -1,10 +1,13 @@
 package com.m8.m8.Activities;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -16,10 +19,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
+import android.text.Html;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.m8.m8.Models.TokenResponseModel;
 import com.m8.m8.RetrofitModel.CurrecnyConvter;
+import com.m8.m8.SplashScreen;
 import com.m8.m8.util.CheckInternet;
 import com.m8.m8.R;
 import com.m8.m8.Adapter.StartAdapter;
@@ -31,6 +46,7 @@ import com.m8.m8.RetrofitModel.GetStartCategoryApi;
 import com.m8.m8.ServiceGenerator;
 import com.m8.m8.SpacesItemDecoration;
 import com.m8.m8.util.SharedRate;
+import com.m8.m8.util.SharedToken;
 
 import java.util.ArrayList;
 import java.util.Currency;
@@ -62,18 +78,24 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        SharedToken sharedToken = new SharedToken(StartActivity.this);
+        final String token = sharedToken.getTokenId();
+        if (token.length()>0)
+        {
+            getTokenData(token);
+            AppUpdater appUpdater = new AppUpdater(this).setDisplay(Display.DIALOG);
+            appUpdater.start();
+        }
+
         init();
 
         double price = 2000;
 
         Locale swedishLocale = new Locale(getUserCountry(this), getUserCountry(this).toUpperCase());
         String currecy = Currency.getInstance(swedishLocale).getCurrencyCode();
-
         getCurrencyConvert(currecy);
-
         checkPermissions();
-
-
+        //Log.d("++++++","++ this is test ++"+solution("Codility We test coders",14));
     }
 
 
@@ -92,6 +114,11 @@ public class StartActivity extends AppCompatActivity {
             startActivity(new Intent(StartActivity.this, NoInternetActivity.class));
         }
 
+        if (SplashScreen.code.length()>0)
+        {
+            Intent intent = new Intent(StartActivity.this, HomeActivity.class);
+            startActivity(intent);
+        }
     }
 
     private boolean haveNetworkConnection() {
@@ -150,8 +177,10 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void getData() {
+        SharedToken sharedToken = new SharedToken(StartActivity.this);
+        final String userId = sharedToken.getUserId();
         ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
-        Call<GetStartCategoryApi> call = apiInterface.startApi();
+        Call<GetStartCategoryApi> call = apiInterface.startApi(userId);
         final ProgressDialog dialog = ProgressBarClass.showProgressDialog(this, "Please wait...");
         dialog.show();
         call.enqueue(new Callback<GetStartCategoryApi>() {
@@ -169,8 +198,17 @@ public class StartActivity extends AppCompatActivity {
                         arrayList.add(arrayList.get(arrayList.size()-1));
                         SetData();
                         }
+                        if (!response.body().getPaypal() && !response.body().getStripe())
+                        {
+                            //openDialog();
+                            SharedToken sharedToken = new SharedToken(StartActivity.this);
+                            if (sharedToken.getFirstTime().equals("No"))
+                            {
+                                commission_earningsDialog();
+                            }
+                        }
                     } else {
-                        Toast.makeText(StartActivity.this, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(StartActivity.this, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 } else {
 
@@ -180,7 +218,7 @@ public class StartActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<GetStartCategoryApi> call, Throwable t) {
-                Toast.makeText(StartActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(StartActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
                 dialog.dismiss();
             }
         });
@@ -251,4 +289,245 @@ public class StartActivity extends AppCompatActivity {
         //super.onBackPressed();
         finishAffinity();
     }
+
+
+
+    private void getTokenData(String token) {
+        ApiInterface apiInterface = ServiceGenerator.createService(ApiInterface.class);
+        Call<TokenResponseModel> call = apiInterface.getTokenDetails("Bearer "+token,"application/json");
+        call.enqueue(new Callback<TokenResponseModel>() {
+            @Override
+            public void onResponse(Call<TokenResponseModel> call, Response<TokenResponseModel> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equals(402)) {
+
+                        SharedToken sharedToken = new SharedToken(StartActivity.this);
+                        sharedToken.clearShaerd();
+                        PreferenceManager.getDefaultSharedPreferences(getBaseContext()).
+                                edit().clear().apply();
+                        Intent intent = new Intent(StartActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    } else {
+                        //Toast.makeText(StartActivity.this, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TokenResponseModel> call, Throwable t) {
+//                Toast.makeText(StartActivity.this, "" + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public String solution(String message, int K) {
+        // write your code in Java SE 8
+
+        if (message.charAt(K+1)==' ')
+        {
+            message = message.substring(0,K);
+        }
+        else
+        {
+            for (int i=1;i<K;i--)
+            {
+                if (message.charAt(i)==' ')
+                {
+                    message = message.substring(0,i);
+                }
+            }
+        }
+
+        return message;
+
+    }
+
+//    private void openDialog() {
+//        final Dialog dialog;
+//        dialog = new Dialog(this, R.style.DialogThemes);
+//        dialog.setContentView(R.layout.layout_commission_earning);
+//        dialog.setCancelable(false);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+//
+//        TextView tv_cancel = (TextView) dialog.findViewById(R.id.tv_cancel);
+//        TextView tv_ok = (TextView) dialog.findViewById(R.id.tv_ok);
+//        TextView tvThis = (TextView) dialog.findViewById(R.id.tvThis);
+//        TextView tvHere = (TextView) dialog.findViewById(R.id.tvHere);
+//        TextView tvClickHere = (TextView) dialog.findViewById(R.id.tvClickHere);
+//        TextView tvAccounthere = (TextView) dialog.findViewById(R.id.tvAccounthere);
+//        CheckBox checkbox = dialog.findViewById(R.id.checkbox);
+//        String text = "<font color=#000000>To withdraw sales earnings and sharers commission automatically from M8 you must have a STRIPE account, you can open an account here\n</font> <font color=#1d34fa>https://www.stripe.com</font>";
+//        tvAccounthere.setText(Html.fromHtml(text));
+//
+//        tvAccounthere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(StartActivity.this,OpenStripeAccount.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        tvThis.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               // Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(StartActivity.this,StripeConnectActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        tvHere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(StartActivity.this,PaypalAddAtStart.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//
+//        tvClickHere.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+//
+//                Intent intent = new Intent(StartActivity.this,WatchHowToUseAtStart.class);
+//                startActivity(intent);
+//                finish();
+//
+//            }
+//        });
+//
+//        dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+//
+//
+//            @Override
+//            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+//                // TODO Auto-generated method stub
+//                if (keyCode == KeyEvent.KEYCODE_BACK) {
+//                    //dialog.dismiss();
+//                    finishAffinity();
+//                }
+//                return true;
+//            }
+//        });
+//
+//
+//        tv_ok.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        tv_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //dialog.dismiss();
+//                Toast.makeText(StartActivity.this, "You must have a Stripe or PayPal account to continue.", Toast.LENGTH_SHORT).show();
+//                //finishAffinity();
+//            }
+//        });
+//        dialog.show();
+//    }
+
+    private void commission_earningsDialog() {
+        final Dialog dialog;
+        dialog = new Dialog(this, R.style.DialogThemes);
+        dialog.setContentView(R.layout.layout_commission_earning);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        TextView tv_cancel = (TextView) dialog.findViewById(R.id.tv_cancel);
+        TextView tvStripLink = (TextView) dialog.findViewById(R.id.tvStripLink);
+        TextView tvThis = (TextView) dialog.findViewById(R.id.tvThis);
+        TextView tvHere = (TextView) dialog.findViewById(R.id.tvHere);
+        TextView tvClickHere = (TextView) dialog.findViewById(R.id.tvClickHere);
+        TextView tvAccounthere = (TextView) dialog.findViewById(R.id.tvAccounthere);
+        CheckBox checkbox = dialog.findViewById(R.id.checkbox);
+
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked)
+                {
+                    SharedToken sharedToken = new SharedToken(StartActivity.this);
+                    sharedToken.setFirstTime("Do");
+                }
+                else
+                {
+                    SharedToken sharedToken = new SharedToken(StartActivity.this);
+                    sharedToken.setFirstTime("No");
+                }
+            }
+        });
+
+        tvThis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(StartActivity.this,StripeConnectActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        tvStripLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(StartActivity.this,OpenStripeAccount.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        tvHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(StartActivity.this,PaypalAddAtStart.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        tvClickHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(StartActivity.this, "Click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(StartActivity.this,WatchHowToUseAtStart.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        tv_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+                dialog.setOnKeyListener(new Dialog.OnKeyListener() {
+
+
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    dialog.dismiss();
+                }
+                return true;
+            }
+        });
+        dialog.show();
+    }
+
 }

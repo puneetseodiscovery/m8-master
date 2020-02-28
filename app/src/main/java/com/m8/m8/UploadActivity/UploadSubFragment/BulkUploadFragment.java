@@ -2,7 +2,6 @@ package com.m8.m8.UploadActivity.UploadSubFragment;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
@@ -17,10 +16,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,14 +29,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import com.m8.m8.Activities.HomeActivity;
-import com.m8.m8.util.ProgressBarClass;
-import com.m8.m8.RetrofitModel.GetMessage;
-import com.m8.m8.UploadActivity.Mandate.AgentActivity;
 import com.m8.m8.ApiInterface;
 import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.BulkUploadApi;
+import com.m8.m8.RetrofitModel.GetMessage;
 import com.m8.m8.ServiceGenerator;
+import com.m8.m8.UploadActivity.Mandate.AgentActivity;
+import com.m8.m8.util.ProgressBarClass;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -57,8 +58,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.

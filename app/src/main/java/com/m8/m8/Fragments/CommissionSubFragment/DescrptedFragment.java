@@ -630,11 +630,11 @@ public class DescrptedFragment extends Fragment {
     private void createLink(String referCode) {
         DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLink(Uri.parse("" + referCode))
-                .setDomainUriPrefix("amrm8.page.link")
+                .setDomainUriPrefix("m8sworld.page.link")
                 // Open links with this app on Android  amitpandey12.page.link
-                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder().build())
+                .setAndroidParameters(new DynamicLink.AndroidParameters.Builder("com.m8.m8").build())
                 // Open links with com.example.ios on iOS
-                .setIosParameters(new DynamicLink.IosParameters.Builder("amrm8.page.link").build())
+                .setIosParameters(new DynamicLink.IosParameters.Builder("com.Bainzy.M8").setFallbackUrl(Uri.parse("https://apps.apple.com/in/app/M8/id1479388084")).setAppStoreId("id1479388084").build())
                 .buildDynamicLink();
 
         Uri dynamicLinkUri = dynamicLink.getUri();
@@ -670,6 +670,7 @@ public class DescrptedFragment extends Fragment {
                             Intent share = new Intent(Intent.ACTION_SEND);
                             share.setType("text/plain");
                             share.putExtra(Intent.EXTRA_TEXT, firstPart +"\n\n"+ shortLink + secondPart +"");
+                            share.putExtra(Intent.EXTRA_SUBJECT, "One of your mates from M8 has sent you one of their money making offers");
                             share.putExtra("shared", "shared");
                             startActivity(Intent.createChooser(share, "Share M8 Items with others"));
 
@@ -826,6 +827,43 @@ public class DescrptedFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equals(200)) {
                         //Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
+                        if (!response.body().getLegalAddress())
+                        {
+                            final Dialog dialog = new Dialog(context);
+
+                            dialog.setContentView(R.layout.custom_dialog_upload);
+                            dialog.setCancelable(false);
+
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+                            dialog.show();
+
+                            final Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
+                            Button btnBuy = (Button) dialog.findViewById(R.id.btnDelete);
+                            TextView text = (TextView) dialog.findViewById(R.id.txt_title);
+                            text.setText(response.body().getMessage());
+
+                            btnBuy.setText("Ok");
+
+                            btnCancel.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                            btnBuy.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(context, HomeActivity.class);
+                                    intent.putExtra("ItemId", "ItemId");
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
                     } else {
                         //Toast.makeText(context, "" + response.body().getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -860,8 +898,8 @@ public class DescrptedFragment extends Fragment {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, HomeActivity.class);
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, HomeActivity.class);
+//                context.startActivity(intent);
                 dialog.dismiss();
             }
         });

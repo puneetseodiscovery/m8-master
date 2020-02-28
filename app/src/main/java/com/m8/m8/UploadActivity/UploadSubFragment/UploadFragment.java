@@ -2,7 +2,6 @@ package com.m8.m8.UploadActivity.UploadSubFragment;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
@@ -20,12 +19,6 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -44,17 +37,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.makeramen.roundedimageview.RoundedImageView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.hbb20.CountryCodePicker;
 import com.m8.m8.ApiInterface;
+import com.m8.m8.R;
 import com.m8.m8.RetrofitModel.CurrecnyConvter;
 import com.m8.m8.ServiceGenerator;
 import com.m8.m8.UploadActivity.Upload2Activity;
-import com.m8.m8.R;
-import com.hbb20.CountryCodePicker;
 import com.m8.m8.UploadActivity.UploadImagesActivity;
 import com.m8.m8.util.Config;
 import com.m8.m8.util.ProgressBarClass;
 import com.m8.m8.util.SharedToken;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.mynameismidori.currencypicker.CurrencyPicker;
 import com.mynameismidori.currencypicker.CurrencyPickerListener;
 
@@ -76,7 +75,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -71,7 +71,9 @@ public class PotentialAdapter extends RecyclerView.Adapter<PotentialAdapter.View
         if (datum.getPrice() != null) {
             SharedRate sharedRate = new SharedRate(context);
             double price = Double.parseDouble(datum.getPrice()) * Double.parseDouble(sharedRate.getShared());
-            viewHolder.txtPrice.setText(sharedRate.getCurrencyCode() + " " + String.format("%.2f", price));
+            //viewHolder.txtPrice.setText(sharedRate.getCurrencyCode() + " " + String.format("%.2f", price));
+            viewHolder.txtPrice.setText(datum.getCurrency() + " " + datum.getItemCurPrice());
+
         }
 
         if (datum.getMandate() != null) {
@@ -86,19 +88,25 @@ public class PotentialAdapter extends RecyclerView.Adapter<PotentialAdapter.View
 
         }
         viewHolder.avLoadingIndicatorView.setVisibility(View.VISIBLE);
-        Glide.with(context).load("https://app.m8s.world/public/upload/items/" + datum.getImages().get(0).getImage().toString())
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        return false;
-                    }
+        if (datum.getImages().size()>0) {
+            Glide.with(context).load("https://app.m8s.world/public/upload/items/" + datum.getImages().get(0).getImage().toString())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
 
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
-                        return false;
-                    }
-                }).into(viewHolder.imageView);
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
+                            return false;
+                        }
+                    }).into(viewHolder.imageView);
+        }
+        else
+        {
+            viewHolder.avLoadingIndicatorView.setVisibility(View.GONE);
+        }
 
         if (datum.getItemTreeStatus()!=null) {
             if (datum.getItemTreeStatus().equals("under_offer")) {
@@ -115,6 +123,16 @@ public class PotentialAdapter extends RecyclerView.Adapter<PotentialAdapter.View
         }
 
 
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
@@ -139,4 +157,6 @@ public class PotentialAdapter extends RecyclerView.Adapter<PotentialAdapter.View
 
         }
     }
+
+
 }

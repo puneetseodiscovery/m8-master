@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.m8.m8.Activities.HomeActivity;
+import com.m8.m8.Fragments.MyAccountSubFragment.ViewProfileFragment;
 import com.m8.m8.R;
 import com.m8.m8.Fragments.PotentialSubFragment.AllFragment;
 import com.m8.m8.Fragments.PotentialSubFragment.OfferFragment;
@@ -34,6 +42,7 @@ public class MyPotentialFragment extends Fragment {
     FragmentManager manager;
     FragmentTransaction transaction;
     Context context;
+    public com.google.android.gms.ads.AdView mAdView;
 
     public MyPotentialFragment() {
         // Required empty public constructor
@@ -72,14 +81,22 @@ public class MyPotentialFragment extends Fragment {
 
         //here see all three fragment
         manager = getActivity().getSupportFragmentManager();
-
-
         manager.beginTransaction().replace(R.id.potential_framelayout, new AllFragment()).commit();
+
         txtAll.setBackgroundResource(R.drawable.potentionalbutton);
         txtOffer.setBackgroundResource(R.drawable.potentialbuttoninactive);
         txtSele.setBackgroundResource(R.drawable.potentialbuttoninactive);
 
         GetFragment();
+        if (ViewProfileFragment.fromProfileToSale==1)
+        {
+            txtSele.setBackgroundResource(R.drawable.potentionalbutton);
+            txtOffer.setBackgroundResource(R.drawable.potentialbuttoninactive);
+            txtAll.setBackgroundResource(R.drawable.potentialbuttoninactive);
+
+            manager.beginTransaction().replace(R.id.potential_framelayout, new SeleFragment()).commit();
+            ViewProfileFragment.fromProfileToSale=0;
+        }
 
 
         return view;
@@ -92,7 +109,7 @@ public class MyPotentialFragment extends Fragment {
         txtAll = (TextView) view.findViewById(R.id.all);
         txtOffer = (TextView) view.findViewById(R.id.offer);
         txtSele = (TextView) view.findViewById(R.id.sele);
-
+        addAds();
     }
 
 
@@ -144,4 +161,33 @@ public class MyPotentialFragment extends Fragment {
         context = context1;
     }
 
+    public void addAds()
+    {
+        MobileAds.initialize(getContext(), "ca-app-pub-3864021669352159~4680319766");
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE231").build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("+++++++","+++++ loaded ++++++");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Log.d("+++++++","+++++ not loaded ++++++"+i);
+            }
+        });
+    }
 }
